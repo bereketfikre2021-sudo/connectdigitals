@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="preload" href="BG.webp" as="image">
+  <link rel="preload" href="Logo.png" as="image">
+
+
+<link rel="manifest" href="/site.webmanifest">
+<!-- Favicon for all devices -->
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Connect Digitals | Branding & Digital Marketing Services</title>
+  <link rel="preload" href="index.css" as="style">
+  <link href="index.css" rel="stylesheet">
+  <meta name="description" content="Connect Digitals: A branding & digital marketing agency. We design logos, manage social media, and drive growth. Let’s transform your brand today.">
+  <!-- For richer social media sharing (Open Graph) -->
+  <meta property="og:title" content="Connect Digitals | Branding & Digital Marketing Services">
+<meta property="og:image" content="https://connectdigital.netlify.app/Logo.png">
+<meta property="og:url" content="https://connectdigital.netlify.app/">
+<meta property="og:type" content="website">
+
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+  <meta name="keywords" content="Connect Digitals, Graphic Design, Branding, Marketing, Digital Services">
+  <meta name="author" content="Connect Digitals">
+  <html lang="en" class="scroll-smooth">
+    <link rel="icon" href="favicon.ico">  
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+</head>
+<body>
+
+  <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" tabindex="-1" aria-labelledby="modal-title" aria-describedby="modal-desc">
+    <div class="modal-content">
+      <button type="button" onclick="closeModal()" class="modal-close" aria-label="Close modal">&times;</button>
+      <h3 id="modal-title"> <!-- was id="modalTitle" --> </h3>
+      <p id="modal-desc"></p>
+    </div>
+  </div>
+
+  <header>
+    <div class="logo"><img src="./Logo.png" alt="Connect Digitals Logo"/></div>
+    <nav class="desktop-nav" aria-label="Desktop navigation">
+      <a href="#home">Home</a>
+      <a href="#about"> About</a>
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+<!-- Hero Section (WebP with fallback) -->
+<section id="home" class="relative bg-cover bg-center h-screen flex items-center justify-center text-center" style="background-image: url('BG.webp');">
+  <div class="bg-black bg-opacity-50 p-8 rounded-xl animate-fadeInUp">
+    <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Connect. Create. Captivate.</h1>
+    <a href="#contact" class="hero-btn">Contact Us</a>
+  </div>
+</section>
+  
+  
+  <section id="about" class="about-section">
+    <div class="about-container">
+  
+      <!-- Left Column: User Photo + About Us Text -->
+      <div class="about-left">
+        <div class="fancy-logo-card about-card">
+          <img src="Bereket Fikre.webp" alt="Bereket Fikre (CEO) ." class="about-photo" loading="lazy">
+          <span class="about-name">Bereket Fikre</span>
+          <span class="about-title">Founder & Lead Designer</span>
+          <h2 class="about-heading">About Us</h2>
+          <h3 class="about-subheading">Connect Digitals</h3>
+          <p class="about-text">
+            Where creativity meets strategy. We craft standout brands that connect.
+          </p>
+          <ul class="about-list">
+            <li><span style="font-weight: 600; color: #000F33;">Logo & Branding</span></li>
+            <li><span style="font-weight: 600; color: #B8860B;">Digital Marketing</span></li>
+            <li><span style="font-weight: 600; color: #EC1C24;">Graphic Design</span></li>
+            <li><span style="font-weight: 600; color: #000F33;">Social Media Management</span></li>
+          </ul>
+          <p class="about-text">
+            Smart strategy meets stunning design building memorable brands that resonate.
+          </p>
+        </div>
+      </div>
+  
+      <!-- Right Column: Decorative Image -->
+      <div class="about-right">
+        <img src="Connect.webp" alt="About Connect Digitals" loading="lazy" class="about-image">
+        <div class="about-quote-container">
+          <div class="about-quote">
+            <p class="about-quote-text">
+              "Whether launching a new business or elevating an existing brand, Connect Digitals is your trusted partner to <span style='color:#000F33;'>create</span>, <span style='color:#B8860B;'>grow</span>, and <span style='color:#EC1C24;'>inspire</span>."
+        </p>
+          </div>
+          <div class="about-tagline">
+          <span style="color:#000F33;">Connect</span>. 
+            <span style="color:#B8860B;"> Create</span>.
+            <span style="color:#EC1C24;"> Captivate</span>.
+          </div>
+        </div>
+      </div>
+  
+      <!-- Brand Story (full width below columns) -->
+      <div class="about-story">
+        <h3 class="about-story-heading">🌟 Brand Story</h3>
+        <p class="about-story-text">
+          At <span style="font-weight: 600; color: #EC1C24;">Connect Digitals</span>, we turn your vision into unforgettable brands. Through creative design and strategic marketing, we help you connect with your audience, tell your story, and stand out in the digital world.
+        </p>
+        <p style="font-size: 1.05rem; color: #000F33; font-weight: bold; margin-top: 1rem;">Connect. Create. Captivate. <span style="font-weight: 400; color: #222222;">– That's our promise.</span></p>
+      </div>
+    </div>
+  </section>
+  
+  <section id="services" aria-labelledby="services-heading">
+   <h2 id="services-heading">Our Services</h2>
+    <div class="portfolio-grid-3x3" role="list" aria-label="Services offered">
+      <div class="portfolio-card" role="listitem" onclick="openModal('Logo & Branding','Distinct, memorable brand visuals that define your identity.')">
+        <div class="portfolio-content">
+          <div class="icon">🎨</div>
+          <h3>Logo & Branding</h3>
+          <p>Crafting cohesive visual identities.</p>
+        </div>
+      </div>
+  
+      <div class="portfolio-card" role="listitem" onclick="openModal('Digital Marketing','Targeted campaigns to grow your reach.')">
+        <div class="portfolio-content">
+          <div class="icon">📈</div>
+          <h3>Digital Marketing</h3>
+          <p>Data-driven strategies for results.</p>
+        </div>
+      </div>
+  
+      <div class="portfolio-card" role="listitem" onclick="openModal('Graphics Design','Visual storytelling that captivates.')">
+        <div class="portfolio-content">
+          <div class="icon">🖌️</div>
+          <h3>Graphics Design</h3>
+          <p>Custom illustrations, layouts, and more.</p>
+        </div>
+      </div>
+  
+      <div class="portfolio-card" role="listitem" onclick="openModal('Social Media Management','Active, engaging brand presence online.')">
+        <div class="portfolio-content">
+          <div class="icon">📱</div>
+          <h3>Social Media</h3>
+          <p>We manage your brand across platforms.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section id="portfolio" aria-labelledby="portfolio-heading">
+    <h2 id="portfolio-heading">Our Portfolio</h2>
+    <div class="portfolio-grid-3x3" role="list" aria-label="Portfolio projects">
+      <div class="portfolio-card" onclick="openModal('Creative Brand Identity','Visual identity design for startup.')">
+        <img src="Zewd.webp" alt="Creative Brand Identity" loading="lazy">
+        <div class="portfolio-content"><h3>Creative Brand Identity</h3><p>Visual identity for a startup.</p></div>
+      </div>
+      <div class="portfolio-card" onclick="openModal('E‑commerce Ad Campaign','High‑engagement social campaign.')">
+        <img src="Swan Clsothing.webp" alt="E-commerce Ad Campaign" loading="lazy">
+        <div class="portfolio-content"><h3>E‑commerce Ad Campaign</h3><p>Engaging campaign visuals.</p></div>
+      </div>
+      <div class="portfolio-card" onclick="openModal('Social Media Revamp','Consistent social visuals.')">
+        <img src="Havana.webp" alt="Social Media Revamp" loading="lazy">
+        <div class="portfolio-content"><h3>Social Media Revamp</h3><p>Visual system for social content.</p></div>
+      </div>
+      <div class="portfolio-card" onclick="openModal('Minimal Logo','Simple logo design for digital use.')">
+        <img src="Misale Housing Cooperative Ltd.webp" alt="Minimal Logo" loading="lazy">
+        <div class="portfolio-content"><h3>Minimal Logo</h3><p>Sleek logo for app/brand use.</p></div>
+      </div>
+      <div class="portfolio-card" onclick="openModal('Launch Kit','Complete launch visuals.')">
+        <img src="Lensa Fashion Design & Makeup.webp" alt="Launch Kit" loading="lazy">
+        <div class="portfolio-content"><h3>Launch Kit</h3><p>Brand assets for product launch.</p></div>
+      </div>
+      <div class="portfolio-card" onclick="openModal('Print Design','Flyers, posters & more.')">
+        <img src="Dayer Engineering PLC.webp" alt="Print Design" loading="lazy">
+        <div class="portfolio-content"><h3>Print Design</h3><p>Posters, flyers, infographics.</p></div>
+      </div>
+      <div class="portfolio-card" onclick="openModal('Product Ads','E‑commerce product visuals.')">
+        <img src="Maleda Coffee.webp" alt="Product Ads" loading="lazy">
+        <div class="portfolio-content"><h3>Product Ads</h3><p>Custom visuals for products.</p></div>
+      </div>
+      <div class="portfolio-card" onclick="openModal('Social Templates','Story & post templates.')">
+        <img src="Medavail.webp" alt="Social Templates" loading="lazy">
+        <div class="portfolio-content"><h3>Social Templates</h3><p>Branded story/post templates.</p></div>
+      </div>
+      <div class="portfolio-card" onclick="openModal('Campaign Design','Digital assets for campaigns.')">
+        <img src="Y.A.T Construction PLC.webp" alt="Campaign Design" loading="lazy">
+        <div class="portfolio-content"><h3>Campaign Design</h3><p>Toolkit for brand awareness.</p></div>
+      </div>
+    </div>
+    <!-- Replace Watch More button -->
+    <div class="text-center mt-8">
+      <a href="https://heyzine.com/flip-book/2e51bd7d15.html" class="fancy-btn" target="_blank" rel="noopener noreferrer" role="button" tabindex="0">
+        <span class="fancy-btn-text">See Full Portfolio</span>
+        <span class="fancy-btn-icon">&#8594;</span>
+      </a>
+    </div>
+  </section>
+
+  <section id="testimonials" class="py-16 bg-gradient-to-br from-[#F8F4EF] to-[#fff] animate-fadeInUp">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h2 class="text-4xl font-bold text-[#000F33] mb-4">What Our Clients Say</h2>
+      <p class="text-lg text-gray-600 mb-12 max-w-2xl mx-auto">Real stories from real clients who trusted us with their brand vision</p>
+      
+      <div id="testimonial-slider" class="relative">
+        <!-- Page 1: First 3 testimonials -->
+        <div class="testimonial-page" style="display:block;">
+          <div class="testimonial-grid">
+            <!-- Testimonial 1 -->
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">
+                  <img src="Gedy.webp" alt="Gedyon Megersa, Non-Profit Director" loading="lazy">
+                  <div class="avatar-ring"></div>
+                </div>
+                <div class="testimonial-info">
+                  <h4 class="client-name">Gedyon Megersa</h4>
+                  <p class="client-title">Non-Profit Director</p>
+                  <div class="rating">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                  </div>
+                </div>
+              </div>
+              <div class="testimonial-content">
+                <div class="quote-icon">❝</div>
+                <p class="testimonial-text">"Working with Connect Digitals was a game-changer for our non-profit. They created compelling visuals that helped us double donations during our annual campaign. Passionate and mission-aligned!"</p>
+              </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">
+                  <img src="Dag.webp" alt="Dagmawi Yeshiwas, Creative Director" loading="lazy">
+                  <div class="avatar-ring"></div>
+                </div>
+                <div class="testimonial-info">
+                  <h4 class="client-name">Dagmawi Yeshiwas</h4>
+                  <p class="client-title">Creative Director</p>
+                  <div class="rating">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                  </div>
+                </div>
+              </div>
+              <div class="testimonial-content">
+                <div class="quote-icon">❝</div>
+                <p class="testimonial-text">"From event posters to digital ads, Connect Digitals made our product launch unforgettable. Their designs grabbed attention and drove ticket sales. Will definitely work with them again!"</p>
+              </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">
+                  <img src="Abenezer.webp" alt="Abenezer A, Digital Marketer" loading="lazy">
+                  <div class="avatar-ring"></div>
+                </div>
+                <div class="testimonial-info">
+                  <h4 class="client-name">Abenezer A</h4>
+                  <p class="client-title">Digital Marketer</p>
+                  <div class="rating">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                  </div>
+                </div>
+              </div>
+              <div class="testimonial-content">
+                <div class="quote-icon">❝</div>
+                <p class="testimonial-text">"Professional, quick, and always on point. They captured exactly what we envisioned and more!"</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Page 2: Last 3 testimonials -->
+        <div class="testimonial-page" style="display:none;">
+          <div class="testimonial-grid">
+            <!-- Testimonial 4 -->
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">
+                  <img src="Kass.webp" alt="Kassaye Getachew, Engineer" loading="lazy">
+                  <div class="avatar-ring"></div>
+                </div>
+                <div class="testimonial-info">
+                  <h4 class="client-name">Kassaye Getachew</h4>
+                  <p class="client-title">Engineer</p>
+                  <div class="rating">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                  </div>
+                </div>
+              </div>
+              <div class="testimonial-content">
+                <div class="quote-icon">❝</div>
+                <p class="testimonial-text">"As a small business, we needed affordable yet high-quality designs. Connect Digitals delivered stunning flyers and social media graphics that boosted our local visibility. Professional and budget-friendly!"</p>
+              </div>
+            </div>
+
+            <!-- Testimonial 5 -->
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">
+                  <img src="Miko.webp" alt="Mikiyas, Digital Artist" loading="lazy">
+                  <div class="avatar-ring"></div>
+                </div>
+                <div class="testimonial-info">
+                  <h4 class="client-name">Micky</h4>
+                  <p class="client-title">Digital Artist</p>
+                  <div class="rating">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                  </div>
+                </div>
+              </div>
+              <div class="testimonial-content">
+                <div class="quote-icon">❝</div>
+                <p class="testimonial-text">"We hired Connect Digitals to revamp our corporate branding, and the results exceeded expectations. Their strategic approach and attention to detail gave us a cohesive identity across all platforms. A+ service!"</p>
+              </div>
+            </div>
+
+            <!-- Testimonial 6 -->
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">
+                  <img src="Hayle.webp" alt="Hayleyesus, Web Developer" loading="lazy">
+                  <div class="avatar-ring"></div>
+                </div>
+                <div class="testimonial-info">
+                  <h4 class="client-name">Hayleyesus</h4>
+                  <p class="client-title">Web Developer</p>
+                  <div class="rating">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                  </div>
+                </div>
+              </div>
+              <div class="testimonial-content">
+                <div class="quote-icon">❝</div>
+                <p class="testimonial-text">"Bereket understood my personal brand instantly and created a logo that reflects my values. The process was collaborative, and the result was uniquely 'me.' Exceptional talent!"</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <button type="button" id="testimonial-prev" aria-label="Previous testimonials" class="testimonial-nav-btn prev-btn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <button type="button" id="testimonial-next" aria-label="Next testimonials" class="testimonial-nav-btn next-btn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <!-- Dots Indicator -->
+        <div class="testimonial-dots">
+          <span class="dot active" data-page="0"></span>
+          <span class="dot" data-page="1"></span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="text-center mt-12">
+      <button type="button" id="see-more-reviews" class="fancy-btn" role="button" tabindex="0">
+        <span class="fancy-btn-text">See More Reviews</span>
+        <span class="fancy-btn-icon">&#8594;</span>
+      </button>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section">
+    <h2>Contact Us</h2>
+    <div class="contact-container">
+      
+      <!-- Contact Form -->
+      <form action="https://formspree.io/f/xayzqkqp" method="POST" class="contact-form" id="contactForm">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" required rows="5"></textarea>
+
+        <!-- hCaptcha widget (invisible) -->
+        <div class="h-captcha" data-sitekey="10000000-ffff-ffff-ffff-000000000001" data-size="invisible" data-callback="onHCaptchaSuccess"></div>
+
+        <!-- Stylish Button -->
+        <button type="submit" id="submitBtn">
+          <span class="btn-text">Send Message</span>
+          <span class="btn-loading" style="display: none;">
+            <svg class="spinner" width="20" height="20" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none" stroke-dasharray="31.416" stroke-dashoffset="31.416">
+                <animate attributeName="stroke-dasharray" dur="2s" values="0 31.416;15.708 15.708;0 31.416" repeatCount="indefinite"/>
+                <animate attributeName="stroke-dashoffset" dur="2s" values="0;-15.708;-31.416" repeatCount="indefinite"/>
+              </svg>
+            </span>
+          </span>
+        </button>
+      </form>
+      
+     
+      </div>
+  
+      <!-- Contact Info -->
+      <div class="contact-info">
+        <h3>Ready to connect?</h3>
+        <p><strong>Phone:</strong> 0923988838</p>
+        <p><strong>Email:</strong> digitalsconnect@gmail.com</p>
+        <div>
+          <strong>Connect with us:</strong><br/>
+          <a href="https://linktr.ee/Connectdigitals" target="_blank">Linktree</a> |
+          <a href="https://web.facebook.com/connectdigitals.fb" target="_blank">Facebook</a> |
+          <a href="https://www.instagram.com/connectdigitals.ig" target="_blank">Instagram</a> |
+          <a href="https://www.tiktok.com/@connect.digitals" target="_blank">TikTok</a> |
+          <a href="https://t.me/connectdigitals" target="_blank">Telegram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  </main>
+  
+  <footer>
+    <p class="footer-container"><span style="font-size:1.1em; vertical-align:middle; margin-right:0.3em;">&#169;</span>2025 Connect Digitals. All rights reserved.</p>
+    <div class="footer-social">
+      <a href="https://web.facebook.com/connectdigitals.fb" target="_blank">
+        <img src="facebook-176-svgrepo-com (1).svg" alt="Connect Digitals On Facebook" loading="lazy">
+      </a>
+      <a href="https://www.instagram.com/connectdigitals.ig" target="_blank">
+        <img src="instagram-svgrepo-com (1).svg" alt="Connect Digitals On Instagram" loading="lazy">
+      </a>
+      <a href="https://t.me/connectdigitals" target="_blank">
+        <img src="telegram-alt-svgrepo-com (1).svg" alt="Connect Digitals On Telegram" loading="lazy">
+      </a>
+      <a href="https://www.tiktok.com/@connect.digitals" target="_blank">
+        <img src="tiktok-svgrepo-com (2).svg" alt="Connect Digitals On TikTok" loading="lazy">
+      </a>
+    </div>
+  </footer>
+ <!-- Success Message Modal -->
+
+  
+
+  <script>
+    function openModal(title,text){
+      document.getElementById('modal-title').innerText = title;
+      document.getElementById('modal-desc').innerText = text;
+      document.getElementById('modal').style.display='flex';
+    }
+    function closeModal(){
+      document.getElementById('modal').style.display='none';
+    }
+    window.onclick = e => { if(e.target.id==='modal') closeModal(); };
+
+    // Animated Active Nav Link on Scroll
+    const navLinks = document.querySelectorAll('nav a');
+    const sections = Array.from(navLinks).map(link => {
+      const id = link.getAttribute('href').replace('#','');
+      return document.getElementById(id);
+    });
+    function onScroll() {
+      let scrollPos = window.scrollY + 120;
+      let activeIndex = 0;
+      sections.forEach((section, i) => {
+        if (section && section.offsetTop <= scrollPos) {
+          activeIndex = i;
+        }
+      });
+      navLinks.forEach((link, i) => {
+        if (i === activeIndex) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }
+    window.addEventListener('scroll', onScroll);
+    window.addEventListener('DOMContentLoaded', onScroll);
+
+    // Scroll to Top functionality
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+    
+    // Show/hide scroll to top button based on scroll position
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+    });
+    
+    // Smooth scroll to top when button is clicked
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Contact Form Handling
+    const contactForm = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const btnText = submitBtn.querySelector('.btn-text');
+    const btnLoading = submitBtn.querySelector('.btn-loading');
+    const successModal = document.getElementById('successModal');
+
+    contactForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      // Show loading state
+      submitBtn.disabled = true;
+      btnText.style.display = 'none';
+      btnLoading.style.display = 'flex';
+      
+      try {
+        const formData = new FormData(this);
+        const response = await fetch(this.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+        
+        if (response.ok) {
+          // Show success modal
+          successModal.style.display = 'flex';
+          // Reset form
+          this.reset();
+        } else {
+          throw new Error('Failed to send message');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Sorry, there was an error sending your message. Please try again.');
+      } finally {
+        // Reset button state
+        submitBtn.disabled = false;
+        btnText.style.display = 'inline';
+        btnLoading.style.display = 'none';
+      }
+    });
+
+    // Close success modal
+    function closeSuccessModal() {
+      successModal.style.display = 'none';
+    }
+
+    // Close modal when clicking outside
+    successModal.addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeSuccessModal();
+      }
+    });
+
+    // Scroll-triggered animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all animation elements
+    document.addEventListener('DOMContentLoaded', () => {
+      const animationElements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .fade-in-scale');
+      animationElements.forEach(el => observer.observe(el));
+    });
+
+    // Add animation classes to elements
+    document.addEventListener('DOMContentLoaded', () => {
+      // Portfolio cards
+      const portfolioCards = document.querySelectorAll('.portfolio-card');
+      portfolioCards.forEach(card => {
+        card.classList.add('fade-in');
+      });
+
+      // About section elements
+      const aboutElements = document.querySelectorAll('.about-heading, .about-subheading, .about-text, .about-list, .about-image, .about-quote, .about-tagline, .about-story');
+      aboutElements.forEach(el => {
+        el.classList.add('fade-in');
+      });
+
+      // Contact section elements
+      const contactElements = document.querySelectorAll('.contact-form, .contact-info');
+      contactElements.forEach(el => {
+        el.classList.add('fade-in');
+      });
+
+      // Section headings
+      const headings = document.querySelectorAll('h2');
+      headings.forEach(heading => {
+        heading.classList.add('fade-in');
+      });
+
+      // Services grid
+      const servicesGrid = document.querySelector('.portfolio-grid-3x3');
+      if (servicesGrid) {
+        servicesGrid.classList.add('fade-in');
+      }
+    });
+
+
+  </script>
+  <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+<script>
+  // hCaptcha integration for contact form
+  document.addEventListener('DOMContentLoaded', function() {
+    const hcaptchaContactForm = document.getElementById('contactForm');
+    const hcaptchaSubmitBtn = document.getElementById('submitBtn');
+    let hcaptchaValidated = false;
+    let hcaptchaLoaded = false;
+
+    // Check if hCaptcha loaded successfully
+    function checkHCaptchaLoaded() {
+      if (window.hcaptcha) {
+        hcaptchaLoaded = true;
+        console.log('hCaptcha loaded successfully');
+      } else {
+        console.warn('hCaptcha failed to load, proceeding without captcha');
+        hcaptchaLoaded = false;
+      }
+    }
+
+    // Check hCaptcha status after a delay
+    setTimeout(checkHCaptchaLoaded, 2000);
+
+    if (hcaptchaContactForm) {
+      hcaptchaContactForm.addEventListener('submit', function(e) {
+        if (!hcaptchaLoaded) {
+          // If hCaptcha failed to load, proceed with form submission
+          console.log('Proceeding without hCaptcha validation');
+          return;
+        }
+        
+        if (!hcaptchaValidated) {
+          e.preventDefault();
+          if (window.hcaptcha) {
+            try {
+              hcaptcha.execute();
+            } catch (error) {
+              console.error('hCaptcha execution failed:', error);
+              // Fallback: proceed with form submission
+              hcaptchaValidated = true;
+              hcaptchaContactForm.submit();
+            }
+          } else {
+            // Fallback: proceed with form submission
+            hcaptchaValidated = true;
+            hcaptchaContactForm.submit();
+          }
+        }
+      });
+    }
+
+    window.onHCaptchaSuccess = function() {
+      hcaptchaValidated = true;
+      console.log('hCaptcha validation successful');
+      if (hcaptchaContactForm) {
+        hcaptchaContactForm.submit();
+      }
+    };
+
+    window.onHCaptchaError = function() {
+      console.error('hCaptcha validation failed');
+      alert('Verification failed. Please try again.');
+      hcaptchaValidated = false;
+    };
+
+    window.onHCaptchaExpired = function() {
+      console.log('hCaptcha expired');
+      hcaptchaValidated = false;
+    };
+  });
+</script>
+   <div id="successModal" class="success-modal" role="dialog" aria-modal="true" tabindex="-1" aria-labelledby="success-title" aria-describedby="success-desc">
+    <div class="success-content">
+      <div class="success-icon">✓</div>
+      <h3 id="success-title">Message Sent Successfully!</h3>
+      <p id="success-desc">Thank you for reaching out. We'll get back to you soon.</p>
+      <button type="button" onclick="closeSuccessModal()" class="success-close">Close</button>
+    </div>
+    <!-- Scroll to Top Button -->
+    <button type="button" id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 4L4 12H9V20H15V12H20L12 4Z" fill="currentColor"/>
+      </svg>
+    </button>
+</body>
+</html>
