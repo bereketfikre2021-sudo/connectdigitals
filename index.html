@@ -1,58 +1,274 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connect Digitals | Branding & Digital Marketing</title>
+  
+  <!-- Preload Critical Resources -->
   <link rel="preload" href="BG.webp" as="image">
-  <link rel="preload" href="Logo.png" as="image">
-
-
-<link rel="manifest" href="/site.webmanifest">
-<!-- Favicon for all devices -->
-<link rel="icon" href="favicon.ico" sizes="any">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Merriweather:wght@700&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Connect Digitals | Branding & Digital Marketing </title>
+  <link rel="preload" href="BG-2.webp" as="image">
+  <link rel="preload" href="BG-3.webp" as="image">
+  <link rel="preload" href="BG-4.webp" as="image">
+  <link rel="preload" href="Logo.svg" as="image">
   <link rel="preload" href="index.css" as="style">
+  
+  <!-- Favicon and Icons -->
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  
+  <!-- Fonts and External Resources -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  
+  <!-- Critical CSS for above-the-fold content -->
+  <style>
+    /* Critical CSS - Base styles */
+    html { scroll-behavior: smooth; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { 
+      margin: 0; 
+      padding: 0; 
+      overflow-x: hidden;
+      font-family: 'Montserrat', sans-serif;
+      background: #F8F4EF;
+      color: #222;
+    }
+    
+    /* Critical CSS - Header */
+    header {
+      background: rgba(255, 255, 255, 0.1) !important;
+      backdrop-filter: blur(20px) !important;
+      -webkit-backdrop-filter: blur(20px) !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+      color: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky; 
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+    }
+    
+    .logo { font-size: 1.5rem; font-weight: bold; }
+    .logo img { height: 40px; width: auto; }
+    
+    nav a {
+      color: #000F33;
+      margin-left: 1.5rem;
+      text-decoration: none;
+      font-weight: 700;
+      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+      display: inline-block;
+      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+    }
+    
+    nav a:hover {
+      color: #B8860B;
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    /* Critical CSS - Hero Section */
+    .hero {
+      height: 100vh;
+      background-image: url('BG.webp');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(0, 15, 51, 0.7) 0%, rgba(184, 134, 11, 0.3) 100%);
+      z-index: 1;
+    }
+    
+    .hero-content {
+      text-align: center;
+      color: #fff;
+      z-index: 2;
+      position: relative;
+      max-width: 800px;
+      padding: 0 2rem;
+    }
+    
+    .hero-title {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    
+    .hero-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #EC1C24 0%, #B8860B 100%);
+      color: #fff;
+      padding: 1rem 2rem;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+      box-shadow: 0 8px 25px rgba(236, 28, 36, 0.3);
+    }
+    
+    .hero-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(236, 28, 36, 0.4);
+    }
+    
+    /* Critical CSS - Mobile Navigation */
+    .mobile-nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      z-index: 101;
+    }
+    
+    .hamburger-line {
+      width: 25px;
+      height: 3px;
+      background: #000F33;
+      margin: 5px 0;
+      transition: 0.3s;
+      border-radius: 2px;
+    }
+    
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(0, 15, 51, 0.95);
+      backdrop-filter: blur(20px);
+      z-index: 1000;
+      padding: 2rem;
+    }
+    
+    .mobile-nav.active {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .mobile-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 1rem 0;
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-nav a:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateX(10px);
+    }
+    
+    /* Critical CSS - Responsive */
+    @media (max-width: 768px) {
+      .desktop-nav { display: none; }
+      .mobile-nav-toggle { display: block; }
+      header { padding: 1rem; }
+      .hero-title { font-size: 2.5rem; }
+      .hero-btn { padding: 0.8rem 1.5rem; font-size: 1rem; }
+    }
+    
+    @media (max-width: 480px) {
+      .hero-title { font-size: 2rem; }
+      .hero-btn { padding: 0.7rem 1.2rem; font-size: 0.9rem; }
+      .logo img { height: 32px; }
+    }
+  </style>
+  
+  <!-- Non-critical CSS -->
   <link href="index.css" rel="stylesheet">
-  <meta name="description" content="Connect Digitals: A branding & digital marketing agency. We design logos, manage social media, and drive growth. Let’s transform your brand today.">
-  <!-- For richer social media sharing (Open Graph) -->
-  <meta property="og:title" content="Connect Digitals | Branding & Digital Marketing Services">
-<meta property="og:image" content="https://connectdigital.netlify.app/Logo.png">
-<meta property="og:url" content="https://connectdigital.netlify.app/">
-<meta property="og:type" content="website">
-
-
-<!-- For Twitter -->
-<meta name="twitter:card" content="summary_large_image">
+  <link href="testimonial-responsive-fix.css" rel="stylesheet">
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Connect Digitals: A branding & digital marketing agency. We design logos, manage social media, and drive growth. Let's transform your brand today.">
   <meta name="keywords" content="Connect Digitals, Graphic Design, Branding, Marketing, Digital Services">
   <meta name="author" content="Connect Digitals">
-  <html lang="en" class="scroll-smooth">
-    <link rel="icon" href="favicon.ico">  
-<!-- Google Analytics -->
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Connect Digitals | Branding & Digital Marketing Services">
+  <meta property="og:image" content="https://connectdigital.netlify.app/Connect.webp">
+  <meta property="og:image:type" content="image/webp">
+  <meta property="og:url" content="https://connectdigital.netlify.app/">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
+  
+  // Configure Google Analytics 4
+  gtag('config', 'G-XXXXXXXXXX', {
+    page_title: 'Connect Digitals | Branding & Digital Marketing',
+    page_location: window.location.href,
+    send_page_view: true,
+    anonymize_ip: true,
+    allow_google_signals: true,
+    allow_ad_personalization_signals: true
+  });
+  
+  // Enhanced conversion tracking
+  gtag('config', 'G-XXXXXXXXXX', {
+    custom_map: {
+      'custom_parameter_1': 'service_type',
+      'custom_parameter_2': 'user_intent',
+      'custom_parameter_3': 'page_section'
+    }
+  });
 </script>
+
+<!-- reCAPTCHA Script -->
+  <!-- No external scripts needed for quick fill -->
 </head>
 <body>
 
   <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" tabindex="-1" aria-labelledby="modal-title" aria-describedby="modal-desc">
-    <div class="modal-content">
-      <button type="button" onclick="closeModal()" class="modal-close" aria-label="Close modal">&times;</button>
-      <h3 id="modal-title"> <!-- was id="modalTitle" --> </h3>
-      <p id="modal-desc"></p>
+    <div class="modal-content" role="document">
+      <button type="button" onclick="closeModal()" class="modal-close" aria-label="Close modal" tabindex="0">&times;</button>
+      <h3 id="modal-title" tabindex="0"></h3>
+      <p id="modal-desc" tabindex="0"></p>
     </div>
   </div>
 
   <header>
-    <div class="logo"><img src="./Logo.png" alt="Connect Digitals Logo"/></div>
+    <div class="logo"><img src="./Logo.svg" alt="Connect Digitals Logo"/></div>
     <nav class="desktop-nav" aria-label="Desktop navigation">
       <a href="#home">Home</a>
       <a href="#about"> About</a>
@@ -60,13 +276,34 @@
       <a href="#portfolio">Portfolio</a>
       <a href="#contact">Contact</a>
     </nav>
+    
+    <!-- Mobile Navigation Toggle -->
+    <button class="mobile-nav-toggle" aria-label="Toggle mobile navigation" aria-expanded="false">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+    
+    <!-- Mobile Navigation Menu -->
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <button type="button" class="mobile-nav-close" aria-label="Close mobile navigation" onclick="closeMobileNav()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18M6 6L18 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
   <main>
-<!-- Hero Section (WebP with fallback) -->
-<section id="home" class="relative bg-cover bg-center h-screen flex items-center justify-center text-center" style="background-image: url('BG.webp');">
-  <div class="bg-black bg-opacity-50 p-8 rounded-xl animate-fadeInUp">
-    <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Connect. Create. Captivate.</h1>
+<!-- Hero Section -->
+<section id="home" class="hero">
+  <div class="hero-content">
+    <h1 class="hero-title">Connect. Create. Captivate.</h1>
     <a href="#contact" class="hero-btn">Contact Us</a>
   </div>
 </section>
@@ -129,79 +366,79 @@
   <section id="services" aria-labelledby="services-heading">
    <h2 id="services-heading">Our Services</h2>
     <div class="portfolio-grid-3x3" role="list" aria-label="Services offered">
-      <div class="portfolio-card" role="listitem" onclick="openModal('Logo & Branding','Distinct, memorable brand visuals that define your identity.')">
+      <button type="button" class="portfolio-card" role="listitem" onclick="openModal('Logo & Branding','Distinct, memorable brand visuals that define your identity.')" aria-label="Learn more about Logo & Branding services">
         <div class="portfolio-content">
           <div class="icon">🎨</div>
           <h3>Logo & Branding</h3>
           <p>Crafting cohesive visual identities.</p>
         </div>
-      </div>
+      </button>
   
-      <div class="portfolio-card" role="listitem" onclick="openModal('Digital Marketing','Targeted campaigns to grow your reach.')">
+      <button type="button" class="portfolio-card" role="listitem" onclick="openModal('Digital Marketing','Targeted campaigns to grow your reach.')" aria-label="Learn more about Digital Marketing services">
         <div class="portfolio-content">
           <div class="icon">📈</div>
           <h3>Digital Marketing</h3>
           <p>Data-driven strategies for results.</p>
         </div>
-      </div>
+      </button>
   
-      <div class="portfolio-card" role="listitem" onclick="openModal('Graphics Design','Visual storytelling that captivates.')">
+      <button type="button" class="portfolio-card" role="listitem" onclick="openModal('Graphics Design','Visual storytelling that captivates.')" aria-label="Learn more about Graphics Design services">
         <div class="portfolio-content">
           <div class="icon">🖌️</div>
           <h3>Graphics Design</h3>
           <p>Custom illustrations, layouts, and more.</p>
         </div>
-      </div>
+      </button>
   
-      <div class="portfolio-card" role="listitem" onclick="openModal('Social Media Management','Active, engaging brand presence online.')">
+      <button type="button" class="portfolio-card" role="listitem" onclick="openModal('Social Media Management','Active, engaging brand presence online.')" aria-label="Learn more about Social Media Management services">
         <div class="portfolio-content">
           <div class="icon">📱</div>
           <h3>Social Media</h3>
           <p>We manage your brand across platforms.</p>
         </div>
-      </div>
+      </button>
     </div>
   </section>
   
   <section id="portfolio" aria-labelledby="portfolio-heading">
     <h2 id="portfolio-heading">Our Portfolio</h2>
     <div class="portfolio-grid-3x3" role="list" aria-label="Portfolio projects">
-      <div class="portfolio-card" onclick="openModal('Creative Brand Identity','Visual identity design for startup.')">
+      <button type="button" class="portfolio-card" onclick="openModal('Creative Brand Identity','Visual identity design for startup.')" aria-label="View Creative Brand Identity project details">
         <img src="Zewd.webp" alt="Creative Brand Identity" loading="lazy">
         <div class="portfolio-content"><h3>Creative Brand Identity</h3><p>Visual identity for a startup.</p></div>
-      </div>
-      <div class="portfolio-card" onclick="openModal('E‑commerce Ad Campaign','High‑engagement social campaign.')">
+      </button>
+      <button type="button" class="portfolio-card" onclick="openModal('E‑commerce Ad Campaign','High‑engagement social campaign.')" aria-label="View E-commerce Ad Campaign project details">
         <img src="Swan Clsothing.webp" alt="E-commerce Ad Campaign" loading="lazy">
         <div class="portfolio-content"><h3>E‑commerce Ad Campaign</h3><p>Engaging campaign visuals.</p></div>
-      </div>
-      <div class="portfolio-card" onclick="openModal('Social Media Revamp','Consistent social visuals.')">
+      </button>
+      <button type="button" class="portfolio-card" onclick="openModal('Social Media Revamp','Consistent social visuals.')" aria-label="View Social Media Revamp project details">
         <img src="Havana.webp" alt="Social Media Revamp" loading="lazy">
         <div class="portfolio-content"><h3>Social Media Revamp</h3><p>Visual system for social content.</p></div>
-      </div>
-      <div class="portfolio-card" onclick="openModal('Minimal Logo','Simple logo design for digital use.')">
+      </button>
+      <button type="button" class="portfolio-card" onclick="openModal('Minimal Logo','Simple logo design for digital use.')" aria-label="View Minimal Logo project details">
         <img src="Misale Housing Cooperative Ltd.webp" alt="Minimal Logo" loading="lazy">
         <div class="portfolio-content"><h3>Minimal Logo</h3><p>Sleek logo for app/brand use.</p></div>
-      </div>
-      <div class="portfolio-card" onclick="openModal('Launch Kit','Complete launch visuals.')">
-        <img src="Lensa Fashion Design & Makeup.webp" alt="Launch Kit" loading="lazy">
+      </button>
+      <button type="button" class="portfolio-card" onclick="openModal('Apparel Design','Complete launch visuals.')" aria-label="View Apparel Design project details">
+        <img src="Lensa Fashion Design & Makeup.webp" alt="Apparel Design" loading="lazy">
         <div class="portfolio-content"><h3>Launch Kit</h3><p>Brand assets for product launch.</p></div>
-      </div>
-      <div class="portfolio-card" onclick="openModal('Print Design','Flyers, posters & more.')">
+      </button>
+      <button type="button" class="portfolio-card" onclick="openModal('Print Design','Flyers, posters & more.')" aria-label="View Print Design project details">
         <img src="Dayer Engineering PLC.webp" alt="Print Design" loading="lazy">
         <div class="portfolio-content"><h3>Print Design</h3><p>Posters, flyers, infographics.</p></div>
-      </div>
-      <div class="portfolio-card" onclick="openModal('Product Ads','E‑commerce product visuals.')">
+      </button>
+      <button type="button" class="portfolio-card" onclick="openModal('Product Ads','E‑commerce product visuals.')" aria-label="View Product Ads project details">
         <img src="Maleda Coffee.webp" alt="Product Ads" loading="lazy">
         <div class="portfolio-content"><h3>Product Ads</h3><p>Custom visuals for products.</p></div>
-      </div>
-      <div class="portfolio-card" onclick="openModal('Social Templates','Story & post templates.')">
+      </button>
+      <button type="button" class="portfolio-card" onclick="openModal('Social Templates','Story & post templates.')" aria-label="View Social Templates project details">
         <img src="Medavail.webp" alt="Social Templates" loading="lazy">
         <div class="portfolio-content"><h3>Social Templates</h3><p>Branded story/post templates.</p></div>
-      </div>
-      <div class="portfolio-card" onclick="openModal('Campaign Design','Digital assets for campaigns.')">
-        <img src="Y.A.T Construction PLC.webp" alt="Campaign Design" loading="lazy">
+      </button>
+      <button type="button" class="portfolio-card" onclick="openModal('Stationery Design','Digital assets for campaigns.')" aria-label="View Stationery Design project details">
+        <img src="Y.A.T Construction PLC.webp" alt="Stationery Design" loading="lazy">
         <div class="portfolio-content"><h3>Campaign Design</h3><p>Toolkit for brand awareness.</p></div>
-      </div>
+      </button>
     </div>
     <!-- Replace Watch More button -->
     <div class="text-center mt-8">
@@ -310,7 +547,7 @@
                 </div>
                 <div class="testimonial-info">
                   <h4 class="client-name">Kassaye Getachew</h4>
-                  <p class="client-title">Engineer</p>
+                  <p class="client-title">Business Owner</p>
                   <div class="rating">
                     <span class="star">★</span>
                     <span class="star">★</span>
@@ -411,16 +648,76 @@
     <div class="contact-container">
       
       <!-- Contact Form -->
-      <form action="https://formspree.io/f/xayzqkqp" method="POST" class="contact-form" id="contactForm">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <textarea name="message" placeholder="Your Message" required rows="5"></textarea>
+              <form name="contact" method="POST" class="contact-form" id="contactForm">
+        <input type="hidden" name="form-name" value="contact" />
+        <p class="hidden">
+          <label>
+            Don't fill this out if you're human: <input name="bot-field" />
+          </label>
+        </p>
+        
+        <!-- Name Field -->
+        <div class="form-field">
+          <input 
+            type="text" 
+            name="name" 
+            id="name" 
+            placeholder="Your Name" 
+            required 
+            minlength="2" 
+            maxlength="50"
+            autocomplete="name"
+          >
+          <div class="error-message" id="name-error"></div>
+        </div>
+        
+        <!-- Email Field -->
+        <div class="form-field">
+          <input 
+            type="email" 
+            name="email" 
+            id="email" 
+            placeholder="Your Email" 
+            required 
+            autocomplete="email"
+          >
+          <div class="error-message" id="email-error"></div>
+          
+          <!-- Quick Fill Buttons -->
+          <div class="quick-fill-container">
+            <button type="button" class="quick-fill-btn" onclick="quickFill('demo')">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+              Demo Fill
+            </button>
+            <button type="button" class="quick-fill-btn" onclick="clearForm()">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+              </svg>
+              Clear
+            </button>
+          </div>
+        </div>
+        
+        <!-- Message Field -->
+        <div class="form-field">
+          <textarea 
+            name="message" 
+            id="message" 
+            placeholder="Your Message" 
+            required 
+            rows="5" 
+            minlength="10" 
+            maxlength="1000"
+            oninput="this.nextElementSibling.nextElementSibling.textContent = this.value.length + '/1000'"
+          ></textarea>
+          <div class="error-message" id="message-error"></div>
+          <div class="char-count" id="char-count">0/1000</div>
+        </div>
 
-        <!-- hCaptcha widget (invisible) -->
-        <div class="h-captcha" data-sitekey="10000000-ffff-ffff-ffff-000000000001" data-size="invisible" data-callback="onHCaptchaSuccess"></div>
-
-        <!-- Stylish Button -->
-        <button type="submit" id="submitBtn">
+        <!-- Submit Button -->
+        <button type="submit" id="submitBtn" aria-label="Send message" title="Send message">
           <span class="btn-text">Send Message</span>
           <span class="btn-loading" style="display: none;">
             <svg class="spinner" width="20" height="20" viewBox="0 0 24 24">
@@ -428,7 +725,6 @@
                 <animate attributeName="stroke-dasharray" dur="2s" values="0 31.416;15.708 15.708;0 31.416" repeatCount="indefinite"/>
                 <animate attributeName="stroke-dashoffset" dur="2s" values="0;-15.708;-31.416" repeatCount="indefinite"/>
               </svg>
-            </span>
           </span>
         </button>
       </form>
@@ -476,15 +772,352 @@
   
 
   <script>
-    function openModal(title,text){
-      document.getElementById('modal-title').innerText = title;
-      document.getElementById('modal-desc').innerText = text;
-      document.getElementById('modal').style.display='flex';
+    // Modal accessibility variables
+    let modalLastFocusedElement = null;
+    let modalFocusableElements = [];
+    
+    function openModal(title, text) {
+      const modal = document.getElementById('modal');
+      const modalTitle = document.getElementById('modal-title');
+      const modalDesc = document.getElementById('modal-desc');
+      
+      // Set modal content
+      modalTitle.innerText = title;
+      modalDesc.innerText = text;
+      
+      // Store the element that had focus before opening modal
+      modalLastFocusedElement = document.activeElement;
+      
+      // Show modal
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+      
+      // Get all focusable elements in the modal
+      modalFocusableElements = modal.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      
+      // Focus the first focusable element (close button)
+      if (modalFocusableElements.length > 0) {
+        modalFocusableElements[0].focus();
+      }
+      
+      // Add event listeners for accessibility
+      document.addEventListener('keydown', handleModalKeydown);
+      
+      // Prevent body scroll
+      document.body.style.overflow = 'hidden';
     }
-    function closeModal(){
-      document.getElementById('modal').style.display='none';
+    
+    function closeModal() {
+      const modal = document.getElementById('modal');
+      
+      // Hide modal
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+      
+      // Remove event listeners
+      document.removeEventListener('keydown', handleModalKeydown);
+      
+      // Restore focus to the element that had focus before opening modal
+      if (modalLastFocusedElement) {
+        modalLastFocusedElement.focus();
+        modalLastFocusedElement = null;
+      }
+      
+      // Restore body scroll
+      document.body.style.overflow = '';
+      
+      // Clear focusable elements array
+      modalFocusableElements = [];
     }
-    window.onclick = e => { if(e.target.id==='modal') closeModal(); };
+    
+    function handleModalKeydown(event) {
+      const modal = document.getElementById('modal');
+      
+      // Close modal on Escape key
+      if (event.key === 'Escape') {
+        closeModal();
+        return;
+      }
+      
+      // Handle Tab key for focus trapping
+      if (event.key === 'Tab') {
+        if (modalFocusableElements.length === 0) return;
+        
+        const firstElement = modalFocusableElements[0];
+        const lastElement = modalFocusableElements[modalFocusableElements.length - 1];
+        
+        // If Shift + Tab pressed and first element is focused, focus last element
+        if (event.shiftKey && document.activeElement === firstElement) {
+          event.preventDefault();
+          lastElement.focus();
+        }
+        // If Tab pressed and last element is focused, focus first element
+        else if (!event.shiftKey && document.activeElement === lastElement) {
+          event.preventDefault();
+          firstElement.focus();
+        }
+      }
+    }
+    
+    // Close modal when clicking outside
+    window.onclick = e => { 
+      if (e.target.id === 'modal') closeModal(); 
+    };
+
+    // Testimonial slider functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const pages = document.querySelectorAll('#testimonial-slider .testimonial-page');
+      const prevBtn = document.getElementById('testimonial-prev');
+      const nextBtn = document.getElementById('testimonial-next');
+      const dots = document.querySelectorAll('.testimonial-dots .dot');
+      const seeMoreBtn = document.getElementById('see-more-reviews');
+      let currentPage = 0;
+      
+      // Responsive testimonial handling
+      function updateTestimonialLayout() {
+        const isMobile = window.innerWidth <= 480;
+        const isSmallMobile = window.innerWidth <= 320;
+        
+        // Adjust testimonial grid for mobile
+        const testimonialGrids = document.querySelectorAll('.testimonial-grid');
+        testimonialGrids.forEach(grid => {
+          if (isSmallMobile) {
+            grid.style.gridTemplateColumns = '1fr';
+            grid.style.gap = '0.5rem';
+          } else if (isMobile) {
+            grid.style.gridTemplateColumns = '1fr';
+            grid.style.gap = '1rem';
+          } else {
+            grid.style.gridTemplateColumns = 'repeat(3, 1fr)';
+            grid.style.gap = '2rem';
+          }
+        });
+        
+        // Adjust navigation button positioning for small screens
+        if (isSmallMobile) {
+          if (prevBtn) prevBtn.style.left = '-16px';
+          if (nextBtn) nextBtn.style.right = '-16px';
+        } else if (isMobile) {
+          if (prevBtn) prevBtn.style.left = '-20px';
+          if (nextBtn) nextBtn.style.right = '-20px';
+        } else {
+          if (prevBtn) prevBtn.style.left = '-24px';
+          if (nextBtn) nextBtn.style.right = '-24px';
+        }
+      }
+      
+      // Initialize responsive layout
+      updateTestimonialLayout();
+      
+      // Update layout on window resize
+      window.addEventListener('resize', updateTestimonialLayout);
+
+      console.log('Testimonial pages found:', pages.length);
+      console.log('Prev button found:', !!prevBtn);
+      console.log('Next button found:', !!nextBtn);
+      console.log('See more button found:', !!seeMoreBtn);
+
+      function showPage(idx) {
+        console.log('Showing page:', idx);
+        
+        // Hide all pages first
+        pages.forEach((page, i) => {
+          if (i === idx) {
+            page.style.display = 'block';
+            page.style.opacity = '1';
+            page.style.transform = 'translateY(0)';
+          } else {
+            page.style.display = 'none';
+            page.style.opacity = '0';
+            page.style.transform = 'translateY(30px)';
+          }
+        });
+        
+        // Update dots
+        dots.forEach((dot, i) => {
+          if (i === idx) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
+        
+        // Update button text based on current page
+        if (seeMoreBtn) {
+          const btnText = seeMoreBtn.querySelector('.fancy-btn-text');
+          if (btnText) {
+            if (idx === 0) {
+              btnText.textContent = 'See More Reviews';
+            } else {
+              btnText.textContent = 'See First Reviews';
+            }
+          }
+        }
+      }
+
+      // Add click event listeners
+      if (prevBtn) {
+        prevBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          console.log('Prev button clicked');
+          currentPage = (currentPage - 1 + pages.length) % pages.length;
+          showPage(currentPage);
+        });
+      }
+      
+      if (nextBtn) {
+        nextBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          console.log('Next button clicked');
+          currentPage = (currentPage + 1) % pages.length;
+          showPage(currentPage);
+        });
+      }
+
+      // See More Reviews button functionality
+      if (seeMoreBtn) {
+        seeMoreBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          console.log('See more button clicked');
+          currentPage = (currentPage + 1) % pages.length;
+          showPage(currentPage);
+        });
+      }
+
+      // Dot navigation
+      dots.forEach((dot, i) => {
+        dot.addEventListener('click', function() {
+          console.log('Dot clicked:', i);
+          currentPage = i;
+          showPage(currentPage);
+        });
+      });
+
+          // Initialize the first page
+    showPage(0);
+  });
+
+  // Header scroll effect
+  window.addEventListener('scroll', function() {
+    const header = document.querySelector('header');
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+
+  // Hero background slideshow with JavaScript backup
+  const heroElement = document.querySelector('.hero');
+  
+  // Only run slideshow if hero element exists
+  if (heroElement) {
+    const heroImages = [
+      'BG.webp',
+      'BG-2.webp', 
+      'BG-3.webp',
+      'BG-4.webp',
+      'BG.webp' // Loop back to first image
+    ];
+    
+    let currentImageIndex = 0;
+    
+    function changeHeroImage() {
+      currentImageIndex = (currentImageIndex + 1) % heroImages.length;
+      const nextImage = heroImages[currentImageIndex];
+      
+      // Create a temporary element to preload the image
+      const img = new Image();
+      img.onload = function() {
+        heroElement.style.backgroundImage = `url('${nextImage}')`;
+      };
+      img.src = nextImage;
+    }
+    
+    // Start the slideshow after 5 seconds and repeat every 5 seconds
+    setTimeout(() => {
+      setInterval(changeHeroImage, 5000);
+    }, 5000);
+  }
+
+    // Mobile Navigation Toggle
+    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+    const mobileNav = document.querySelector('.mobile-nav');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+
+    // Debug logging
+    console.log('Mobile nav elements found:', {
+      toggle: !!mobileNavToggle,
+      nav: !!mobileNav,
+      links: mobileNavLinks.length
+    });
+
+    function toggleMobileNav() {
+      console.log('Toggle mobile nav clicked');
+      const isExpanded = mobileNavToggle.getAttribute('aria-expanded') === 'true';
+      console.log('Current expanded state:', isExpanded);
+      
+      mobileNavToggle.setAttribute('aria-expanded', !isExpanded);
+      
+      if (!isExpanded) {
+        console.log('Opening mobile nav');
+        mobileNav.classList.add('active');
+        document.body.classList.add('mobile-nav-open');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+      } else {
+        console.log('Closing mobile nav');
+        mobileNav.classList.remove('active');
+        document.body.classList.remove('mobile-nav-open');
+        document.body.style.overflow = ''; // Restore scrolling
+      }
+      
+      console.log('Mobile nav classes after toggle:', mobileNav.className);
+    }
+
+    function closeMobileNav() {
+      mobileNavToggle.setAttribute('aria-expanded', 'false');
+      mobileNav.classList.remove('active');
+      document.body.classList.remove('mobile-nav-open');
+      document.body.style.overflow = '';
+    }
+
+    // Event listeners for mobile navigation
+    mobileNavToggle.addEventListener('click', function(e) {
+      // Call the main toggle function
+      toggleMobileNav();
+      
+      // Track analytics
+      const isExpanded = this.getAttribute('aria-expanded') === 'true';
+      if (typeof trackEvent === 'function') {
+        trackEvent('mobile_menu_toggle', {
+          action: isExpanded ? 'close' : 'open',
+          user_intent: 'navigation'
+        });
+      }
+    });
+
+    // Close mobile nav when clicking on a link
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        closeMobileNav();
+      });
+    });
+
+    // Close mobile nav when clicking outside
+    mobileNav.addEventListener('click', (e) => {
+      if (e.target === mobileNav) {
+        closeMobileNav();
+      }
+    });
+
+    // Close mobile nav on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+        closeMobileNav();
+      }
+    });
 
     // Animated Active Nav Link on Scroll
     const navLinks = document.querySelectorAll('nav a');
@@ -511,74 +1144,281 @@
     window.addEventListener('scroll', onScroll);
     window.addEventListener('DOMContentLoaded', onScroll);
 
-    // Scroll to Top functionality
-    const scrollToTopBtn = document.getElementById('scrollToTop');
+
+
+    // Enhanced Contact Form Validation and Handling
+    let contactForm, submitBtn, btnText, btnLoading, successModal;
+    let nameField, emailField, messageField, charCount;
     
-    // Show/hide scroll to top button based on scroll position
-    window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 300) {
-        scrollToTopBtn.classList.add('show');
-      } else {
-        scrollToTopBtn.classList.remove('show');
+    // Initialize form elements when DOM is loaded
+    function initializeFormElements() {
+      contactForm = document.getElementById('contactForm');
+      submitBtn = document.getElementById('submitBtn');
+      btnText = submitBtn?.querySelector('.btn-text');
+      btnLoading = submitBtn?.querySelector('.btn-loading');
+      successModal = document.getElementById('successModal');
+      
+      // Form fields
+      nameField = document.getElementById('name');
+      emailField = document.getElementById('email');
+      messageField = document.getElementById('message');
+      charCount = document.getElementById('char-count');
+    }
+    
+    // Quick Fill Functions
+    function quickFill(type) {
+      if (!nameField || !emailField || !messageField) {
+        console.warn('Form fields not initialized');
+        return;
       }
-    });
-    
-    // Smooth scroll to top when button is clicked
-    scrollToTopBtn.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
-
-    // Contact Form Handling
-    const contactForm = document.getElementById('contactForm');
-    const submitBtn = document.getElementById('submitBtn');
-    const btnText = submitBtn.querySelector('.btn-text');
-    const btnLoading = submitBtn.querySelector('.btn-loading');
-    const successModal = document.getElementById('successModal');
-
-    contactForm.addEventListener('submit', async function(e) {
-      e.preventDefault();
       
-      // Show loading state
-      submitBtn.disabled = true;
-      btnText.style.display = 'none';
-      btnLoading.style.display = 'flex';
-      
-      try {
-        const formData = new FormData(this);
-        const response = await fetch(this.action, {
-          method: 'POST',
-          body: formData,
-          headers: {
-            'Accept': 'application/json'
-          }
+      if (type === 'demo') {
+        // Fill with demo data
+        nameField.value = 'John Doe';
+        emailField.value = 'john.doe@example.com';
+        messageField.value = 'Hello! I would like to discuss a project with your team. I\'m looking for professional digital services including graphic design and branding. Please let me know when you\'re available for a consultation.';
+        
+        // Update character count
+        updateCharCount();
+        
+        // Clear any existing errors
+        document.querySelectorAll('.error-message').forEach(el => {
+          el.textContent = '';
+          el.classList.remove('show');
         });
         
-        if (response.ok) {
-          // Show success modal
-          successModal.style.display = 'flex';
-          // Reset form
-          this.reset();
-        } else {
-          throw new Error('Failed to send message');
-        }
-      } catch (error) {
-        console.error('Error:', error);
-        alert('Sorry, there was an error sending your message. Please try again.');
-      } finally {
-        // Reset button state
-        submitBtn.disabled = false;
-        btnText.style.display = 'inline';
-        btnLoading.style.display = 'none';
+        // Show success message
+        showQuickFillMessage('Demo data filled! You can edit the information before sending.');
       }
+    }
+    
+    function clearForm() {
+      if (!nameField || !emailField || !messageField || !charCount) {
+        console.warn('Form fields not initialized');
+        return;
+      }
+      
+      // Clear all fields
+      nameField.value = '';
+      emailField.value = '';
+      messageField.value = '';
+      charCount.textContent = '0/1000';
+      
+      // Clear error messages
+      document.querySelectorAll('.error-message').forEach(el => {
+        el.textContent = '';
+        el.classList.remove('show');
+      });
+      
+      // Show success message
+      showQuickFillMessage('Form cleared!');
+    }
+    
+    function showQuickFillMessage(message) {
+      // Create or update message element
+      let messageEl = document.getElementById('quick-fill-message');
+      if (!messageEl) {
+        messageEl = document.createElement('div');
+        messageEl.id = 'quick-fill-message';
+        messageEl.className = 'quick-fill-message';
+        document.querySelector('.quick-fill-container').appendChild(messageEl);
+      }
+      
+      messageEl.textContent = message;
+      messageEl.classList.add('show');
+      
+      // Hide message after 3 seconds
+      setTimeout(() => {
+        messageEl.classList.remove('show');
+      }, 3000);
+    }
+    
+    // Simple form handling
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('DOM Content Loaded - Setting up form...');
+      
+      // Initialize form elements
+      initializeFormElements();
+      
+      console.log('Form elements found:', {
+        contactForm: !!contactForm,
+        nameField: !!nameField,
+        emailField: !!emailField,
+        messageField: !!messageField,
+        charCount: !!charCount,
+        submitBtn: !!submitBtn,
+        successModal: !!successModal
+      });
+      
+      // Character count function
+      function updateCharCount() {
+        if (!messageField || !charCount) {
+          console.warn('Form fields not initialized for character count');
+          return;
+        }
+        const length = messageField.value.length;
+        charCount.textContent = `${length}/1000`;
+        charCount.classList.remove('warning', 'danger');
+        if (length > 800) {
+          charCount.classList.add('warning');
+        }
+        if (length > 950) {
+          charCount.classList.add('danger');
+        }
+        console.log('Character count updated:', length);
+      }
+      
+      // Simple validation
+      function validateForm() {
+        const name = nameField.value.trim();
+        const email = emailField.value.trim();
+        const message = messageField.value.trim();
+        
+        let isValid = true;
+        
+        // Clear previous errors
+        document.querySelectorAll('.error-message').forEach(el => {
+          el.textContent = '';
+          el.classList.remove('show');
+        });
+        
+        // Name validation
+        if (name.length < 2) {
+          document.getElementById('name-error').textContent = 'Name must be at least 2 characters';
+          document.getElementById('name-error').classList.add('show');
+          isValid = false;
+        }
+        
+        // Email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          document.getElementById('email-error').textContent = 'Please enter a valid email address';
+          document.getElementById('email-error').classList.add('show');
+          isValid = false;
+        }
+        
+        // Message validation
+        if (message.length < 10) {
+          document.getElementById('message-error').textContent = 'Message must be at least 10 characters';
+          document.getElementById('message-error').classList.add('show');
+          isValid = false;
+        }
+        
+        return isValid;
+      }
+      
+      // Form submission - Single event listener to avoid conflicts
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        console.log('Form submitted!');
+        
+        // Track form submission for analytics
+        trackEvent('form_interaction', {
+          action: 'form_submit',
+          page_section: 'contact'
+        });
+        
+        // Clear previous errors
+        document.querySelectorAll('.error-message').forEach(el => {
+          el.textContent = '';
+          el.classList.remove('show');
+        });
+        
+        if (!validateForm()) {
+          console.log('Form validation failed');
+          return;
+        }
+        
+        // Show loading state
+        submitBtn.disabled = true;
+        btnText.style.display = 'none';
+        btnLoading.style.display = 'flex';
+        
+        // Prepare form data
+        const formData = new FormData(contactForm);
+        
+        // Log form data for debugging
+        for (let [key, value] of formData.entries()) {
+          console.log(key + ': ' + value);
+        }
+        
+        // Replace the fetch call with your Node.js server
+        fetch('/submit-form', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: nameField.value,
+            email: emailField.value,
+            message: messageField.value
+          })
+        })
+        .then(response => {
+          console.log('Response status:', response.status);
+          return response.json();
+        })
+        .then(data => {
+          console.log('Parsed response:', data);
+          
+          if (data.success) {
+            // Show success modal
+            successModal.style.display = 'flex';
+            
+            // Reset form
+            contactForm.reset();
+            charCount.textContent = '0/1000';
+            charCount.classList.remove('warning', 'danger');
+            
+            // Clear errors
+            document.querySelectorAll('.error-message').forEach(el => {
+              el.textContent = '';
+              el.classList.remove('show');
+            });
+            
+            console.log('Form submitted successfully!');
+          } else {
+            // Show error message
+            const errorMsg = data.message || 'Sorry, there was an error sending your message. Please try again.';
+            alert(errorMsg);
+            
+            // Show validation errors if any
+            if (data.errors && Array.isArray(data.errors)) {
+              data.errors.forEach(error => {
+                console.error('Validation error:', error);
+              });
+            }
+          }
+        })
+        .catch(error => {
+          console.error('Fetch error:', error);
+          alert('Sorry, there was an error sending your message. Please try again or contact us directly at digitalsconnect@gmail.com');
+        })
+        .finally(() => {
+          // Reset button state
+          submitBtn.disabled = false;
+          btnText.style.display = 'inline';
+          btnLoading.style.display = 'none';
+        });
+      });
+      
+      // Character count event listener
+      messageField.addEventListener('input', updateCharCount);
+      
+      // Initialize character count
+      updateCharCount();
+      
+      console.log('Form setup complete!');
     });
+    
+
 
     // Close success modal
     function closeSuccessModal() {
       successModal.style.display = 'none';
     }
+    
+
 
     // Close modal when clicking outside
     successModal.addEventListener('click', function(e) {
@@ -587,7 +1427,7 @@
       }
     });
 
-    // Scroll-triggered animations
+    // Enhanced Scroll-triggered animations with IntersectionObserver
     const observerOptions = {
       threshold: 0.1,
       rootMargin: '0px 0px -50px 0px'
@@ -597,14 +1437,20 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
+          // Optional: unobserve after animation to improve performance
+          // observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
 
     // Observe all animation elements
     document.addEventListener('DOMContentLoaded', () => {
-      const animationElements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .fade-in-scale');
-      animationElements.forEach(el => observer.observe(el));
+      const animationElements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .fade-in-scale, .about-fade-in, .portfolio-fade-in, .testimonial-fade-in, .contact-fade-in, .services-fade-in');
+      animationElements.forEach(el => {
+        // Ensure elements start invisible
+        el.classList.add('opacity-0');
+        observer.observe(el);
+      });
     });
 
     // Add animation classes to elements
@@ -642,75 +1488,250 @@
 
 
   </script>
-  <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+
 <script>
-  // hCaptcha integration for contact form
+  // Analytics tracking for form interactions
   document.addEventListener('DOMContentLoaded', function() {
-    const hcaptchaContactForm = document.getElementById('contactForm');
-    const hcaptchaSubmitBtn = document.getElementById('submitBtn');
-    let hcaptchaValidated = false;
-    let hcaptchaLoaded = false;
-
-    // Check if hCaptcha loaded successfully
-    function checkHCaptchaLoaded() {
-      if (window.hcaptcha) {
-        hcaptchaLoaded = true;
-        console.log('hCaptcha loaded successfully');
-      } else {
-        console.warn('hCaptcha failed to load, proceeding without captcha');
-        hcaptchaLoaded = false;
-      }
-    }
-
-    // Check hCaptcha status after a delay
-    setTimeout(checkHCaptchaLoaded, 2000);
-
-    if (hcaptchaContactForm) {
-      hcaptchaContactForm.addEventListener('submit', function(e) {
-        if (!hcaptchaLoaded) {
-          // If hCaptcha failed to load, proceed with form submission
-          console.log('Proceeding without hCaptcha validation');
-          return;
-        }
-        
-        if (!hcaptchaValidated) {
-          e.preventDefault();
-          if (window.hcaptcha) {
-            try {
-              hcaptcha.execute();
-            } catch (error) {
-              console.error('hCaptcha execution failed:', error);
-              // Fallback: proceed with form submission
-              hcaptchaValidated = true;
-              hcaptchaContactForm.submit();
-            }
-          } else {
-            // Fallback: proceed with form submission
-            hcaptchaValidated = true;
-            hcaptchaContactForm.submit();
-          }
+    const contactForm = document.getElementById('contactForm');
+    
+    if (contactForm) {
+      // Track form focus events
+      contactForm.addEventListener('focusin', function(e) {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+          trackEvent('form_interaction', {
+            action: 'field_focus',
+            field_name: e.target.name,
+            page_section: 'contact'
+          });
         }
       });
+      
+      // Track form submission attempts (moved to main submit handler)
+      
+      // Track form input events
+      contactForm.addEventListener('input', function(e) {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+          trackEvent('form_interaction', {
+            action: 'field_input',
+            field_name: e.target.name,
+            page_section: 'contact'
+          });
+        }
+      });
+      
+      // Track form validation errors
+      contactForm.addEventListener('invalid', function(e) {
+        trackEvent('form_interaction', {
+          action: 'validation_error',
+          field_name: e.target.name,
+          page_section: 'contact'
+        });
+      });
     }
-
-    window.onHCaptchaSuccess = function() {
-      hcaptchaValidated = true;
-      console.log('hCaptcha validation successful');
-      if (hcaptchaContactForm) {
-        hcaptchaContactForm.submit();
+  });
+    
+    // Enhanced Analytics Tracking
+    function trackEvent(eventName, parameters = {}) {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', eventName, {
+          ...parameters,
+          custom_parameter_1: parameters.service_type || 'general',
+          custom_parameter_2: parameters.user_intent || 'browse',
+          custom_parameter_3: parameters.page_section || 'unknown'
+        });
       }
-    };
-
-    window.onHCaptchaError = function() {
-      console.error('hCaptcha validation failed');
-      alert('Verification failed. Please try again.');
-      hcaptchaValidated = false;
-    };
-
-    window.onHCaptchaExpired = function() {
-      console.log('hCaptcha expired');
-      hcaptchaValidated = false;
-    };
+    }
+    
+    // Track page views for different sections
+    function trackSectionView(sectionName) {
+      trackEvent('section_view', {
+        page_section: sectionName,
+        user_intent: 'content_consumption'
+      });
+    }
+    
+    // Track button clicks
+    function trackButtonClick(buttonName, location) {
+      trackEvent('button_click', {
+        button_name: buttonName,
+        page_section: location,
+        user_intent: 'engagement'
+      });
+    }
+    
+    // Track form interactions
+    function trackFormInteraction(action, formType) {
+      trackEvent('form_interaction', {
+        action: action,
+        form_type: formType,
+        user_intent: 'conversion'
+      });
+    }
+    
+    // Track portfolio item views
+    function trackPortfolioView(itemName) {
+      trackEvent('portfolio_view', {
+        item_name: itemName,
+        service_type: 'portfolio',
+        user_intent: 'service_exploration'
+      });
+    }
+    
+    // Track scroll depth
+    let maxScrollDepth = 0;
+    function trackScrollDepth() {
+      const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+      if (scrollPercent > maxScrollDepth) {
+        maxScrollDepth = scrollPercent;
+        if (maxScrollDepth % 25 === 0) { // Track at 25%, 50%, 75%, 100%
+          trackEvent('scroll_depth', {
+            depth_percentage: maxScrollDepth,
+            user_intent: 'content_engagement'
+          });
+        }
+      }
+    }
+    
+    // Track time on page
+    let startTime = Date.now();
+    function trackTimeOnPage() {
+      const timeSpent = Math.round((Date.now() - startTime) / 1000);
+      if (timeSpent % 30 === 0 && timeSpent > 0) { // Track every 30 seconds
+        trackEvent('time_on_page', {
+          time_spent_seconds: timeSpent,
+          user_intent: 'content_engagement'
+        });
+      }
+    }
+    
+    // Initialize analytics tracking
+    document.addEventListener('DOMContentLoaded', function() {
+      // Track initial page load
+      trackEvent('page_view', {
+        page_title: document.title,
+        page_location: window.location.href,
+        user_intent: 'initial_visit'
+      });
+      
+      // Track section views using Intersection Observer
+      const sections = document.querySelectorAll('section[id]');
+      const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            trackSectionView(entry.target.id);
+          }
+        });
+      }, { threshold: 0.5 });
+      
+      sections.forEach(section => {
+        sectionObserver.observe(section);
+      });
+      
+      // Track button clicks
+      document.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A' && e.target.classList.contains('hero-btn')) {
+          trackButtonClick('contact_us', 'hero');
+        } else if (e.target.tagName === 'A' && e.target.href && e.target.href.includes('#')) {
+          const section = e.target.href.split('#')[1];
+          trackButtonClick('navigation', section);
+        }
+      });
+      
+      // Track form interactions
+      if (contactForm) {
+        contactForm.addEventListener('focusin', function(e) {
+          if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+            trackFormInteraction('field_focus', 'contact');
+          }
+        });
+        
+        // Form submission tracking moved to main submit handler
+        
+        // Track validation events
+        contactForm.addEventListener('input', function(e) {
+          if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+            trackFormInteraction('field_input', 'contact');
+          }
+        });
+        
+        // Track validation errors
+        contactForm.addEventListener('invalid', function(e) {
+          trackFormInteraction('validation_error', 'contact');
+        });
+      }
+      
+      // Track portfolio modal opens
+      const portfolioCards = document.querySelectorAll('.portfolio-card');
+      portfolioCards.forEach(card => {
+        card.addEventListener('click', function() {
+          const title = this.querySelector('h3')?.textContent || 'Unknown';
+          trackPortfolioView(title);
+        });
+      });
+      
+      // Track scroll depth
+      window.addEventListener('scroll', trackScrollDepth);
+      
+      // Track time on page
+      setInterval(trackTimeOnPage, 30000); // Check every 30 seconds
+      
+      // Mobile menu analytics tracking is now handled in the main toggle function
+      
+      // Track testimonial navigation
+      const testimonialNavBtns = document.querySelectorAll('.testimonial-nav-btn');
+      testimonialNavBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          trackEvent('testimonial_navigation', {
+            direction: this.classList.contains('prev-btn') ? 'previous' : 'next',
+            user_intent: 'content_exploration'
+          });
+        });
+      });
+      
+      // Track scroll to top button
+      const scrollToTopBtn = document.getElementById('scrollToTop');
+      if (scrollToTopBtn) {
+        scrollToTopBtn.addEventListener('click', function() {
+          trackEvent('scroll_to_top', {
+            user_intent: 'navigation'
+          });
+        });
+      }
+      
+      // Track mobile scroll to home button
+      const mobileScrollHomeBtn = document.getElementById('mobileScrollHome');
+      if (mobileScrollHomeBtn) {
+        mobileScrollHomeBtn.addEventListener('click', function() {
+          trackEvent('mobile_scroll_to_home', {
+            user_intent: 'navigation',
+            page_section: 'mobile_navigation'
+          });
+        });
+      }
+    });
+    
+    // Track page visibility changes
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        trackEvent('page_hide', {
+          time_spent_seconds: Math.round((Date.now() - startTime) / 1000),
+          user_intent: 'session_end'
+        });
+      } else {
+        trackEvent('page_show', {
+          user_intent: 'session_resume'
+        });
+        startTime = Date.now(); // Reset timer
+      }
+    });
+    
+    // Track before unload
+    window.addEventListener('beforeunload', function() {
+      const timeSpent = Math.round((Date.now() - startTime) / 1000);
+      trackEvent('page_exit', {
+        time_spent_seconds: timeSpent,
+        user_intent: 'session_end'
+      });
   });
 </script>
    <div id="successModal" class="success-modal" role="dialog" aria-modal="true" tabindex="-1" aria-labelledby="success-title" aria-describedby="success-desc">
@@ -726,5 +1747,90 @@
         <path d="M12 4L4 12H9V20H15V12H20L12 4Z" fill="currentColor"/>
       </svg>
     </button>
+    
+    <!-- Mobile Scroll to Home Button -->
+    <button type="button" id="mobileScrollHome" class="mobile-scroll-home" aria-label="Scroll to home">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2L2 12H6V20H10V14H14V20H18V12H22L12 2Z" fill="currentColor"/>
+      </svg>
+    </button>
+    
+    <!-- Mobile Navigation Test Button (remove in production) -->
+    
+  </div>
+
+  <!-- JavaScript moved to bottom to ensure DOM elements exist -->
+  <script>
+    // Scroll to Top functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const scrollToTopBtn = document.getElementById('scrollToTop');
+      
+      if (scrollToTopBtn) {
+        // Show/hide scroll to top button based on scroll position
+        window.addEventListener('scroll', () => {
+          if (window.pageYOffset > 300) {
+            scrollToTopBtn.classList.add('show');
+          } else {
+            scrollToTopBtn.classList.remove('show');
+          }
+        });
+        
+        // Smooth scroll to top when button is clicked
+        scrollToTopBtn.addEventListener('click', () => {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+      }
+    });
+
+    // Mobile Scroll to Home functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileScrollHomeBtn = document.getElementById('mobileScrollHome');
+      
+      if (mobileScrollHomeBtn) {
+        // Show/hide mobile scroll to home button based on scroll position and device
+        function checkMobileScrollHome() {
+          const isMobile = window.innerWidth <= 768;
+          const isNotAtHome = window.pageYOffset > 200; // Show when scrolled past hero section
+          
+          console.log('Mobile check:', { isMobile, isNotAtHome, scrollY: window.pageYOffset });
+          
+          if (isMobile && isNotAtHome) {
+            mobileScrollHomeBtn.classList.add('show');
+            console.log('Mobile scroll home button shown');
+          } else {
+            mobileScrollHomeBtn.classList.remove('show');
+            console.log('Mobile scroll home button hidden');
+          }
+        }
+        
+        // Check on scroll and resize
+        window.addEventListener('scroll', checkMobileScrollHome);
+        window.addEventListener('resize', checkMobileScrollHome);
+        
+        // Initialize on page load
+        checkMobileScrollHome();
+        
+        // Smooth scroll to home when mobile button is clicked
+        mobileScrollHomeBtn.addEventListener('click', () => {
+          const homeSection = document.getElementById('home');
+          if (homeSection) {
+            homeSection.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          } else {
+            // Fallback to top of page
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+            });
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>

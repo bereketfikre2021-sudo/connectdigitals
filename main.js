@@ -107,52 +107,7 @@ function validateForm() {
   }
   return valid;
 }
-contactForm.addEventListener('submit', async function(e) {
-  e.preventDefault();
-  if (!validateForm()) {
-    submitBtn.disabled = false;
-    btnText.style.display = 'inline';
-    btnLoading.style.display = 'none';
-    return;
-  }
-  
-  // Show loading state
-  submitBtn.disabled=true;
-  btnText.style.display='none';
-  btnLoading.style.display='flex';
-  
-  try{
-    const formData=new FormData(this);
-    const response=await fetch(this.action,{
-      method:'POST',
-      body:formData,
-      headers:{
-        'Accept':'application/json'
-      }
-    });
-    
-    if(response.ok){
-      // Show success modal
-      successModal.style.display='flex';
-      // Reset form
-      this.reset();
-    }else{
-      throw new Error('Failed to send message');
-    }
-  }catch(error){
-    console.error('Error:',error);
-    const errorEl=document.createElement('p');
-    errorEl.className='text-red-500 mt-2';
-    errorEl.textContent='Failed to send. Please email us directly at digitalsconnect@gmail.com';
-    contactForm.appendChild(errorEl);
-    setTimeout(()=>errorEl.remove(),5000);
-  }finally{
-    // Reset button state
-    submitBtn.disabled=false;
-    btnText.style.display='inline';
-    btnLoading.style.display='none';
-  }
-});
+// Form submission is now handled in index.html to avoid conflicts
 
 // Close success modal
 function closeSuccessModal(){

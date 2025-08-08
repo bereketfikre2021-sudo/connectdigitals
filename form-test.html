@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .form-field { margin-bottom: 15px; }
+        input, textarea { width: 100%; padding: 10px; margin-top: 5px; }
+        .error-message { color: red; font-size: 12px; margin-top: 5px; }
+        .success { color: green; background: #e8f5e8; padding: 10px; margin: 10px 0; }
+        .error { color: red; background: #ffe8e8; padding: 10px; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>Contact Form Test</h1>
+    
+    <form id="testForm" method="POST">
+        <div class="form-field">
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" required minlength="2">
+            <div class="error-message" id="name-error"></div>
+        </div>
+        
+        <div class="form-field">
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required>
+            <div class="error-message" id="email-error"></div>
+        </div>
+        
+        <div class="form-field">
+            <label for="message">Message:</label>
+            <textarea name="message" id="message" required minlength="10" rows="5"></textarea>
+            <div class="error-message" id="message-error"></div>
+        </div>
+        
+        <button type="submit">Send Message</button>
+    </form>
+    
+    <div id="result"></div>
+    
+    <script>
+        document.getElementById('testForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const resultDiv = document.getElementById('result');
+            
+            // Simulate form submission
+            resultDiv.innerHTML = '<div class="success">Form submitted successfully! Form data:</div>';
+            
+            for (let [key, value] of formData.entries()) {
+                resultDiv.innerHTML += `<p><strong>${key}:</strong> ${value}</p>`;
+            }
+            
+            // Test actual submission to PHP file
+            fetch('contact-simple.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                console.log('Response status:', response.status);
+                return response.text();
+            })
+            .then(text => {
+                console.log('Raw response:', text);
+                resultDiv.innerHTML += `<div class="success">PHP Response: ${text}</div>`;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                resultDiv.innerHTML += `<div class="error">Error: ${error.message}</div>`;
+            });
+        });
+    </script>
+</body>
+</html>
