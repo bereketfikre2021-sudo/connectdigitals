@@ -146,6 +146,18 @@ nav a.active {
 }
 
 /* Mobile Navigation Styles */
+/* Hidden checkbox to enable no-JS open/close via label */
+.mobile-nav-checkbox {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
 .mobile-nav-toggle {
   display: none;
   background: rgba(255, 255, 255, 0.1);
@@ -206,8 +218,8 @@ nav a.active {
   transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* CSS-only fallback for mobile nav */
-.mobile-nav-toggle[aria-expanded="true"] + .mobile-nav {
+/* CSS-only fallback for mobile nav using checkbox state */
+.mobile-nav-checkbox:checked + .mobile-nav-toggle + .mobile-nav {
   display: flex;
   opacity: 1;
   transform: translateY(0);

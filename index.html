@@ -228,7 +228,7 @@
   <meta name="description" content="Connect Digitals: A branding & digital marketing agency. We design logos, manage social media, and drive growth. Let's transform your brand today.">
   <meta name="keywords" content="Connect Digitals, Graphic Design, Branding, Marketing, Digital Services">
   <meta name="author" content="Connect Digitals">
-  <link rel="canonical" href="https://connectdigital.netlify.app/">
+  <link rel="canonical" href="https://connectdigitals.netlify.app/">
   <meta name="robots" content="index,follow">
   <meta name="theme-color" content="#000F33">
   
@@ -281,7 +281,7 @@
 </head>
 <body>
 
-  <a class="skip-link" href="#home">Skip to main content</a>
+  <a class="skip-link" href="#main">Skip to main content</a>
 
   <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" tabindex="-1" aria-labelledby="modal-title" aria-describedby="modal-desc">
     <div class="modal-content" role="document">
@@ -292,7 +292,9 @@
   </div>
 
   <header>
-    <div class="logo"><img src="./Logo.svg" alt="Connect Digitals Logo" width="150" height="40"/></div>
+    <a href="#home" class="logo" aria-label="Go to homepage">
+      <img src="./Logo.svg" alt="Connect Digitals Logo" width="150" height="40">
+    </a>
     <nav class="desktop-nav" aria-label="Desktop navigation">
       <a href="#home">Home</a>
       <a href="#about"> About</a>
@@ -301,20 +303,21 @@
       <a href="#contact">Contact</a>
     </nav>
     
-    <!-- Mobile Navigation Toggle -->
-    <button type="button" class="mobile-nav-toggle" aria-label="Toggle mobile navigation" aria-expanded="false">
+    <!-- Mobile Navigation Toggle (with no-JS fallback via checkbox) -->
+    <input type="checkbox" id="mobileNavToggle" class="mobile-nav-checkbox" aria-hidden="true">
+    <label for="mobileNavToggle" class="mobile-nav-toggle" aria-label="Toggle mobile navigation" aria-controls="mobileNav" aria-expanded="false">
       <span class="hamburger-line"></span>
       <span class="hamburger-line"></span>
       <span class="hamburger-line"></span>
-    </button>
+    </label>
     
     <!-- Mobile Navigation Menu -->
-    <nav class="mobile-nav" aria-label="Mobile navigation">
-      <button type="button" class="mobile-nav-close" aria-label="Close mobile navigation">
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+      <label for="mobileNavToggle" class="mobile-nav-close" aria-label="Close mobile navigation">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M18 6L6 18M6 6L18 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-      </button>
+      </label>
       <a href="#home">Home</a>
       <a href="#about">About</a>
       <a href="#services">Services</a>
@@ -323,7 +326,7 @@
     </nav>
   </header>
 
-  <main>
+  <main id="main" tabindex="-1">
 <!-- Hero Section -->
 <section id="home" class="hero">
   <div class="hero-content">
@@ -428,40 +431,40 @@
     <h2 id="portfolio-heading">Our Portfolio</h2>
     <div class="portfolio-grid-3x3" role="list" aria-label="Portfolio projects">
       <button type="button" class="portfolio-card" onclick="openModal('Creative Brand Identity','Visual identity design for startup.')" aria-label="View Creative Brand Identity project details">
-        <img src="Zewd.webp" alt="Creative Brand Identity" loading="lazy" width="600" height="400">
+        <img src="Zewd.webp" alt="Minimal logo design project thumbnail for Zewd brand" loading="lazy" width="600" height="400">
         <div class="portfolio-content"><h3>Minimal Logo Design</h3><p>Logo design for a startup.</p></div>
       </button>
       <button type="button" class="portfolio-card" onclick="openModal('E‑commerce Ad Campaign','High‑engagement social campaign.')" aria-label="View E-commerce Ad Campaign project details">
-          <img src="swan-clothing.webp" alt="E-commerce Ad Campaign" loading="lazy" width="600" height="400">
+          <img src="swan-clothing.webp" alt="Brand identity concept for Swan Clothing – logo and packaging mockups" loading="lazy" width="600" height="400">
         <div class="portfolio-content"><h3>Brand Identity Design</h3><p>Corporate brand identity.</p></div>
       </button>
       <button type="button" class="portfolio-card" onclick="openModal('Social Media Revamp','Consistent social visuals.')" aria-label="View Social Media Revamp project details">
-        <img src="Finix.webp" alt="Social Media Revamp" loading="lazy" width="600" height="400">
+        <img src="Finix.webp" alt="Finix social media post templates – preview of feed and story designs" loading="lazy" width="600" height="400">
         <div class="portfolio-content"><h3>Web Asset design</h3><p>Website banner & asset designs.</p></div>
       </button>
       <button type="button" class="portfolio-card" onclick="openModal('Minimal Logo','Simple logo design for digital use.')" aria-label="View Minimal Logo project details">
-        <img src="SM.webp" alt="Minimal Logo" loading="lazy" width="600" height="400">
+        <img src="SM.webp" alt="Social media template set – post and story layout samples" loading="lazy" width="600" height="400">
         <div class="portfolio-content"><h3>Social Media Template </h3><p>Social Media Post.</p></div>
       </button>
       <button type="button" class="portfolio-card" onclick="openModal('Apparel Design','Complete launch visuals.')" aria-label="View Apparel Design project details">
-        <img src="Lensa Fashion Design & Makeup.webp" alt="Apparel Design" loading="lazy" width="600" height="400">
+        <img src="Lensa Fashion Design & Makeup.webp" alt="Packaging design mockups for Lensa Fashion – branded bag and label" loading="lazy" width="600" height="400">
         <div class="portfolio-content"><h3>Packaging Design</h3><p>Brand assets for packaging bag.</p></div>
       </button>
       <button type="button" class="portfolio-card" onclick="openModal('Print Design','Flyers, posters & more.')" aria-label="View Print Design project details">
-        <img src="Company profile.webp" alt="Print Design" loading="lazy" width="600" height="400">
-        <div class="portfolio-content"><h3>Print Design</h3><p>Company profiel, Catalgos, Menus & Flyers.</p></div>
+        <img src="Company profile.webp" alt="Company profile print design – cover and inner page spread" loading="lazy" width="600" height="400">
+        <div class="portfolio-content"><h3>Print Design</h3><p>Company profile, Catalgos, Menus & Flyers.</p></div>
       </button>
       <button type="button" class="portfolio-card" onclick="openModal('Product Ads','E‑commerce product visuals.')" aria-label="View Product Ads project details">
-        <img src="Maleda Coffee.webp" alt="Product Ads" loading="lazy" width="600" height="400">
+        <img src="Maleda Coffee.webp" alt="Maleda Coffee product ad – cup and packaging with brand visuals" loading="lazy" width="600" height="400">
         <div class="portfolio-content"><h3>Product Ads</h3><p>Custom visuals for products.</p></div>
       </button>
       <button type="button" class="portfolio-card" onclick="openModal('Social Templates','Story & post templates.')" aria-label="View Social Templates project details">
-        <img src="Andegna.webp" alt="Social Templates" loading="lazy" width="600" height="400">
+        <img src="Andegna.webp" alt="Andegna signage design – office wall and roll‑up banner previews" loading="lazy" width="600" height="400">
         <div class="portfolio-content"><h3>Signage Design</h3><p>Office Signage, Rollup & Banner Designs.</p></div>
       </button>
       <button type="button" class="portfolio-card" onclick="openModal('Stationery Design','Digital assets for campaigns.')" aria-label="View Stationery Design project details">
-        <img src="Y.A.T Construction PLC.webp" alt="Stationery Design" loading="lazy" width="600" height="400">
-        <div class="portfolio-content"><h3>Stationery Design</h3><p>Letterheads, Business Cards, Envelops & Folders.</p></div>
+        <img src="Y.A.T Construction PLC.webp" alt="Stationery set for Y.A.T Construction – letterhead, business card, envelope" loading="lazy" width="600" height="400">
+        <div class="portfolio-content"><h3>Stationery Design</h3><p>Letterheads, Business Cards, Envelopes & Folders.</p></div>
       </button>
     </div>
     <!-- Replace Watch More button -->
@@ -1056,6 +1059,7 @@
 
     // Mobile Navigation Toggle
     const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+    const mobileNavCheckbox = document.getElementById('mobileNavToggle');
     const mobileNav = document.querySelector('.mobile-nav');
     const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
 
@@ -1077,11 +1081,13 @@
       
       if (!isExpanded) {
         if (window.__DEBUG__) console.log('Opening mobile nav');
+        if (mobileNavCheckbox) mobileNavCheckbox.checked = true; // keep checkbox in sync for no-JS fallback
         mobileNav.classList.add('active');
         document.body.classList.add('mobile-nav-open');
         document.body.style.overflow = 'hidden'; // Prevent background scrolling
       } else {
         if (window.__DEBUG__) console.log('Closing mobile nav');
+        if (mobileNavCheckbox) mobileNavCheckbox.checked = false; // keep checkbox in sync for no-JS fallback
         mobileNav.classList.remove('active');
         document.body.classList.remove('mobile-nav-open');
         document.body.style.overflow = ''; // Restore scrolling
@@ -1092,6 +1098,7 @@
 
     function closeMobileNav() {
       mobileNavToggle.setAttribute('aria-expanded', 'false');
+      if (mobileNavCheckbox) mobileNavCheckbox.checked = false; // ensure closed for no-JS fallback
       mobileNav.classList.remove('active');
       document.body.classList.remove('mobile-nav-open');
       document.body.style.overflow = '';
@@ -1430,9 +1437,6 @@
     }
 
 
-  </script>
-
-<script>
   // Analytics tracking for form interactions
     function initFormAnalytics() {
     const contactForm = document.getElementById('contactForm');
