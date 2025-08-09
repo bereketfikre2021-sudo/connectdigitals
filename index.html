@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth" data-ga="">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
   <link rel="preload" href="BG-3.webp" as="image">
   <link rel="preload" href="BG-4.webp" as="image">
   <link rel="preload" href="Logo.svg" as="image">
-  <link rel="preload" href="index.css" as="style">
+  <link rel="preload" href="index.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   
   <!-- Favicon and Icons -->
   <link rel="icon" href="favicon.ico" sizes="any">
@@ -99,7 +99,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(135deg, rgba(0, 15, 51, 0.7) 0%, rgba(184, 134, 11, 0.3) 100%);
+      background: linear-gradient(135deg, rgba(0, 15, 51, 0.12) 0%, rgba(184, 134, 11, 0.06) 100%);
       z-index: 1;
     }
     
@@ -108,15 +108,27 @@
       color: #fff;
       z-index: 2;
       position: relative;
-      max-width: 800px;
-      padding: 0 2rem;
+      max-width: 60%;
+      padding: 1rem 1.25rem;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 1.25rem;
+      backdrop-filter: blur(20px) saturate(140%);
+      -webkit-backdrop-filter: blur(20px) saturate(140%);
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
     }
     
     .hero-title {
       font-size: 3rem;
-      font-weight: 700;
-      margin-bottom: 2rem;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      font-weight: 800;
+      margin: 0;
+      text-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+      white-space: nowrap;
     }
     
     .hero-btn {
@@ -209,66 +221,78 @@
   </style>
   
   <!-- Non-critical CSS -->
-  <link href="index.css" rel="stylesheet">
+  <noscript><link href="index.css" rel="stylesheet"></noscript>
   <link href="testimonial-responsive-fix.css" rel="stylesheet">
   
   <!-- SEO Meta Tags -->
   <meta name="description" content="Connect Digitals: A branding & digital marketing agency. We design logos, manage social media, and drive growth. Let's transform your brand today.">
   <meta name="keywords" content="Connect Digitals, Graphic Design, Branding, Marketing, Digital Services">
   <meta name="author" content="Connect Digitals">
+  <link rel="canonical" href="https://connectdigital.netlify.app/">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#000F33">
   
   <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="Connect Digitals | Branding & Digital Marketing Services">
   <meta property="og:image" content="https://connectdigital.netlify.app/Connect.webp">
   <meta property="og:image:type" content="image/webp">
+  <meta property="og:description" content="Connect Digitals: A branding & digital marketing agency. We design logos, manage social media, and drive growth.">
+  <meta property="og:site_name" content="Connect Digitals">
   <meta property="og:url" content="https://connectdigital.netlify.app/">
   <meta property="og:type" content="website">
 
   <!-- Twitter Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
-  
-  <!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  
-  // Configure Google Analytics 4
-  gtag('config', 'G-XXXXXXXXXX', {
-    page_title: 'Connect Digitals | Branding & Digital Marketing',
-    page_location: window.location.href,
-    send_page_view: true,
-    anonymize_ip: true,
-    allow_google_signals: true,
-    allow_ad_personalization_signals: true
-  });
-  
-  // Enhanced conversion tracking
-  gtag('config', 'G-XXXXXXXXXX', {
-    custom_map: {
-      'custom_parameter_1': 'service_type',
-      'custom_parameter_2': 'user_intent',
-      'custom_parameter_3': 'page_section'
-    }
-  });
+  <meta name="twitter:image" content="https://connectdigital.netlify.app/Connect.webp">
+
+  <!-- Structured Data: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Connect Digitals",
+    "url": "https://connectdigital.netlify.app/",
+    "logo": "https://connectdigital.netlify.app/Logo.svg",
+    "image": "https://connectdigital.netlify.app/Connect.webp",
+    "description": "Branding and digital marketing agency: logos, social media, and growth marketing.",
+    "email": "mailto:digitalsconnect@gmail.com",
+    "telephone": "+251923988838",
+    "sameAs": [
+      "https://web.facebook.com/connectdigitals.fb",
+      "https://www.instagram.com/connectdigitals.ig",
+      "https://www.tiktok.com/@connect.digitals",
+      "https://t.me/connectdigitals",
+      "https://linktr.ee/Connectdigitals"
+    ],
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "telephone": "+251923988838",
+      "contactType": "customer support",
+      "areaServed": "ET",
+      "availableLanguage": ["en"]
+    }]
+  }
 </script>
+  
+  <!-- Analytics script is loaded after user consent. See initAnalytics() for details. -->
 
 <!-- reCAPTCHA Script -->
   <!-- No external scripts needed for quick fill -->
 </head>
 <body>
 
+  <a class="skip-link" href="#home">Skip to main content</a>
+
   <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" tabindex="-1" aria-labelledby="modal-title" aria-describedby="modal-desc">
     <div class="modal-content" role="document">
-      <button type="button" onclick="closeModal()" class="modal-close" aria-label="Close modal" tabindex="0">&times;</button>
+      <button type="button" class="modal-close" aria-label="Close modal" tabindex="0">&times;</button>
       <h3 id="modal-title" tabindex="0"></h3>
       <p id="modal-desc" tabindex="0"></p>
     </div>
   </div>
 
   <header>
-    <div class="logo"><img src="./Logo.svg" alt="Connect Digitals Logo"/></div>
+    <div class="logo"><img src="./Logo.svg" alt="Connect Digitals Logo" width="150" height="40"/></div>
     <nav class="desktop-nav" aria-label="Desktop navigation">
       <a href="#home">Home</a>
       <a href="#about"> About</a>
@@ -278,7 +302,7 @@
     </nav>
     
     <!-- Mobile Navigation Toggle -->
-    <button class="mobile-nav-toggle" aria-label="Toggle mobile navigation" aria-expanded="false">
+    <button type="button" class="mobile-nav-toggle" aria-label="Toggle mobile navigation" aria-expanded="false">
       <span class="hamburger-line"></span>
       <span class="hamburger-line"></span>
       <span class="hamburger-line"></span>
@@ -286,7 +310,7 @@
     
     <!-- Mobile Navigation Menu -->
     <nav class="mobile-nav" aria-label="Mobile navigation">
-      <button type="button" class="mobile-nav-close" aria-label="Close mobile navigation" onclick="closeMobileNav()">
+      <button type="button" class="mobile-nav-close" aria-label="Close mobile navigation">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M18 6L6 18M6 6L18 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
@@ -303,8 +327,8 @@
 <!-- Hero Section -->
 <section id="home" class="hero">
   <div class="hero-content">
-    <h1 class="hero-title">Connect. Create. Captivate.</h1>
-    <a href="#contact" class="hero-btn">Contact Us</a>
+    <h1 class="hero-title">Connect · Create · Captivate</h1>
+    <a href="#contact" class="hero-btn" aria-label="Go to contact section">Contact Us</a>
   </div>
 </section>
   
@@ -315,7 +339,7 @@
       <!-- Left Column: User Photo + About Us Text -->
       <div class="about-left">
         <div class="fancy-logo-card about-card">
-          <img src="Bereket Fikre.webp" alt="Bereket Fikre (CEO) ." class="about-photo" loading="lazy">
+          <img src="Bereket Fikre.webp" alt="Bereket Fikre (CEO) ." class="about-photo" loading="lazy" width="110" height="110">
           <span class="about-name">Bereket Fikre</span>
           <span class="about-title">Founder & Lead Designer</span>
           <h2 class="about-heading">About Us</h2>
@@ -337,7 +361,7 @@
   
       <!-- Right Column: Decorative Image -->
       <div class="about-right">
-        <img src="Connect.webp" alt="About Connect Digitals" loading="lazy" class="about-image">
+        <img src="Connect.webp" alt="About Connect Digitals" loading="lazy" class="about-image" width="400" height="300">
         <div class="about-quote-container">
           <div class="about-quote">
             <p class="about-quote-text">
@@ -404,39 +428,39 @@
     <h2 id="portfolio-heading">Our Portfolio</h2>
     <div class="portfolio-grid-3x3" role="list" aria-label="Portfolio projects">
       <button type="button" class="portfolio-card" onclick="openModal('Creative Brand Identity','Visual identity design for startup.')" aria-label="View Creative Brand Identity project details">
-        <img src="Zewd.webp" alt="Creative Brand Identity" loading="lazy">
+        <img src="Zewd.webp" alt="Creative Brand Identity" loading="lazy" width="600" height="400">
         <div class="portfolio-content"><h3>Creative Brand Identity</h3><p>Visual identity for a startup.</p></div>
       </button>
       <button type="button" class="portfolio-card" onclick="openModal('E‑commerce Ad Campaign','High‑engagement social campaign.')" aria-label="View E-commerce Ad Campaign project details">
-        <img src="Swan Clsothing.webp" alt="E-commerce Ad Campaign" loading="lazy">
+          <img src="swan-clothing.webp" alt="E-commerce Ad Campaign" loading="lazy" width="600" height="400">
         <div class="portfolio-content"><h3>E‑commerce Ad Campaign</h3><p>Engaging campaign visuals.</p></div>
       </button>
       <button type="button" class="portfolio-card" onclick="openModal('Social Media Revamp','Consistent social visuals.')" aria-label="View Social Media Revamp project details">
-        <img src="Havana.webp" alt="Social Media Revamp" loading="lazy">
+        <img src="Havana.webp" alt="Social Media Revamp" loading="lazy" width="600" height="400">
         <div class="portfolio-content"><h3>Social Media Revamp</h3><p>Visual system for social content.</p></div>
       </button>
       <button type="button" class="portfolio-card" onclick="openModal('Minimal Logo','Simple logo design for digital use.')" aria-label="View Minimal Logo project details">
-        <img src="Misale Housing Cooperative Ltd.webp" alt="Minimal Logo" loading="lazy">
+        <img src="Misale Housing Cooperative Ltd.webp" alt="Minimal Logo" loading="lazy" width="600" height="400">
         <div class="portfolio-content"><h3>Minimal Logo</h3><p>Sleek logo for app/brand use.</p></div>
       </button>
       <button type="button" class="portfolio-card" onclick="openModal('Apparel Design','Complete launch visuals.')" aria-label="View Apparel Design project details">
-        <img src="Lensa Fashion Design & Makeup.webp" alt="Apparel Design" loading="lazy">
+        <img src="Lensa Fashion Design & Makeup.webp" alt="Apparel Design" loading="lazy" width="600" height="400">
         <div class="portfolio-content"><h3>Launch Kit</h3><p>Brand assets for product launch.</p></div>
       </button>
       <button type="button" class="portfolio-card" onclick="openModal('Print Design','Flyers, posters & more.')" aria-label="View Print Design project details">
-        <img src="Dayer Engineering PLC.webp" alt="Print Design" loading="lazy">
+        <img src="Dayer Engineering PLC.webp" alt="Print Design" loading="lazy" width="600" height="400">
         <div class="portfolio-content"><h3>Print Design</h3><p>Posters, flyers, infographics.</p></div>
       </button>
       <button type="button" class="portfolio-card" onclick="openModal('Product Ads','E‑commerce product visuals.')" aria-label="View Product Ads project details">
-        <img src="Maleda Coffee.webp" alt="Product Ads" loading="lazy">
+        <img src="Maleda Coffee.webp" alt="Product Ads" loading="lazy" width="600" height="400">
         <div class="portfolio-content"><h3>Product Ads</h3><p>Custom visuals for products.</p></div>
       </button>
       <button type="button" class="portfolio-card" onclick="openModal('Social Templates','Story & post templates.')" aria-label="View Social Templates project details">
-        <img src="Medavail.webp" alt="Social Templates" loading="lazy">
+        <img src="Medavail.webp" alt="Social Templates" loading="lazy" width="600" height="400">
         <div class="portfolio-content"><h3>Social Templates</h3><p>Branded story/post templates.</p></div>
       </button>
       <button type="button" class="portfolio-card" onclick="openModal('Stationery Design','Digital assets for campaigns.')" aria-label="View Stationery Design project details">
-        <img src="Y.A.T Construction PLC.webp" alt="Stationery Design" loading="lazy">
+        <img src="Y.A.T Construction PLC.webp" alt="Stationery Design" loading="lazy" width="600" height="400">
         <div class="portfolio-content"><h3>Campaign Design</h3><p>Toolkit for brand awareness.</p></div>
       </button>
     </div>
@@ -646,92 +670,59 @@
   <section id="contact" class="contact-section">
     <h2>Contact Us</h2>
     <div class="contact-container">
-      
-      <!-- Contact Form -->
-              <form name="contact" method="POST" class="contact-form" id="contactForm">
-        <input type="hidden" name="form-name" value="contact" />
-        <p class="hidden">
-          <label>
-            Don't fill this out if you're human: <input name="bot-field" />
-          </label>
-        </p>
-        
-        <!-- Name Field -->
-        <div class="form-field">
-          <input 
-            type="text" 
-            name="name" 
-            id="name" 
-            placeholder="Your Name" 
-            required 
-            minlength="2" 
-            maxlength="50"
-            autocomplete="name"
-          >
-          <div class="error-message" id="name-error"></div>
-        </div>
-        
-        <!-- Email Field -->
-        <div class="form-field">
-          <input 
-            type="email" 
-            name="email" 
-            id="email" 
-            placeholder="Your Email" 
-            required 
-            autocomplete="email"
-          >
-          <div class="error-message" id="email-error"></div>
-          
-          <!-- Quick Fill Buttons -->
-          <div class="quick-fill-container">
-            <button type="button" class="quick-fill-btn" onclick="quickFill('demo')">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-              </svg>
-              Demo Fill
-            </button>
-            <button type="button" class="quick-fill-btn" onclick="clearForm()">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
-              </svg>
-              Clear
-            </button>
-          </div>
-        </div>
-        
-        <!-- Message Field -->
-        <div class="form-field">
-          <textarea 
-            name="message" 
-            id="message" 
-            placeholder="Your Message" 
-            required 
-            rows="5" 
-            minlength="10" 
-            maxlength="1000"
-            oninput="this.nextElementSibling.nextElementSibling.textContent = this.value.length + '/1000'"
-          ></textarea>
-          <div class="error-message" id="message-error"></div>
-          <div class="char-count" id="char-count">0/1000</div>
+      <form id="contactForm" class="contact-form" action="https://formspree.io/f/mgvzpqpq" method="POST" novalidate>
+        <div class="form-field input-group">
+          <span class="input-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M20 22c0-4.418-3.582-8-8-8s-8 3.582-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <input id="name" name="name" type="text" placeholder=" " minlength="2" required />
+          <label for="name" class="floating-label">Your name</label>
+          <div id="name-error" class="error-message" aria-live="polite"></div>
         </div>
 
-        <!-- Submit Button -->
-        <button type="submit" id="submitBtn" aria-label="Send message" title="Send message">
+        <div class="form-field input-group">
+          <span class="input-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 6h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M22 8l-9.172 6.879a2 2 0 0 1-2.656 0L1 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <input id="email" name="email" type="email" placeholder=" " required />
+          <label for="email" class="floating-label">Your email</label>
+          <div id="email-error" class="error-message" aria-live="polite"></div>
+        </div>
+
+        <div class="form-field input-group" style="position: relative;">
+          <span class="input-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21 15a4 4 0 0 1-4 4H9l-6 3V6a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v9Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <textarea id="message" name="message" rows="6" maxlength="1000" placeholder=" " required></textarea>
+          <label for="message" class="floating-label">Your message</label>
+          <div id="message-error" class="error-message" aria-live="polite"></div>
+          <span id="char-count" class="char-count">0/1000</span>
+        </div>
+
+        <input type="text" name="company" class="hidden" style="display:none !important;" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <button id="submitBtn" type="submit" class="btn-shimmer">
           <span class="btn-text">Send Message</span>
-          <span class="btn-loading" style="display: none;">
-            <svg class="spinner" width="20" height="20" viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none" stroke-dasharray="31.416" stroke-dashoffset="31.416">
-                <animate attributeName="stroke-dasharray" dur="2s" values="0 31.416;15.708 15.708;0 31.416" repeatCount="indefinite"/>
-                <animate attributeName="stroke-dashoffset" dur="2s" values="0;-15.708;-31.416" repeatCount="indefinite"/>
-              </svg>
+          <span class="btn-loading" style="display:none;">
+            <svg class="spinner" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" opacity="0.25"></circle>
+              <path d="M22 12a10 10 0 0 1-10 10" stroke="currentColor" stroke-width="4"></path>
+            </svg>
+            Sending...
           </span>
         </button>
-      </form>
-      
-     
-      </div>
-  
+
+        
+</form>
+
       <!-- Contact Info -->
       <div class="contact-info">
         <h3>Ready to connect?</h3>
@@ -739,11 +730,11 @@
         <p><strong>Email:</strong> digitalsconnect@gmail.com</p>
         <div>
           <strong>Connect with us:</strong><br/>
-          <a href="https://linktr.ee/Connectdigitals" target="_blank">Linktree</a> |
-          <a href="https://web.facebook.com/connectdigitals.fb" target="_blank">Facebook</a> |
-          <a href="https://www.instagram.com/connectdigitals.ig" target="_blank">Instagram</a> |
-          <a href="https://www.tiktok.com/@connect.digitals" target="_blank">TikTok</a> |
-          <a href="https://t.me/connectdigitals" target="_blank">Telegram</a>
+          <a href="https://linktr.ee/Connectdigitals" target="_blank" rel="noopener noreferrer">Linktree</a> |
+          <a href="https://web.facebook.com/connectdigitals.fb" target="_blank" rel="noopener noreferrer">Facebook</a> |
+          <a href="https://www.instagram.com/connectdigitals.ig" target="_blank" rel="noopener noreferrer">Instagram</a> |
+          <a href="https://www.tiktok.com/@connect.digitals" target="_blank" rel="noopener noreferrer">TikTok</a> |
+          <a href="https://t.me/connectdigitals" target="_blank" rel="noopener noreferrer">Telegram</a>
         </div>
       </div>
     </div>
@@ -753,17 +744,17 @@
   <footer>
     <p class="footer-container"><span style="font-size:1.1em; vertical-align:middle; margin-right:0.3em;">&#169;</span>2025 Connect Digitals. All rights reserved.</p>
     <div class="footer-social">
-      <a href="https://web.facebook.com/connectdigitals.fb" target="_blank">
-        <img src="facebook-176-svgrepo-com (1).svg" alt="Connect Digitals On Facebook" loading="lazy">
+      <a href="https://web.facebook.com/connectdigitals.fb" target="_blank" rel="noopener noreferrer">
+          <img src="facebook-176-svgrepo-com.svg" alt="Connect Digitals On Facebook" loading="lazy" width="28" height="28">
       </a>
-      <a href="https://www.instagram.com/connectdigitals.ig" target="_blank">
-        <img src="instagram-svgrepo-com (1).svg" alt="Connect Digitals On Instagram" loading="lazy">
+      <a href="https://www.instagram.com/connectdigitals.ig" target="_blank" rel="noopener noreferrer">
+          <img src="instagram-svgrepo-com.svg" alt="Connect Digitals On Instagram" loading="lazy" width="28" height="28">
       </a>
-      <a href="https://t.me/connectdigitals" target="_blank">
-        <img src="telegram-alt-svgrepo-com (1).svg" alt="Connect Digitals On Telegram" loading="lazy">
+      <a href="https://t.me/connectdigitals" target="_blank" rel="noopener noreferrer">
+          <img src="telegram-alt-svgrepo-com.svg" alt="Connect Digitals On Telegram" loading="lazy" width="28" height="28">
       </a>
-      <a href="https://www.tiktok.com/@connect.digitals" target="_blank">
-        <img src="tiktok-svgrepo-com (2).svg" alt="Connect Digitals On TikTok" loading="lazy">
+      <a href="https://www.tiktok.com/@connect.digitals" target="_blank" rel="noopener noreferrer">
+          <img src="tiktok-svgrepo-com.svg" alt="Connect Digitals On TikTok" loading="lazy" width="28" height="28">
       </a>
     </div>
   </footer>
@@ -791,6 +782,7 @@
       // Show modal
       modal.style.display = 'flex';
       modal.setAttribute('aria-hidden', 'false');
+      modal.setAttribute('aria-modal', 'true');
       
       // Get all focusable elements in the modal
       modalFocusableElements = modal.querySelectorAll(
@@ -815,6 +807,7 @@
       // Hide modal
       modal.style.display = 'none';
       modal.setAttribute('aria-hidden', 'true');
+      modal.removeAttribute('aria-modal');
       
       // Remove event listeners
       document.removeEventListener('keydown', handleModalKeydown);
@@ -861,13 +854,32 @@
       }
     }
     
-    // Close modal when clicking outside
-    window.onclick = e => { 
-      if (e.target.id === 'modal') closeModal(); 
-    };
+    // Close modal when clicking outside (non-destructive listener)
+    document.addEventListener('click', function(e) {
+      const modalEl = document.getElementById('modal');
+      if (modalEl && e.target === modalEl) {
+        closeModal();
+      }
+    });
+
+    // Replace inline onclicks with delegated listeners
+    document.addEventListener('click', function(e) {
+      if (e.target.classList.contains('modal-close')) {
+        e.preventDefault();
+        closeModal();
+      }
+      if (e.target.classList.contains('success-close')) {
+        e.preventDefault();
+        closeSuccessModal();
+      }
+      if (e.target.classList.contains('mobile-nav-close')) {
+        e.preventDefault();
+        closeMobileNav();
+      }
+    });
 
     // Testimonial slider functionality
-    document.addEventListener('DOMContentLoaded', function() {
+    function initTestimonials() {
       const pages = document.querySelectorAll('#testimonial-slider .testimonial-page');
       const prevBtn = document.getElementById('testimonial-prev');
       const nextBtn = document.getElementById('testimonial-next');
@@ -914,13 +926,15 @@
       // Update layout on window resize
       window.addEventListener('resize', updateTestimonialLayout);
 
+      if (window.__DEBUG__) {
       console.log('Testimonial pages found:', pages.length);
       console.log('Prev button found:', !!prevBtn);
       console.log('Next button found:', !!nextBtn);
       console.log('See more button found:', !!seeMoreBtn);
+      }
 
       function showPage(idx) {
-        console.log('Showing page:', idx);
+        if (window.__DEBUG__) console.log('Showing page:', idx);
         
         // Hide all pages first
         pages.forEach((page, i) => {
@@ -961,7 +975,7 @@
       if (prevBtn) {
         prevBtn.addEventListener('click', function(e) {
           e.preventDefault();
-          console.log('Prev button clicked');
+          if (window.__DEBUG__) console.log('Prev button clicked');
           currentPage = (currentPage - 1 + pages.length) % pages.length;
           showPage(currentPage);
         });
@@ -970,7 +984,7 @@
       if (nextBtn) {
         nextBtn.addEventListener('click', function(e) {
           e.preventDefault();
-          console.log('Next button clicked');
+          if (window.__DEBUG__) console.log('Next button clicked');
           currentPage = (currentPage + 1) % pages.length;
           showPage(currentPage);
         });
@@ -980,7 +994,7 @@
       if (seeMoreBtn) {
         seeMoreBtn.addEventListener('click', function(e) {
           e.preventDefault();
-          console.log('See more button clicked');
+          if (window.__DEBUG__) console.log('See more button clicked');
           currentPage = (currentPage + 1) % pages.length;
           showPage(currentPage);
         });
@@ -989,7 +1003,7 @@
       // Dot navigation
       dots.forEach((dot, i) => {
         dot.addEventListener('click', function() {
-          console.log('Dot clicked:', i);
+          if (window.__DEBUG__) console.log('Dot clicked:', i);
           currentPage = i;
           showPage(currentPage);
         });
@@ -997,7 +1011,7 @@
 
           // Initialize the first page
     showPage(0);
-  });
+  }
 
   // Header scroll effect
   window.addEventListener('scroll', function() {
@@ -1009,37 +1023,35 @@
     }
   });
 
-  // Hero background slideshow with JavaScript backup
+  // Hero background slideshow with preloading and high-quality rendering
   const heroElement = document.querySelector('.hero');
-  
-  // Only run slideshow if hero element exists
   if (heroElement) {
-    const heroImages = [
-      'BG.webp',
-      'BG-2.webp', 
-      'BG-3.webp',
-      'BG-4.webp',
-      'BG.webp' // Loop back to first image
-    ];
-    
+    const heroImages = ['BG.webp','BG-2.webp','BG-3.webp','BG-4.webp'];
     let currentImageIndex = 0;
+
+    // Preload all hero images up-front to avoid blurry first-paint
+    heroImages.forEach(src => { const i = new Image(); i.decoding = 'async'; i.loading = 'eager'; i.src = src; });
+
+    function applyHeroImage(src) {
+      heroElement.style.backgroundImage = `url('${src}')`;
+      heroElement.style.backgroundSize = 'cover';
+      heroElement.style.backgroundPosition = 'center';
+      heroElement.style.imageRendering = 'auto';
+      heroElement.style.webkitImageRendering = 'auto';
+    }
     
     function changeHeroImage() {
       currentImageIndex = (currentImageIndex + 1) % heroImages.length;
       const nextImage = heroImages[currentImageIndex];
-      
-      // Create a temporary element to preload the image
       const img = new Image();
-      img.onload = function() {
-        heroElement.style.backgroundImage = `url('${nextImage}')`;
-      };
+      img.decoding = 'async';
+      img.onload = function() { applyHeroImage(nextImage); };
       img.src = nextImage;
     }
     
-    // Start the slideshow after 5 seconds and repeat every 5 seconds
-    setTimeout(() => {
-      setInterval(changeHeroImage, 5000);
-    }, 5000);
+    // Set initial image explicitly to ensure crispness
+    applyHeroImage(heroImages[0]);
+    setInterval(changeHeroImage, 6000);
   }
 
     // Mobile Navigation Toggle
@@ -1048,32 +1060,34 @@
     const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
 
     // Debug logging
+  if (window.__DEBUG__) {
     console.log('Mobile nav elements found:', {
       toggle: !!mobileNavToggle,
       nav: !!mobileNav,
       links: mobileNavLinks.length
     });
+  }
 
     function toggleMobileNav() {
-      console.log('Toggle mobile nav clicked');
+      if (window.__DEBUG__) console.log('Toggle mobile nav clicked');
       const isExpanded = mobileNavToggle.getAttribute('aria-expanded') === 'true';
-      console.log('Current expanded state:', isExpanded);
+      if (window.__DEBUG__) console.log('Current expanded state:', isExpanded);
       
-      mobileNavToggle.setAttribute('aria-expanded', !isExpanded);
+      mobileNavToggle.setAttribute('aria-expanded', (!isExpanded).toString());
       
       if (!isExpanded) {
-        console.log('Opening mobile nav');
+        if (window.__DEBUG__) console.log('Opening mobile nav');
         mobileNav.classList.add('active');
         document.body.classList.add('mobile-nav-open');
         document.body.style.overflow = 'hidden'; // Prevent background scrolling
       } else {
-        console.log('Closing mobile nav');
+        if (window.__DEBUG__) console.log('Closing mobile nav');
         mobileNav.classList.remove('active');
         document.body.classList.remove('mobile-nav-open');
         document.body.style.overflow = ''; // Restore scrolling
       }
       
-      console.log('Mobile nav classes after toggle:', mobileNav.className);
+      if (window.__DEBUG__) console.log('Mobile nav classes after toggle:', mobileNav.className);
     }
 
     function closeMobileNav() {
@@ -1142,7 +1156,6 @@
       });
     }
     window.addEventListener('scroll', onScroll);
-    window.addEventListener('DOMContentLoaded', onScroll);
 
 
 
@@ -1165,82 +1178,16 @@
       charCount = document.getElementById('char-count');
     }
     
-    // Quick Fill Functions
-    function quickFill(type) {
-      if (!nameField || !emailField || !messageField) {
-        console.warn('Form fields not initialized');
-        return;
-      }
-      
-      if (type === 'demo') {
-        // Fill with demo data
-        nameField.value = 'John Doe';
-        emailField.value = 'john.doe@example.com';
-        messageField.value = 'Hello! I would like to discuss a project with your team. I\'m looking for professional digital services including graphic design and branding. Please let me know when you\'re available for a consultation.';
-        
-        // Update character count
-        updateCharCount();
-        
-        // Clear any existing errors
-        document.querySelectorAll('.error-message').forEach(el => {
-          el.textContent = '';
-          el.classList.remove('show');
-        });
-        
-        // Show success message
-        showQuickFillMessage('Demo data filled! You can edit the information before sending.');
-      }
-    }
-    
-    function clearForm() {
-      if (!nameField || !emailField || !messageField || !charCount) {
-        console.warn('Form fields not initialized');
-        return;
-      }
-      
-      // Clear all fields
-      nameField.value = '';
-      emailField.value = '';
-      messageField.value = '';
-      charCount.textContent = '0/1000';
-      
-      // Clear error messages
-      document.querySelectorAll('.error-message').forEach(el => {
-        el.textContent = '';
-        el.classList.remove('show');
-      });
-      
-      // Show success message
-      showQuickFillMessage('Form cleared!');
-    }
-    
-    function showQuickFillMessage(message) {
-      // Create or update message element
-      let messageEl = document.getElementById('quick-fill-message');
-      if (!messageEl) {
-        messageEl = document.createElement('div');
-        messageEl.id = 'quick-fill-message';
-        messageEl.className = 'quick-fill-message';
-        document.querySelector('.quick-fill-container').appendChild(messageEl);
-      }
-      
-      messageEl.textContent = message;
-      messageEl.classList.add('show');
-      
-      // Hide message after 3 seconds
-      setTimeout(() => {
-        messageEl.classList.remove('show');
-      }, 3000);
-    }
+      // Quick fill/demo utilities removed for simplicity
     
     // Simple form handling
-    document.addEventListener('DOMContentLoaded', function() {
-      console.log('DOM Content Loaded - Setting up form...');
+    function initForm() {
+      if (window.__DEBUG__) console.log('DOM Content Loaded - Setting up form...');
       
       // Initialize form elements
       initializeFormElements();
       
-      console.log('Form elements found:', {
+      if (window.__DEBUG__) console.log('Form elements found:', {
         contactForm: !!contactForm,
         nameField: !!nameField,
         emailField: !!emailField,
@@ -1265,8 +1212,11 @@
         if (length > 950) {
           charCount.classList.add('danger');
         }
-        console.log('Character count updated:', length);
+        if (window.__DEBUG__) console.log('Character count updated:', length);
       }
+
+      // Expose for quickFill()
+      window.updateCharCount = updateCharCount;
       
       // Simple validation
       function validateForm() {
@@ -1310,7 +1260,7 @@
       // Form submission - Single event listener to avoid conflicts
       contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        console.log('Form submitted!');
+        if (window.__DEBUG__) console.log('Form submitted!');
         
         // Track form submission for analytics
         trackEvent('form_interaction', {
@@ -1325,7 +1275,7 @@
         });
         
         if (!validateForm()) {
-          console.log('Form validation failed');
+          if (window.__DEBUG__) console.log('Form validation failed');
           return;
         }
         
@@ -1334,71 +1284,52 @@
         btnText.style.display = 'none';
         btnLoading.style.display = 'flex';
         
-        // Prepare form data
+        // Prepare and send form data to Formspree
         const formData = new FormData(contactForm);
-        
-        // Log form data for debugging
-        for (let [key, value] of formData.entries()) {
-          console.log(key + ': ' + value);
-        }
-        
-        // Replace the fetch call with your Node.js server
-        fetch('/submit-form', {
+        fetch(contactForm.action, {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            name: nameField.value,
-            email: emailField.value,
-            message: messageField.value
-          })
+          headers: { 'Accept': 'application/json' },
+          body: formData
         })
-        .then(response => {
-          console.log('Response status:', response.status);
-          return response.json();
-        })
-        .then(data => {
-          console.log('Parsed response:', data);
-          
-          if (data.success) {
-            // Show success modal
+          .then(async (response) => {
+            const data = await response.json().catch(() => ({}));
+            if (response.ok) {
             successModal.style.display = 'flex';
-            
-            // Reset form
+              // Accessible toast announcement
+              let toast = document.getElementById('sr-toast');
+              if (!toast) {
+                toast = document.createElement('div');
+                toast.id = 'sr-toast';
+                toast.setAttribute('role', 'status');
+                toast.setAttribute('aria-live', 'polite');
+                toast.className = 'sr-toast';
+                document.body.appendChild(toast);
+              }
+              toast.textContent = "Message sent successfully. We'll get back to you soon.";
+
             contactForm.reset();
+              if (charCount) {
             charCount.textContent = '0/1000';
             charCount.classList.remove('warning', 'danger');
-            
-            // Clear errors
+              }
             document.querySelectorAll('.error-message').forEach(el => {
               el.textContent = '';
               el.classList.remove('show');
             });
-            
-            console.log('Form submitted successfully!');
           } else {
-            // Show error message
-            const errorMsg = data.message || 'Sorry, there was an error sending your message. Please try again.';
+              const errorMsg = (data.errors && data.errors.length && data.errors[0].message) || 'Sorry, there was an error sending your message. Please try again.';
+              if (window.__DEBUG__) console.error('Formspree error:', errorMsg);
             alert(errorMsg);
-            
-            // Show validation errors if any
-            if (data.errors && Array.isArray(data.errors)) {
-              data.errors.forEach(error => {
-                console.error('Validation error:', error);
-              });
             }
-          }
-        })
-        .catch(error => {
-          console.error('Fetch error:', error);
+          })
+          .catch((err) => {
+            if (window.__DEBUG__) console.error('Fetch error:', err);
           alert('Sorry, there was an error sending your message. Please try again or contact us directly at digitalsconnect@gmail.com');
         })
         .finally(() => {
-          // Reset button state
           submitBtn.disabled = false;
-          btnText.style.display = 'inline';
-          btnLoading.style.display = 'none';
+            if (btnText) btnText.style.display = 'inline';
+            if (btnLoading) btnLoading.style.display = 'none';
         });
       });
       
@@ -1408,24 +1339,36 @@
       // Initialize character count
       updateCharCount();
       
-      console.log('Form setup complete!');
-    });
+      // Close success modal when clicking outside content
+      if (successModal) {
+        successModal.addEventListener('click', function(e) {
+          if (e.target === this) {
+            closeSuccessModal();
+          }
+        });
+      }
+
+      if (window.__DEBUG__) console.log('Form setup complete!');
+    }
     
 
 
     // Close success modal
     function closeSuccessModal() {
+      if (!successModal) {
+        successModal = document.getElementById('successModal');
+      }
+      if (successModal) {
       successModal.style.display = 'none';
+      }
+      // Restore focus to a sensible control
+      const submit = document.getElementById('submitBtn');
+      if (submit) submit.focus();
     }
     
 
 
-    // Close modal when clicking outside
-    successModal.addEventListener('click', function(e) {
-      if (e.target === this) {
-        closeSuccessModal();
-      }
-    });
+    // Listener moved into DOMContentLoaded after modal exists
 
     // Enhanced Scroll-triggered animations with IntersectionObserver
     const observerOptions = {
@@ -1444,17 +1387,17 @@
     }, observerOptions);
 
     // Observe all animation elements
-    document.addEventListener('DOMContentLoaded', () => {
+    function initObservers() {
       const animationElements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .fade-in-scale, .about-fade-in, .portfolio-fade-in, .testimonial-fade-in, .contact-fade-in, .services-fade-in');
       animationElements.forEach(el => {
         // Ensure elements start invisible
         el.classList.add('opacity-0');
         observer.observe(el);
       });
-    });
+    }
 
     // Add animation classes to elements
-    document.addEventListener('DOMContentLoaded', () => {
+    function initAnimationClasses() {
       // Portfolio cards
       const portfolioCards = document.querySelectorAll('.portfolio-card');
       portfolioCards.forEach(card => {
@@ -1484,18 +1427,18 @@
       if (servicesGrid) {
         servicesGrid.classList.add('fade-in');
       }
-    });
+    }
 
 
   </script>
 
 <script>
   // Analytics tracking for form interactions
-  document.addEventListener('DOMContentLoaded', function() {
+    function initFormAnalytics() {
     const contactForm = document.getElementById('contactForm');
+      if (!contactForm) return;
     
-    if (contactForm) {
-      // Track form focus events
+      // Focus tracking
       contactForm.addEventListener('focusin', function(e) {
         if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
           trackEvent('form_interaction', {
@@ -1506,20 +1449,32 @@
         }
       });
       
-      // Track form submission attempts (moved to main submit handler)
-      
-      // Track form input events
+      // Debounced input tracking
+      let inputDebounceTimer = null;
       contactForm.addEventListener('input', function(e) {
-        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+        if (!(e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
+        if (inputDebounceTimer) clearTimeout(inputDebounceTimer);
+        inputDebounceTimer = setTimeout(() => {
           trackEvent('form_interaction', {
             action: 'field_input',
             field_name: e.target.name,
             page_section: 'contact'
           });
-        }
+        }, 1000);
       });
-      
-      // Track form validation errors
+
+      // Blur tracking
+      contactForm.addEventListener('blur', function(e) {
+        if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) {
+          trackEvent('form_interaction', {
+            action: 'field_blur',
+            field_name: e.target.name,
+            page_section: 'contact'
+          });
+        }
+      }, true);
+
+      // Validation error tracking
       contactForm.addEventListener('invalid', function(e) {
         trackEvent('form_interaction', {
           action: 'validation_error',
@@ -1528,17 +1483,48 @@
         });
       });
     }
-  });
     
-    // Enhanced Analytics Tracking
+    // Enhanced Analytics Tracking with consent check
+    function hasAnalyticsConsent() {
+      // Simple consent check placeholder: looks for data attribute or a global flag
+      const html = document.documentElement;
+      return html.getAttribute('data-ga') === 'granted' || window.__ANALYTICS_CONSENT__ === true;
+    }
+
+    function loadGAScript(measurementId) {
+      return new Promise((resolve, reject) => {
+        if (window.gtag) return resolve();
+        const s = document.createElement('script');
+        s.async = true;
+        s.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+        s.onload = resolve;
+        s.onerror = reject;
+        document.head.appendChild(s);
+      });
+    }
+
+    async function ensureGAInitialized() {
+      if (!hasAnalyticsConsent()) return false;
+      const MEASUREMENT_ID = window.__GA_MEASUREMENT_ID__ || '';
+      if (!MEASUREMENT_ID) return false; // do nothing until a real ID is provided
+      await loadGAScript(MEASUREMENT_ID);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      window.gtag = window.gtag || gtag;
+      gtag('js', new Date());
+      // Minimal config with privacy defaults; no ad personalization/signals unless explicitly allowed
+      gtag('config', MEASUREMENT_ID, {
+        page_title: document.title,
+        page_location: window.location.href,
+        send_page_view: true,
+        anonymize_ip: true
+      });
+      return true;
+    }
+
     function trackEvent(eventName, parameters = {}) {
-      if (typeof gtag !== 'undefined') {
-        gtag('event', eventName, {
-          ...parameters,
-          custom_parameter_1: parameters.service_type || 'general',
-          custom_parameter_2: parameters.user_intent || 'browse',
-          custom_parameter_3: parameters.page_section || 'unknown'
-        });
+      if (typeof gtag === 'function' && hasAnalyticsConsent()) {
+        gtag('event', eventName, parameters);
       }
     }
     
@@ -1605,7 +1591,12 @@
     }
     
     // Initialize analytics tracking
-    document.addEventListener('DOMContentLoaded', function() {
+    async function initAnalytics() {
+      const initialized = await ensureGAInitialized();
+      if (!initialized) {
+        console.debug('Analytics not initialized (no consent or no ID)');
+        return;
+      }
       // Track initial page load
       trackEvent('page_view', {
         page_title: document.title,
@@ -1708,7 +1699,7 @@
           });
         });
       }
-    });
+    }
     
     // Track page visibility changes
     document.addEventListener('visibilitychange', function() {
@@ -1739,7 +1730,7 @@
       <div class="success-icon">✓</div>
       <h3 id="success-title">Message Sent Successfully!</h3>
       <p id="success-desc">Thank you for reaching out. We'll get back to you soon.</p>
-      <button type="button" onclick="closeSuccessModal()" class="success-close">Close</button>
+      <button type="button" class="success-close">Close</button>
     </div>
     <!-- Scroll to Top Button -->
     <button type="button" id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
@@ -1762,7 +1753,7 @@
   <!-- JavaScript moved to bottom to ensure DOM elements exist -->
   <script>
     // Scroll to Top functionality
-    document.addEventListener('DOMContentLoaded', function() {
+    function initScrollToTop() {
       const scrollToTopBtn = document.getElementById('scrollToTop');
       
       if (scrollToTopBtn) {
@@ -1783,10 +1774,10 @@
           });
         });
       }
-    });
+    }
 
     // Mobile Scroll to Home functionality
-    document.addEventListener('DOMContentLoaded', function() {
+    function initMobileScrollHome() {
       const mobileScrollHomeBtn = document.getElementById('mobileScrollHome');
       
       if (mobileScrollHomeBtn) {
@@ -1795,14 +1786,14 @@
           const isMobile = window.innerWidth <= 768;
           const isNotAtHome = window.pageYOffset > 200; // Show when scrolled past hero section
           
-          console.log('Mobile check:', { isMobile, isNotAtHome, scrollY: window.pageYOffset });
+          if (window.__DEBUG__) console.log('Mobile check:', { isMobile, isNotAtHome, scrollY: window.pageYOffset });
           
           if (isMobile && isNotAtHome) {
             mobileScrollHomeBtn.classList.add('show');
-            console.log('Mobile scroll home button shown');
+            if (window.__DEBUG__) console.log('Mobile scroll home button shown');
           } else {
             mobileScrollHomeBtn.classList.remove('show');
-            console.log('Mobile scroll home button hidden');
+            if (window.__DEBUG__) console.log('Mobile scroll home button hidden');
           }
         }
         
@@ -1830,7 +1821,23 @@
           }
         });
       }
-    });
+    }
+
+    // Unified initialization entrypoint
+    function init() {
+      // Ensure elements are ready
+      try { initTestimonials(); } catch (e) { console.debug('initTestimonials skipped', e); }
+      try { onScroll(); } catch (e) { console.debug('onScroll skipped', e); }
+      try { initForm(); } catch (e) { console.debug('initForm skipped', e); }
+      try { initObservers(); } catch (e) { console.debug('initObservers skipped', e); }
+      try { initAnimationClasses(); } catch (e) { console.debug('initAnimationClasses skipped', e); }
+      try { initFormAnalytics(); } catch (e) { console.debug('initFormAnalytics skipped', e); }
+      try { initAnalytics(); } catch (e) { console.debug('initAnalytics skipped', e); }
+      try { initScrollToTop(); } catch (e) { console.debug('initScrollToTop skipped', e); }
+      try { initMobileScrollHome(); } catch (e) { console.debug('initMobileScrollHome skipped', e); }
+    }
+
+    document.addEventListener('DOMContentLoaded', init);
   </script>
 </body>
 </html>
