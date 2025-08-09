@@ -108,8 +108,8 @@
       color: #fff;
       z-index: 2;
       position: relative;
-      max-width: 60%;
-      padding: 1rem 1.25rem;
+      max-width: min(92vw, 820px);
+      padding: clamp(0.75rem, 2vw, 1.25rem) clamp(1rem, 3vw, 1.5rem);
       background: rgba(255, 255, 255, 0.12);
       border: 1px solid rgba(255, 255, 255, 0.28);
       border-radius: 1.25rem;
@@ -128,7 +128,17 @@
       font-weight: 800;
       margin: 0;
       text-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
-      white-space: nowrap;
+      white-space: normal;
+      overflow-wrap: anywhere;
+      line-height: 1.1;
+    }
+    
+    .hero-title .word {
+      position: relative;
+    }
+    .hero-title .word:not(:last-child)::after {
+      content: " ·";
+      white-space: pre;
     }
     
     .hero-btn {
@@ -200,8 +210,10 @@
     }
     
     .mobile-nav a:hover {
-      background: rgba(255, 255, 255, 0.1);
-      transform: translateX(10px);
+      color: #B8860B;  /* brand yellow */
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.12);
+      box-shadow: 0 12px 38px rgba(0,0,0,0.30);
     }
     
     /* Critical CSS - Responsive */
@@ -209,14 +221,122 @@
       .desktop-nav { display: none; }
       .mobile-nav-toggle { display: block; }
       header { padding: 1rem; }
-      .hero-title { font-size: 2.5rem; }
+      .hero-title { font-size: 2.5rem; line-height: 1.15; }
+      .hero-content { max-width: 92%; }
       .hero-btn { padding: 0.8rem 1.5rem; font-size: 1rem; }
     }
     
     @media (max-width: 480px) {
-      .hero-title { font-size: 2rem; }
+      .hero-title { font-size: 2rem; line-height: 1.2; }
+      .hero-content { max-width: 96%; }
       .hero-btn { padding: 0.7rem 1.2rem; font-size: 0.9rem; }
       .logo img { height: 32px; }
+    }
+
+    /* Force burger icon to brand navy and ensure contrast over transparent header */
+    header .mobile-nav-toggle .hamburger-line {
+      background-color: #000F33 !important; /* brand navy */
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.45); /* optional: remove if you don't want the outline */
+    }
+
+    /* Burger: force brand navy and animate to X */
+    header .mobile-nav-toggle .hamburger-line {
+      display: block;
+      width: 26px;
+      height: 3px;
+      background-color: #000F33 !important; /* brand navy */
+      margin: 5px 0;
+      border-radius: 2px;
+      transition: transform .3s ease, opacity .25s ease, background-color .2s ease;
+    }
+
+    .mobile-nav-toggle[aria-expanded="true"] .hamburger-line:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    .mobile-nav-toggle[aria-expanded="true"] .hamburger-line:nth-child(2) {
+      opacity: 0;
+    }
+    .mobile-nav-toggle[aria-expanded="true"] .hamburger-line:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* Fancy mobile dropdown: glassy, animated, brand accents */
+    .mobile-nav {
+      background:
+        radial-gradient(1200px 600px at 20% -10%, rgba(184,134,11,.25) 0%, transparent 60%),
+        radial-gradient(800px 400px at 110% 10%, rgba(212,175,55,.22) 0%, transparent 60%),
+        rgba(0, 15, 51, 0.82) !important;
+      backdrop-filter: blur(22px) saturate(140%);
+      -webkit-backdrop-filter: blur(22px) saturate(140%);
+      opacity: 0;
+      transform: translateY(-12px) scale(.98);
+      pointer-events: none;
+      transition: opacity .35s ease, transform .35s cubic-bezier(.22,.61,.36,1);
+    }
+
+    .mobile-nav.active {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+
+    .mobile-nav a {
+      width: min(90vw, 420px);
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 14px;
+      padding: 0.9rem 1.25rem;
+      margin: 0.4rem 0;
+      color: #fff;
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+      transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease;
+    }
+
+    .mobile-nav a:hover {
+      color: #B8860B;  /* brand yellow */
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.12);
+      box-shadow: 0 12px 38px rgba(0,0,0,0.30);
+    }
+
+    /* Staggered link reveal */
+    .mobile-nav.active a { animation: navFade .45s ease forwards; opacity: 0; }
+    .mobile-nav.active a:nth-child(2) { animation-delay: .05s; } /* first link (after close) */
+    .mobile-nav.active a:nth-child(3) { animation-delay: .10s; }
+    .mobile-nav.active a:nth-child(4) { animation-delay: .15s; }
+    .mobile-nav.active a:nth-child(5) { animation-delay: .20s; }
+    .mobile-nav.active a:nth-child(6) { animation-delay: .25s; }
+
+    @keyframes navFade {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .mobile-nav-close { background: #B8860B; color: #000F33; }
+
+    /* Mobile nav: hover/focus/active -> brand yellow */
+    .mobile-nav a:hover,
+    .mobile-nav a:focus,
+    .mobile-nav a:active {
+      color: #B8860B !important;
+      background: rgba(255,255,255,0.14);
+      box-shadow: 0 12px 38px rgba(0,0,0,0.30);
+    }
+
+    /* Mobile nav: active state also yellow (not red) */
+    .mobile-nav a.active {
+      color: #B8860B !important;
+    }
+
+    /* Mobile nav close button: brand yellow (default + hover) */
+    .mobile-nav-close {
+      background: #B8860B !important;
+      color: #000F33 !important;
+    }
+    .mobile-nav-close:hover,
+    .mobile-nav-close:active {
+      background: #A67C0A !important;
     }
   </style>
   
