@@ -22,8 +22,8 @@
   <!-- Fonts and External Resources -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Merriweather:wght@700&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
   
   <!-- Critical CSS for above-the-fold content -->
   <style>
@@ -143,7 +143,7 @@
     
     .hero-btn {
       display: inline-block;
-      background: linear-gradient(135deg, #EC1C24 0%, #B8860B 100%);
+      background: transparent;
       color: #fff;
       padding: 1rem 2rem;
       text-decoration: none;
@@ -152,11 +152,29 @@
       font-size: 1.1rem;
       transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
       box-shadow: 0 8px 25px rgba(236, 28, 36, 0.3);
+      border: 2px solid transparent;
+      position: relative;
+    }
+    
+    .hero-btn::after {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(135deg, #EC1C24 0%, #B8860B 100%);
+      border-radius: 50px;
+      z-index: -1;
     }
     
     .hero-btn:hover {
       transform: translateY(-3px);
       box-shadow: 0 12px 35px rgba(236, 28, 36, 0.4);
+    }
+    
+    .hero-btn:hover::after {
+      background: linear-gradient(135deg, #B8860B 0%, #EC1C24 100%);
     }
     
     /* Critical CSS - Mobile Navigation */
@@ -336,7 +354,7 @@
     }
     .mobile-nav-close:hover,
     .mobile-nav-close:active {
-      background: #A67C0A !important;
+      background: #B8860B !important;
     }
   </style>
   
@@ -355,15 +373,22 @@
   <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="Connect Digitals | Branding & Digital Marketing Services">
   <meta property="og:image" content="https://connectdigital.netlify.app/Connect.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:image:type" content="image/webp">
+  <meta property="og:image:alt" content="Connect Digitals - Branding & Digital Marketing Agency">
   <meta property="og:description" content="Connect Digitals: A branding & digital marketing agency. We design logos, manage social media, and drive growth.">
   <meta property="og:site_name" content="Connect Digitals">
   <meta property="og:url" content="https://connectdigital.netlify.app/">
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
 
   <!-- Twitter Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Connect Digitals | Branding & Digital Marketing Services">
+  <meta name="twitter:description" content="Connect Digitals: A branding & digital marketing agency. We design logos, manage social media, and drive growth.">
   <meta name="twitter:image" content="https://connectdigital.netlify.app/Connect.webp">
+  <meta name="twitter:image:alt" content="Connect Digitals - Branding & Digital Marketing Agency">
 
   <!-- Structured Data: Organization -->
   <script type="application/ld+json">
@@ -401,47 +426,38 @@
 </head>
 <body>
 
-  <a class="skip-link" href="#main">Skip to main content</a>
-
-  <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" tabindex="-1" aria-labelledby="modal-title" aria-describedby="modal-desc">
-    <div class="modal-content" role="document">
-      <button type="button" class="modal-close" aria-label="Close modal" tabindex="0">&times;</button>
-      <h3 id="modal-title" tabindex="0"></h3>
-      <p id="modal-desc" tabindex="0"></p>
-    </div>
-  </div>
-
   <header>
-    <a href="#home" class="logo" aria-label="Go to homepage">
+    <div class="logo">
       <img src="./Logo.svg" alt="Connect Digitals Logo" width="150" height="40">
-    </a>
+    </div>
     <nav class="desktop-nav" aria-label="Desktop navigation">
       <a href="#home">Home</a>
       <a href="#about"> About</a>
       <a href="#services">Services</a>
       <a href="#portfolio">Portfolio</a>
+      <a href="#testimonials">Testimonials</a>
       <a href="#contact">Contact</a>
     </nav>
     
-    <!-- Mobile Navigation Toggle (with no-JS fallback via checkbox) -->
-    <input type="checkbox" id="mobileNavToggle" class="mobile-nav-checkbox" aria-hidden="true">
-    <label for="mobileNavToggle" class="mobile-nav-toggle" aria-label="Toggle mobile navigation" aria-controls="mobileNav" aria-expanded="false">
+    <!-- Mobile Navigation Toggle (JS injected) -->
+    <button type="button" class="mobile-nav-toggle" aria-label="Toggle mobile navigation" aria-controls="mobileNav" aria-expanded="false">
       <span class="hamburger-line"></span>
       <span class="hamburger-line"></span>
       <span class="hamburger-line"></span>
-    </label>
+    </button>
     
-    <!-- Mobile Navigation Menu -->
-    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
-      <label for="mobileNavToggle" class="mobile-nav-close" aria-label="Close mobile navigation">
+    <!-- Mobile Navigation Menu (JS injected) -->
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" style="display: none;">
+      <button type="button" class="mobile-nav-close" aria-label="Close mobile navigation">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M18 6L6 18M6 6L18 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-      </label>
+      </button>
       <a href="#home">Home</a>
       <a href="#about">About</a>
       <a href="#services">Services</a>
       <a href="#portfolio">Portfolio</a>
+      <a href="#testimonials">Testimonials</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -459,151 +475,254 @@
   <section id="about" class="about-section">
     <div class="about-container">
   
-      <!-- Left Column: User Photo + About Us Text -->
+      <!-- Left: About Us -->
       <div class="about-left">
+        <div class="fancy-logo-card about-card">
+          <h2 class="about-heading">About Us</h2>
+          <p class="about-text">
+            At <span style="font-weight: 600; color: #EC1C24;">Connect Digitals</span>, we believe every successful brand begins with a <span style="font-weight: 600; color: #000F33;">meaningful connection</span>. We take the time to understand your <span style="font-weight: 600; color: #B8860B;">vision</span>, your <span style="font-weight: 600; color: #B8860B;">audience</span>, and your <span style="font-weight: 600; color: #B8860B;">unique story</span>.
+          </p>
+          <p class="about-text">
+            From there, we craft <span style="font-weight: 600; color: #EC1C24;">powerful designs</span> and <span style="font-weight: 600; color: #000F33;">strategies</span> that <span style="font-weight: 600; color: #B8860B;">captivate</span> your audience through branding, marketing, and social media. Your <span style="font-weight: 600; color: #EC1C24;">story</span>, our <span style="font-weight: 600; color: #000F33;">strategy</span>, together we create <span style="font-weight: 600; color: #B8860B;">brands people remember</span>.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right: Picture + Slogan -->
+      <div class="about-right">
+        <!-- Picture -->
         <div class="fancy-logo-card about-card">
           <img src="Bereket Fikre.webp" alt="Bereket Fikre (CEO) ." class="about-photo" loading="lazy" width="110" height="110">
           <span class="about-name">Bereket Fikre</span>
           <span class="about-title">Founder & Lead Designer</span>
-          <h2 class="about-heading">About Us</h2>
-          <h3 class="about-subheading">Connect Digitals</h3>
+        </div>
+
+        <!-- Slogan -->
+        <div class="fancy-logo-card about-card">
           <p class="about-text">
-            Where creativity meets strategy. We craft standout brands that connect.
+            <span style="font-weight: 700; color: #000F33;">Connect</span>. <span style="font-weight: 700; color: #B8860B;">Create</span>. <span style="font-weight: 700; color: #EC1C24;">Captivate</span>.
           </p>
-          <ul class="about-list">
-            <li><span style="font-weight: 600; color: #000F33;">Logo & Branding</span></li>
-            <li><span style="font-weight: 600; color: #B8860B;">Digital Marketing</span></li>
-            <li><span style="font-weight: 600; color: #EC1C24;">Graphic Design</span></li>
-            <li><span style="font-weight: 600; color: #000F33;">Social Media Management</span></li>
-          </ul>
           <p class="about-text">
-            Smart strategy meets stunning design building memorable brands that resonate.
+            More than a tagline, it's how we <span style="font-weight: 600; color: #000F33;">build legacies</span>.
           </p>
         </div>
       </div>
   
-      <!-- Right Column: Decorative Image -->
-      <div class="about-right">
-        <img src="Connect.webp" alt="About Connect Digitals" loading="lazy" class="about-image" width="400" height="300">
-        <div class="about-quote-container">
-          <div class="about-quote">
-            <p class="about-quote-text">
-              "Whether launching a new business or elevating an existing brand, Connect Digitals is your trusted partner to <span style='color:#000F33;'>create</span>, <span style='color:#B8860B;'>grow</span>, and <span style='color:#EC1C24;'>inspire</span>."
-        </p>
-          </div>
-          <div class="about-tagline">
-          <span style="color:#000F33;">Connect</span>. 
-            <span style="color:#B8860B;"> Create</span>.
-            <span style="color:#EC1C24;"> Captivate</span>.
-          </div>
-        </div>
-      </div>
+
   
-      <!-- Brand Story (full width below columns) -->
-      <div class="about-story">
-        <h3 class="about-story-heading">🌟 Brand Story</h3>
-        <p class="about-story-text">
-          At <span style="font-weight: 600; color: #EC1C24;">Connect Digitals</span>, we turn your vision into unforgettable brands. Through creative design and strategic marketing, we help you connect with your audience, tell your story, and stand out in the digital world.
-        </p>
-        <p style="font-size: 1.05rem; color: #000F33; font-weight: bold; margin-top: 1rem;">Connect. Create. Captivate. <span style="font-weight: 400; color: #222222;">– That's our promise.</span></p>
-      </div>
+
     </div>
   </section>
   
   <section id="services" aria-labelledby="services-heading">
-   <h2 id="services-heading">Our Services</h2>
-    <div class="portfolio-grid-3x3" role="list" aria-label="Services offered">
-      <button type="button" class="portfolio-card" role="listitem" onclick="openModal('Logo & Branding','Distinct, memorable brand visuals that define your identity.')" aria-label="Learn more about Logo & Branding services">
-        <div class="portfolio-content">
-          <div class="icon">🎨</div>
-          <h3>Logo & Branding</h3>
-          <p>Crafting cohesive visual identities.</p>
-        </div>
-      </button>
-  
-      <button type="button" class="portfolio-card" role="listitem" onclick="openModal('Digital Marketing','Targeted campaigns to grow your reach.')" aria-label="Learn more about Digital Marketing services">
-        <div class="portfolio-content">
-          <div class="icon">📈</div>
-          <h3>Digital Marketing</h3>
-          <p>Data-driven strategies for results.</p>
-        </div>
-      </button>
-  
-      <button type="button" class="portfolio-card" role="listitem" onclick="openModal('Graphics Design','Visual storytelling that captivates.')" aria-label="Learn more about Graphics Design services">
-        <div class="portfolio-content">
-          <div class="icon">🖌️</div>
-          <h3>Graphics Design</h3>
-          <p>Custom illustrations, layouts, and more.</p>
-        </div>
-      </button>
-  
-      <button type="button" class="portfolio-card" role="listitem" onclick="openModal('Social Media Management','Active, engaging brand presence online.')" aria-label="Learn more about Social Media Management services">
-        <div class="portfolio-content">
-          <div class="icon">📱</div>
-          <h3>Social Media</h3>
-          <p>We manage your brand across platforms.</p>
-        </div>
-      </button>
+    <div class="services-container">
+      <h2 id="services-heading" class="services-heading">
+        Our Services
+      </h2>
+      <p class="services-subtitle">Transforming ideas into powerful visual experiences</p>
+      
+      <div class="services-grid" role="list" aria-label="Services offered">
+                  <button type="button" class="service-card" role="listitem" data-modal-title="Logo & Branding" data-modal-content="Distinct, memorable brand visuals that define your identity." aria-label="Learn more about Logo & Branding services">
+          <div class="service-card-inner">
+            <div class="service-icon-wrapper">
+              <div class="service-icon">🎨</div>
+              <div class="icon-glow"></div>
+            </div>
+            <div class="service-content">
+              <h3>Logo & Branding</h3>
+              <p>Crafting cohesive visual identities that tell your story.</p>
+              <div class="service-features">
+                <span class="feature-tag">Logo Design</span>
+                <span class="feature-tag">Brand Identity</span>
+                <span class="feature-tag">Style Guides</span>
+              </div>
+            </div>
+            <div class="service-overlay">
+              <span class="learn-more">Learn More →</span>
+            </div>
+          </div>
+        </button>
+
+                  <button type="button" class="service-card" role="listitem" data-modal-title="Digital Marketing" data-modal-content="Targeted campaigns to grow your reach." aria-label="Learn more about Digital Marketing services">
+          <div class="service-card-inner">
+            <div class="service-icon-wrapper">
+              <div class="service-icon">📈</div>
+              <div class="icon-glow"></div>
+            </div>
+            <div class="service-content">
+              <h3>Digital Marketing</h3>
+              <p>Data-driven strategies that deliver measurable results.</p>
+              <div class="service-features">
+                <span class="feature-tag">Campaigns</span>
+                <span class="feature-tag">Analytics</span>
+                <span class="feature-tag">ROI Focus</span>
+              </div>
+            </div>
+            <div class="service-overlay">
+              <span class="learn-more">Learn More →</span>
+            </div>
+          </div>
+        </button>
+
+                  <button type="button" class="service-card" role="listitem" data-modal-title="Graphic Design" data-modal-content="Visual storytelling that captivates." aria-label="Learn more about Graphic Design services">
+          <div class="service-card-inner">
+            <div class="service-icon-wrapper">
+              <div class="service-icon">🖌️</div>
+              <div class="icon-glow"></div>
+            </div>
+            <div class="service-content">
+              <h3>Graphic Design</h3>
+              <p>Custom illustrations and layouts that speak volumes.</p>
+              <div class="service-features">
+                <span class="feature-tag">Illustrations</span>
+                <span class="feature-tag">Layouts</span>
+                <span class="feature-tag">Visuals</span>
+              </div>
+            </div>
+            <div class="service-overlay">
+              <span class="learn-more">Learn More →</span>
+            </div>
+          </div>
+        </button>
+
+                  <button type="button" class="service-card" role="listitem" data-modal-title="Social Media Management" data-modal-content="Active, engaging brand presence online." aria-label="Learn more about Social Media Management services">
+          <div class="service-card-inner">
+            <div class="service-icon-wrapper">
+              <div class="service-icon">📱</div>
+              <div class="icon-glow"></div>
+            </div>
+            <div class="service-content">
+              <h3>Social Media</h3>
+              <p>We manage your brand presence across all platforms.</p>
+              <div class="service-features">
+                <span class="feature-tag">Content</span>
+                <span class="feature-tag">Engagement</span>
+                <span class="feature-tag">Growth</span>
+              </div>
+            </div>
+            <div class="service-overlay">
+              <span class="learn-more">Learn More →</span>
+            </div>
+          </div>
+        </button>
+      </div>
     </div>
   </section>
   
   <section id="portfolio" aria-labelledby="portfolio-heading">
-    <h2 id="portfolio-heading">Our Portfolio</h2>
-    <div class="portfolio-grid-3x3" role="list" aria-label="Portfolio projects">
-      <button type="button" class="portfolio-card" onclick="openModal('Creative Brand Identity','Visual identity design for startup.')" aria-label="View Creative Brand Identity project details">
-        <img src="Zewd.webp" alt="Minimal logo design project thumbnail for Zewd brand" loading="lazy" width="600" height="400">
+    <div class="portfolio-container">
+      <h2 id="portfolio-heading">Our Portfolio</h2>
+      <div class="portfolio-grid-3x3" role="list" aria-label="Portfolio projects">
+                  <button type="button" class="portfolio-card" data-modal-title="Creative Brand Identity" data-modal-content="Visual identity design for startup." aria-label="View Creative Brand Identity project details">
+        <img src="Zewd.webp" alt="Minimalist logo design sample - clean, modern typography for Zewd brand" loading="lazy" width="600" height="400">
         <div class="portfolio-content"><h3>Minimal Logo Design</h3><p>Logo design for a startup.</p></div>
+        <div class="overlay">
+          <div class="overlay-content">
+            <div class="overlay-icon">🎨</div>
+            <div class="overlay-text">View Details</div>
+          </div>
+        </div>
       </button>
-      <button type="button" class="portfolio-card" onclick="openModal('E‑commerce Ad Campaign','High‑engagement social campaign.')" aria-label="View E-commerce Ad Campaign project details">
-          <img src="swan-clothing.webp" alt="Brand identity concept for Swan Clothing – logo and packaging mockups" loading="lazy" width="600" height="400">
+                  <button type="button" class="portfolio-card" data-modal-title="E‑commerce Ad Campaign" data-modal-content="High‑engagement social campaign." aria-label="View E-commerce Ad Campaign project details">
+          <img src="swan-clothing.webp" alt="Complete brand identity package for Swan Clothing - logo design with product packaging mockups" loading="lazy" width="600" height="400">
         <div class="portfolio-content"><h3>Brand Identity Design</h3><p>Corporate brand identity.</p></div>
+        <div class="overlay">
+          <div class="overlay-content">
+            <div class="overlay-icon">🏢</div>
+            <div class="overlay-text">View Details</div>
+          </div>
+        </div>
       </button>
-      <button type="button" class="portfolio-card" onclick="openModal('Social Media Revamp','Consistent social visuals.')" aria-label="View Social Media Revamp project details">
-        <img src="Finix.webp" alt="Finix social media post templates – preview of feed and story designs" loading="lazy" width="600" height="400">
+                  <button type="button" class="portfolio-card" data-modal-title="Social Media Revamp" data-modal-content="Consistent social visuals." aria-label="View Social Media Revamp project details">
+        <img src="Finix.webp" alt="Finix web asset collection - website banners and digital marketing materials" loading="lazy" width="600" height="400">
         <div class="portfolio-content"><h3>Web Asset design</h3><p>Website banner & asset designs.</p></div>
+        <div class="overlay">
+          <div class="overlay-content">
+            <div class="overlay-icon">💻</div>
+            <div class="overlay-text">View Details</div>
+          </div>
+        </div>
       </button>
-      <button type="button" class="portfolio-card" onclick="openModal('Minimal Logo','Simple logo design for digital use.')" aria-label="View Minimal Logo project details">
-        <img src="SM.webp" alt="Social media template set – post and story layout samples" loading="lazy" width="600" height="400">
+                  <button type="button" class="portfolio-card" data-modal-title="Minimal Logo" data-modal-content="Simple logo design for digital use." aria-label="View Minimal Logo project details">
+        <img src="SM.webp" alt="Social media template collection - Instagram post and story design layouts" loading="lazy" width="600" height="400">
         <div class="portfolio-content"><h3>Social Media Template </h3><p>Social Media Post.</p></div>
+        <div class="overlay">
+          <div class="overlay-content">
+            <div class="overlay-icon">📱</div>
+            <div class="overlay-text">View Details</div>
+          </div>
+        </div>
       </button>
-      <button type="button" class="portfolio-card" onclick="openModal('Apparel Design','Complete launch visuals.')" aria-label="View Apparel Design project details">
-        <img src="Lensa Fashion Design & Makeup.webp" alt="Packaging design mockups for Lensa Fashion – branded bag and label" loading="lazy" width="600" height="400">
-        <div class="portfolio-content"><h3>Packaging Design</h3><p>Brand assets for packaging bag.</p></div>
+                  <button type="button" class="portfolio-card" data-modal-title="Apparel Design" data-modal-content="Complete launch visuals." aria-label="View Apparel Design project details">
+        <img src="Lensa Fashion Design & Makeup.webp" alt="Lensa Fashion packaging design - branded shopping bags and product labels" loading="lazy" width="600" height="400">
+        <div class="portfolio-content"><h3>Packaging Design</h3><p>Brand assets for packaging.</p></div>
+        <div class="overlay">
+          <div class="overlay-content">
+            <div class="overlay-icon">📦</div>
+            <div class="overlay-text">View Details</div>
+          </div>
+        </div>
       </button>
-      <button type="button" class="portfolio-card" onclick="openModal('Print Design','Flyers, posters & more.')" aria-label="View Print Design project details">
-        <img src="Company profile.webp" alt="Company profile print design – cover and inner page spread" loading="lazy" width="600" height="400">
-        <div class="portfolio-content"><h3>Print Design</h3><p>Company profile, Catalgos, Menus & Flyers.</p></div>
+                  <button type="button" class="portfolio-card" data-modal-title="Print Design" data-modal-content="Flyers, posters & more." aria-label="View Print Design project details">
+        <img src="Company profile.webp" alt="Company profile print design - professional brochure with cover and interior layouts" loading="lazy" width="600" height="400">
+        <div class="portfolio-content"><h3>Print Design</h3><p>Company profile, Catalogs, Menus & Flyers.</p></div>
+        <div class="overlay">
+          <div class="overlay-content">
+            <div class="overlay-icon">🖨️</div>
+            <div class="overlay-text">View Details</div>
+          </div>
+        </div>
       </button>
-      <button type="button" class="portfolio-card" onclick="openModal('Product Ads','E‑commerce product visuals.')" aria-label="View Product Ads project details">
-        <img src="Maleda Coffee.webp" alt="Maleda Coffee product ad – cup and packaging with brand visuals" loading="lazy" width="600" height="400">
+                  
+                  <button type="button" class="portfolio-card" data-modal-title="Product Ads" data-modal-content="E‑commerce product visuals." aria-label="View Product Ads project details">
+        <img src="Maleda Coffee.webp" alt="Maleda Coffee product advertisement - coffee cup and packaging with brand visuals" loading="lazy" width="600" height="400">
         <div class="portfolio-content"><h3>Product Ads</h3><p>Custom visuals for products.</p></div>
+        <div class="overlay">
+          <div class="overlay-content">
+            <div class="overlay-icon">☕</div>
+            <div class="overlay-text">View Details</div>
+          </div>
+        </div>
       </button>
-      <button type="button" class="portfolio-card" onclick="openModal('Social Templates','Story & post templates.')" aria-label="View Social Templates project details">
-        <img src="Andegna.webp" alt="Andegna signage design – office wall and roll‑up banner previews" loading="lazy" width="600" height="400">
+                  <button type="button" class="portfolio-card" data-modal-title="Social Templates" data-modal-content="Story & post templates." aria-label="View Social Templates project details">
+        <img src="Andegna.webp" alt="Andegna signage design - office wall graphics and roll-up banner displays" loading="lazy" width="600" height="400">
         <div class="portfolio-content"><h3>Signage Design</h3><p>Office Signage, Rollup & Banner Designs.</p></div>
+        <div class="overlay">
+          <div class="overlay-content">
+            <div class="overlay-icon">🏢</div>
+            <div class="overlay-text">View Details</div>
+          </div>
+        </div>
       </button>
-      <button type="button" class="portfolio-card" onclick="openModal('Stationery Design','Digital assets for campaigns.')" aria-label="View Stationery Design project details">
-        <img src="Y.A.T Construction PLC.webp" alt="Stationery set for Y.A.T Construction – letterhead, business card, envelope" loading="lazy" width="600" height="400">
+                  <button type="button" class="portfolio-card" data-modal-title="Stationery Design" data-modal-content="Digital assets for campaigns." aria-label="View Stationery Design project details">
+        <img src="Y.A.T Construction PLC.webp" alt="Y.A.T Construction stationery set - professional letterhead, business cards and envelopes" loading="lazy" width="600" height="400">
         <div class="portfolio-content"><h3>Stationery Design</h3><p>Letterheads, Business Cards, Envelopes & Folders.</p></div>
+        <div class="overlay">
+          <div class="overlay-content">
+            <div class="overlay-icon">📄</div>
+            <div class="overlay-text">View Details</div>
+          </div>
+        </div>
       </button>
-    </div>
-    <!-- Replace Watch More button -->
-    <div class="text-center mt-8">
-      <a href="https://heyzine.com/flip-book/2e51bd7d15.html" class="fancy-btn" target="_blank" rel="noopener noreferrer" role="button" tabindex="0">
-        <span class="fancy-btn-text">See Full Portfolio</span>
-        <span class="fancy-btn-icon">&#8594;</span>
-      </a>
+          </div>
+      <!-- Replace Watch More button -->
+      <div class="portfolio-button-container">
+        <a href="https://heyzine.com/flip-book/2e51bd7d15.html" class="fancy-btn" target="_blank" rel="noopener noreferrer" role="button" tabindex="0">
+          <span class="fancy-btn-text">See Full Portfolio</span>
+          <span class="fancy-btn-icon">&#8594;</span>
+        </a>
+      </div>
     </div>
   </section>
 
-  <section id="testimonials" class="py-16 bg-gradient-to-br from-[#F8F4EF] to-[#fff] animate-fadeInUp">
-    <div class="max-w-6xl mx-auto px-4 text-center">
-      <h2 class="text-4xl font-bold text-[#000F33] mb-4">What Our Clients Say</h2>
-      <p class="text-lg text-gray-600 mb-12 max-w-2xl mx-auto">Real stories from real clients who trusted us with their brand vision</p>
+  <section id="testimonials" class="testimonials-section" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
+    <div class="testimonials-container">
+      <h2 class="testimonials-heading">What Our Clients Say</h2>
+      <p class="testimonials-subtitle">Real stories from real clients who trusted us with their brand vision</p>
       
-      <div id="testimonial-slider" class="relative">
+      <div id="testimonial-slider" class="relative" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
         <!-- Page 1: First 3 testimonials -->
-        <div class="testimonial-page" style="display:block;">
+        <div class="testimonial-page" style="display:block; opacity: 1; transform: translateY(0);">
           <div class="testimonial-grid">
             <!-- Testimonial 1 -->
             <div class="testimonial-card">
@@ -625,7 +744,7 @@
                 </div>
               </div>
               <div class="testimonial-content">
-                <div class="quote-icon">❝</div>
+                <div class="quote-icon" aria-hidden="true">❝</div>
                 <p class="testimonial-text">"Working with Connect Digitals was a game-changer for our non-profit. They created compelling visuals that helped us double donations during our annual campaign. Passionate and mission-aligned!"</p>
               </div>
             </div>
@@ -650,7 +769,7 @@
                 </div>
               </div>
               <div class="testimonial-content">
-                <div class="quote-icon">❝</div>
+                <div class="quote-icon" aria-hidden="true">❝</div>
                 <p class="testimonial-text">"From event posters to digital ads, Connect Digitals made our product launch unforgettable. Their designs grabbed attention and drove ticket sales. Will definitely work with them again!"</p>
               </div>
             </div>
@@ -675,7 +794,7 @@
                 </div>
               </div>
               <div class="testimonial-content">
-                <div class="quote-icon">❝</div>
+                <div class="quote-icon" aria-hidden="true">❝</div>
                 <p class="testimonial-text">"Professional, quick, and always on point. They captured exactly what we envisioned and more!"</p>
               </div>
             </div>
@@ -683,7 +802,7 @@
         </div>
 
         <!-- Page 2: Last 3 testimonials -->
-        <div class="testimonial-page" style="display:none;">
+        <div class="testimonial-page" style="display:none; opacity: 0; transform: translateY(30px); visibility: hidden;">
           <div class="testimonial-grid">
             <!-- Testimonial 4 -->
             <div class="testimonial-card">
@@ -705,7 +824,7 @@
                 </div>
               </div>
               <div class="testimonial-content">
-                <div class="quote-icon">❝</div>
+                <div class="quote-icon" aria-hidden="true">❝</div>
                 <p class="testimonial-text">"As a small business, we needed affordable yet high-quality designs. Connect Digitals delivered stunning flyers and social media graphics that boosted our local visibility. Professional and budget-friendly!"</p>
               </div>
             </div>
@@ -730,7 +849,7 @@
                 </div>
               </div>
               <div class="testimonial-content">
-                <div class="quote-icon">❝</div>
+                <div class="quote-icon" aria-hidden="true">❝</div>
                 <p class="testimonial-text">"We hired Connect Digitals to revamp our corporate branding, and the results exceeded expectations. Their strategic approach and attention to detail gave us a cohesive identity across all platforms. A+ service!"</p>
               </div>
             </div>
@@ -755,7 +874,7 @@
                 </div>
               </div>
               <div class="testimonial-content">
-                <div class="quote-icon">❝</div>
+                <div class="quote-icon" aria-hidden="true">❝</div>
                 <p class="testimonial-text">"Bereket understood my personal brand instantly and created a logo that reflects my values. The process was collaborative, and the result was uniquely 'me.' Exceptional talent!"</p>
               </div>
             </div>
@@ -782,7 +901,7 @@
       </div>
     </div>
     
-    <div class="text-center mt-12">
+    <div class="testimonials-button-container">
       <button type="button" id="see-more-reviews" class="fancy-btn" role="button" tabindex="0">
         <span class="fancy-btn-text">See More Reviews</span>
         <span class="fancy-btn-icon">&#8594;</span>
@@ -791,7 +910,7 @@
   </section>
 
   <section id="contact" class="contact-section">
-    <h2>Contact Us</h2>
+    <h2 id="contact-heading">Contact Us</h2>
     <div class="contact-container">
       <form id="contactForm" class="contact-form" action="https://formspree.io/f/mgvzpqpq" method="POST" novalidate>
         <div class="form-field input-group">
@@ -833,7 +952,7 @@
         <input type="text" name="company" class="hidden" style="display:none !important;" tabindex="-1" autocomplete="off" aria-hidden="true">
 
         <button id="submitBtn" type="submit" class="btn-shimmer">
-          <span class="btn-text">Send Message</span>
+          <span class="btn-text">Send</span>
           <span class="btn-loading" style="display:none;">
             <svg class="spinner" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" opacity="0.25"></circle>
@@ -851,13 +970,22 @@
         <h3>Ready to connect?</h3>
         <p><strong>Phone:</strong> 0923988838</p>
         <p><strong>Email:</strong> digitalsconnect@gmail.com</p>
-        <div>
-          <strong>Connect with us:</strong><br/>
-          <a href="https://linktr.ee/Connectdigitals" target="_blank" rel="noopener noreferrer">Linktree</a> |
-          <a href="https://web.facebook.com/connectdigitals.fb" target="_blank" rel="noopener noreferrer">Facebook</a> |
-          <a href="https://www.instagram.com/connectdigitals.ig" target="_blank" rel="noopener noreferrer">Instagram</a> |
-          <a href="https://www.tiktok.com/@connect.digitals" target="_blank" rel="noopener noreferrer">TikTok</a> |
-          <a href="https://t.me/connectdigitals" target="_blank" rel="noopener noreferrer">Telegram</a>
+        <div class="social-links">
+          <strong>Connect with us:</strong>
+          <div class="social-icons">
+            <a href="https://web.facebook.com/connectdigitals.fb" target="_blank" rel="noopener noreferrer" aria-label="Connect Digitals on Facebook">
+              <img src="facebook-176-svgrepo-com.svg" alt="" aria-hidden="true" loading="lazy" width="24" height="24">
+            </a>
+            <a href="https://www.instagram.com/connectdigitals.ig" target="_blank" rel="noopener noreferrer" aria-label="Connect Digitals on Instagram">
+              <img src="instagram-svgrepo-com.svg" alt="" aria-hidden="true" loading="lazy" width="24" height="24">
+            </a>
+            <a href="https://www.tiktok.com/@connect.digitals" target="_blank" rel="noopener noreferrer" aria-label="Connect Digitals on TikTok">
+              <img src="tiktok-svgrepo-com.svg" alt="" aria-hidden="true" loading="lazy" width="24" height="24">
+            </a>
+            <a href="https://t.me/connectdigitals" target="_blank" rel="noopener noreferrer" aria-label="Connect Digitals on Telegram">
+              <img src="telegram-alt-svgrepo-com.svg" alt="" aria-hidden="true" loading="lazy" width="24" height="24">
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -867,1101 +995,57 @@
   <footer>
     <p class="footer-container"><span style="font-size:1.1em; vertical-align:middle; margin-right:0.3em;">&#169;</span>2025 Connect Digitals. All rights reserved.</p>
     <div class="footer-social">
-      <a href="https://web.facebook.com/connectdigitals.fb" target="_blank" rel="noopener noreferrer">
-          <img src="facebook-176-svgrepo-com.svg" alt="Connect Digitals On Facebook" loading="lazy" width="28" height="28">
+      <a href="https://web.facebook.com/connectdigitals.fb" target="_blank" rel="noopener noreferrer" aria-label="Connect Digitals on Facebook">
+          <img src="facebook-176-svgrepo-com.svg" alt="" aria-hidden="true" loading="lazy" width="28" height="28">
       </a>
-      <a href="https://www.instagram.com/connectdigitals.ig" target="_blank" rel="noopener noreferrer">
-          <img src="instagram-svgrepo-com.svg" alt="Connect Digitals On Instagram" loading="lazy" width="28" height="28">
+      <a href="https://www.instagram.com/connectdigitals.ig" target="_blank" rel="noopener noreferrer" aria-label="Connect Digitals on Instagram">
+          <img src="instagram-svgrepo-com.svg" alt="" aria-hidden="true" loading="lazy" width="28" height="28">
       </a>
-      <a href="https://t.me/connectdigitals" target="_blank" rel="noopener noreferrer">
-          <img src="telegram-alt-svgrepo-com.svg" alt="Connect Digitals On Telegram" loading="lazy" width="28" height="28">
+      <a href="https://t.me/connectdigitals" target="_blank" rel="noopener noreferrer" aria-label="Connect Digitals on Telegram">
+          <img src="telegram-alt-svgrepo-com.svg" alt="" aria-hidden="true" loading="lazy" width="28" height="28">
       </a>
-      <a href="https://www.tiktok.com/@connect.digitals" target="_blank" rel="noopener noreferrer">
-          <img src="tiktok-svgrepo-com.svg" alt="Connect Digitals On TikTok" loading="lazy" width="28" height="28">
+      <a href="https://www.tiktok.com/@connect.digitals" target="_blank" rel="noopener noreferrer" aria-label="Connect Digitals on TikTok">
+          <img src="tiktok-svgrepo-com.svg" alt="" aria-hidden="true" loading="lazy" width="28" height="28">
       </a>
     </div>
   </footer>
- <!-- Success Message Modal -->
 
-  
-
-  <script>
-    // Modal accessibility variables
-    let modalLastFocusedElement = null;
-    let modalFocusableElements = [];
-    
-    function openModal(title, text) {
-      const modal = document.getElementById('modal');
-      const modalTitle = document.getElementById('modal-title');
-      const modalDesc = document.getElementById('modal-desc');
-      
-      // Set modal content
-      modalTitle.innerText = title;
-      modalDesc.innerText = text;
-      
-      // Store the element that had focus before opening modal
-      modalLastFocusedElement = document.activeElement;
-      
-      // Show modal
-      modal.style.display = 'flex';
-      modal.setAttribute('aria-hidden', 'false');
-      modal.setAttribute('aria-modal', 'true');
-      
-      // Get all focusable elements in the modal
-      modalFocusableElements = modal.querySelectorAll(
-        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-      );
-      
-      // Focus the first focusable element (close button)
-      if (modalFocusableElements.length > 0) {
-        modalFocusableElements[0].focus();
-      }
-      
-      // Add event listeners for accessibility
-      document.addEventListener('keydown', handleModalKeydown);
-      
-      // Prevent body scroll
-      document.body.style.overflow = 'hidden';
-    }
-    
-    function closeModal() {
-      const modal = document.getElementById('modal');
-      
-      // Hide modal
-      modal.style.display = 'none';
-      modal.setAttribute('aria-hidden', 'true');
-      modal.removeAttribute('aria-modal');
-      
-      // Remove event listeners
-      document.removeEventListener('keydown', handleModalKeydown);
-      
-      // Restore focus to the element that had focus before opening modal
-      if (modalLastFocusedElement) {
-        modalLastFocusedElement.focus();
-        modalLastFocusedElement = null;
-      }
-      
-      // Restore body scroll
-      document.body.style.overflow = '';
-      
-      // Clear focusable elements array
-      modalFocusableElements = [];
-    }
-    
-    function handleModalKeydown(event) {
-      const modal = document.getElementById('modal');
-      
-      // Close modal on Escape key
-      if (event.key === 'Escape') {
-        closeModal();
-        return;
-      }
-      
-      // Handle Tab key for focus trapping
-      if (event.key === 'Tab') {
-        if (modalFocusableElements.length === 0) return;
-        
-        const firstElement = modalFocusableElements[0];
-        const lastElement = modalFocusableElements[modalFocusableElements.length - 1];
-        
-        // If Shift + Tab pressed and first element is focused, focus last element
-        if (event.shiftKey && document.activeElement === firstElement) {
-          event.preventDefault();
-          lastElement.focus();
-        }
-        // If Tab pressed and last element is focused, focus first element
-        else if (!event.shiftKey && document.activeElement === lastElement) {
-          event.preventDefault();
-          firstElement.focus();
-        }
-      }
-    }
-    
-    // Close modal when clicking outside (non-destructive listener)
-    document.addEventListener('click', function(e) {
-      const modalEl = document.getElementById('modal');
-      if (modalEl && e.target === modalEl) {
-        closeModal();
-      }
-    });
-
-    // Replace inline onclicks with delegated listeners
-    document.addEventListener('click', function(e) {
-      if (e.target.classList.contains('modal-close')) {
-        e.preventDefault();
-        closeModal();
-      }
-      if (e.target.classList.contains('success-close')) {
-        e.preventDefault();
-        closeSuccessModal();
-      }
-      if (e.target.classList.contains('mobile-nav-close')) {
-        e.preventDefault();
-        closeMobileNav();
-      }
-    });
-
-    // Testimonial slider functionality
-    function initTestimonials() {
-      const pages = document.querySelectorAll('#testimonial-slider .testimonial-page');
-      const prevBtn = document.getElementById('testimonial-prev');
-      const nextBtn = document.getElementById('testimonial-next');
-      const dots = document.querySelectorAll('.testimonial-dots .dot');
-      const seeMoreBtn = document.getElementById('see-more-reviews');
-      let currentPage = 0;
-      
-      // Responsive testimonial handling
-      function updateTestimonialLayout() {
-        const isMobile = window.innerWidth <= 480;
-        const isSmallMobile = window.innerWidth <= 320;
-        
-        // Adjust testimonial grid for mobile
-        const testimonialGrids = document.querySelectorAll('.testimonial-grid');
-        testimonialGrids.forEach(grid => {
-          if (isSmallMobile) {
-            grid.style.gridTemplateColumns = '1fr';
-            grid.style.gap = '0.5rem';
-          } else if (isMobile) {
-            grid.style.gridTemplateColumns = '1fr';
-            grid.style.gap = '1rem';
-          } else {
-            grid.style.gridTemplateColumns = 'repeat(3, 1fr)';
-            grid.style.gap = '2rem';
-          }
-        });
-        
-        // Adjust navigation button positioning for small screens
-        if (isSmallMobile) {
-          if (prevBtn) prevBtn.style.left = '-16px';
-          if (nextBtn) nextBtn.style.right = '-16px';
-        } else if (isMobile) {
-          if (prevBtn) prevBtn.style.left = '-20px';
-          if (nextBtn) nextBtn.style.right = '-20px';
-        } else {
-          if (prevBtn) prevBtn.style.left = '-24px';
-          if (nextBtn) nextBtn.style.right = '-24px';
-        }
-      }
-      
-      // Initialize responsive layout
-      updateTestimonialLayout();
-      
-      // Update layout on window resize
-      window.addEventListener('resize', updateTestimonialLayout);
-
-      if (window.__DEBUG__) {
-      console.log('Testimonial pages found:', pages.length);
-      console.log('Prev button found:', !!prevBtn);
-      console.log('Next button found:', !!nextBtn);
-      console.log('See more button found:', !!seeMoreBtn);
-      }
-
-      function showPage(idx) {
-        if (window.__DEBUG__) console.log('Showing page:', idx);
-        
-        // Hide all pages first
-        pages.forEach((page, i) => {
-          if (i === idx) {
-            page.style.display = 'block';
-            page.style.opacity = '1';
-            page.style.transform = 'translateY(0)';
-          } else {
-            page.style.display = 'none';
-            page.style.opacity = '0';
-            page.style.transform = 'translateY(30px)';
-          }
-        });
-        
-        // Update dots
-        dots.forEach((dot, i) => {
-          if (i === idx) {
-            dot.classList.add('active');
-          } else {
-            dot.classList.remove('active');
-          }
-        });
-        
-        // Update button text based on current page
-        if (seeMoreBtn) {
-          const btnText = seeMoreBtn.querySelector('.fancy-btn-text');
-          if (btnText) {
-            if (idx === 0) {
-              btnText.textContent = 'See More Reviews';
-            } else {
-              btnText.textContent = 'See First Reviews';
-            }
-          }
-        }
-      }
-
-      // Add click event listeners
-      if (prevBtn) {
-        prevBtn.addEventListener('click', function(e) {
-          e.preventDefault();
-          if (window.__DEBUG__) console.log('Prev button clicked');
-          currentPage = (currentPage - 1 + pages.length) % pages.length;
-          showPage(currentPage);
-        });
-      }
-      
-      if (nextBtn) {
-        nextBtn.addEventListener('click', function(e) {
-          e.preventDefault();
-          if (window.__DEBUG__) console.log('Next button clicked');
-          currentPage = (currentPage + 1) % pages.length;
-          showPage(currentPage);
-        });
-      }
-
-      // See More Reviews button functionality
-      if (seeMoreBtn) {
-        seeMoreBtn.addEventListener('click', function(e) {
-          e.preventDefault();
-          if (window.__DEBUG__) console.log('See more button clicked');
-          currentPage = (currentPage + 1) % pages.length;
-          showPage(currentPage);
-        });
-      }
-
-      // Dot navigation
-      dots.forEach((dot, i) => {
-        dot.addEventListener('click', function() {
-          if (window.__DEBUG__) console.log('Dot clicked:', i);
-          currentPage = i;
-          showPage(currentPage);
-        });
-      });
-
-          // Initialize the first page
-    showPage(0);
-  }
-
-  // Header scroll effect
-  window.addEventListener('scroll', function() {
-    const header = document.querySelector('header');
-    if (window.scrollY > 50) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
-  });
-
-  // Hero background slideshow with preloading and high-quality rendering
-  const heroElement = document.querySelector('.hero');
-  if (heroElement) {
-    const heroImages = ['BG.webp','BG-2.webp','BG-3.webp','BG-4.webp'];
-    let currentImageIndex = 0;
-
-    // Preload all hero images up-front to avoid blurry first-paint
-    heroImages.forEach(src => { const i = new Image(); i.decoding = 'async'; i.loading = 'eager'; i.src = src; });
-
-    function applyHeroImage(src) {
-      heroElement.style.backgroundImage = `url('${src}')`;
-      heroElement.style.backgroundSize = 'cover';
-      heroElement.style.backgroundPosition = 'center';
-      heroElement.style.imageRendering = 'auto';
-      heroElement.style.webkitImageRendering = 'auto';
-    }
-    
-    function changeHeroImage() {
-      currentImageIndex = (currentImageIndex + 1) % heroImages.length;
-      const nextImage = heroImages[currentImageIndex];
-      const img = new Image();
-      img.decoding = 'async';
-      img.onload = function() { applyHeroImage(nextImage); };
-      img.src = nextImage;
-    }
-    
-    // Set initial image explicitly to ensure crispness
-    applyHeroImage(heroImages[0]);
-    setInterval(changeHeroImage, 6000);
-  }
-
-    // Mobile Navigation Toggle
-    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-    const mobileNavCheckbox = document.getElementById('mobileNavToggle');
-    const mobileNav = document.querySelector('.mobile-nav');
-    const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
-
-    // Debug logging
-  if (window.__DEBUG__) {
-    console.log('Mobile nav elements found:', {
-      toggle: !!mobileNavToggle,
-      nav: !!mobileNav,
-      links: mobileNavLinks.length
-    });
-  }
-
-    function toggleMobileNav() {
-      if (window.__DEBUG__) console.log('Toggle mobile nav clicked');
-      const isExpanded = mobileNavToggle.getAttribute('aria-expanded') === 'true';
-      if (window.__DEBUG__) console.log('Current expanded state:', isExpanded);
-      
-      mobileNavToggle.setAttribute('aria-expanded', (!isExpanded).toString());
-      
-      if (!isExpanded) {
-        if (window.__DEBUG__) console.log('Opening mobile nav');
-        if (mobileNavCheckbox) mobileNavCheckbox.checked = true; // keep checkbox in sync for no-JS fallback
-        mobileNav.classList.add('active');
-        document.body.classList.add('mobile-nav-open');
-        document.body.style.overflow = 'hidden'; // Prevent background scrolling
-      } else {
-        if (window.__DEBUG__) console.log('Closing mobile nav');
-        if (mobileNavCheckbox) mobileNavCheckbox.checked = false; // keep checkbox in sync for no-JS fallback
-        mobileNav.classList.remove('active');
-        document.body.classList.remove('mobile-nav-open');
-        document.body.style.overflow = ''; // Restore scrolling
-      }
-      
-      if (window.__DEBUG__) console.log('Mobile nav classes after toggle:', mobileNav.className);
-    }
-
-    function closeMobileNav() {
-      mobileNavToggle.setAttribute('aria-expanded', 'false');
-      if (mobileNavCheckbox) mobileNavCheckbox.checked = false; // ensure closed for no-JS fallback
-      mobileNav.classList.remove('active');
-      document.body.classList.remove('mobile-nav-open');
-      document.body.style.overflow = '';
-    }
-
-    // Event listeners for mobile navigation
-    mobileNavToggle.addEventListener('click', function(e) {
-      // Call the main toggle function
-      toggleMobileNav();
-      
-      // Track analytics
-      const isExpanded = this.getAttribute('aria-expanded') === 'true';
-      if (typeof trackEvent === 'function') {
-        trackEvent('mobile_menu_toggle', {
-          action: isExpanded ? 'close' : 'open',
-          user_intent: 'navigation'
-        });
-      }
-    });
-
-    // Close mobile nav when clicking on a link
-    mobileNavLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        closeMobileNav();
-      });
-    });
-
-    // Close mobile nav when clicking outside
-    mobileNav.addEventListener('click', (e) => {
-      if (e.target === mobileNav) {
-        closeMobileNav();
-      }
-    });
-
-    // Close mobile nav on escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
-        closeMobileNav();
-      }
-    });
-
-    // Animated Active Nav Link on Scroll
-    const navLinks = document.querySelectorAll('nav a');
-    const sections = Array.from(navLinks).map(link => {
-      const id = link.getAttribute('href').replace('#','');
-      return document.getElementById(id);
-    });
-    function onScroll() {
-      let scrollPos = window.scrollY + 120;
-      let activeIndex = 0;
-      sections.forEach((section, i) => {
-        if (section && section.offsetTop <= scrollPos) {
-          activeIndex = i;
-        }
-      });
-      navLinks.forEach((link, i) => {
-        if (i === activeIndex) {
-          link.classList.add('active');
-        } else {
-          link.classList.remove('active');
-        }
-      });
-    }
-    window.addEventListener('scroll', onScroll);
-
-
-
-    // Enhanced Contact Form Validation and Handling
-    let contactForm, submitBtn, btnText, btnLoading, successModal;
-    let nameField, emailField, messageField, charCount;
-    
-    // Initialize form elements when DOM is loaded
-    function initializeFormElements() {
-      contactForm = document.getElementById('contactForm');
-      submitBtn = document.getElementById('submitBtn');
-      btnText = submitBtn?.querySelector('.btn-text');
-      btnLoading = submitBtn?.querySelector('.btn-loading');
-      successModal = document.getElementById('successModal');
-      
-      // Form fields
-      nameField = document.getElementById('name');
-      emailField = document.getElementById('email');
-      messageField = document.getElementById('message');
-      charCount = document.getElementById('char-count');
-    }
-    
-      // Quick fill/demo utilities removed for simplicity
-    
-    // Simple form handling
-    function initForm() {
-      if (window.__DEBUG__) console.log('DOM Content Loaded - Setting up form...');
-      
-      // Initialize form elements
-      initializeFormElements();
-      
-      if (window.__DEBUG__) console.log('Form elements found:', {
-        contactForm: !!contactForm,
-        nameField: !!nameField,
-        emailField: !!emailField,
-        messageField: !!messageField,
-        charCount: !!charCount,
-        submitBtn: !!submitBtn,
-        successModal: !!successModal
-      });
-      
-      // Character count function
-      function updateCharCount() {
-        if (!messageField || !charCount) {
-          console.warn('Form fields not initialized for character count');
-          return;
-        }
-        const length = messageField.value.length;
-        charCount.textContent = `${length}/1000`;
-        charCount.classList.remove('warning', 'danger');
-        if (length > 800) {
-          charCount.classList.add('warning');
-        }
-        if (length > 950) {
-          charCount.classList.add('danger');
-        }
-        if (window.__DEBUG__) console.log('Character count updated:', length);
-      }
-
-      // Expose for quickFill()
-      window.updateCharCount = updateCharCount;
-      
-      // Simple validation
-      function validateForm() {
-        const name = nameField.value.trim();
-        const email = emailField.value.trim();
-        const message = messageField.value.trim();
-        
-        let isValid = true;
-        
-        // Clear previous errors
-        document.querySelectorAll('.error-message').forEach(el => {
-          el.textContent = '';
-          el.classList.remove('show');
-        });
-        
-        // Name validation
-        if (name.length < 2) {
-          document.getElementById('name-error').textContent = 'Name must be at least 2 characters';
-          document.getElementById('name-error').classList.add('show');
-          isValid = false;
-        }
-        
-        // Email validation
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-          document.getElementById('email-error').textContent = 'Please enter a valid email address';
-          document.getElementById('email-error').classList.add('show');
-          isValid = false;
-        }
-        
-        // Message validation
-        if (message.length < 10) {
-          document.getElementById('message-error').textContent = 'Message must be at least 10 characters';
-          document.getElementById('message-error').classList.add('show');
-          isValid = false;
-        }
-        
-        return isValid;
-      }
-      
-      // Form submission - Single event listener to avoid conflicts
-      contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        if (window.__DEBUG__) console.log('Form submitted!');
-        
-        // Track form submission for analytics
-        trackEvent('form_interaction', {
-          action: 'form_submit',
-          page_section: 'contact'
-        });
-        
-        // Clear previous errors
-        document.querySelectorAll('.error-message').forEach(el => {
-          el.textContent = '';
-          el.classList.remove('show');
-        });
-        
-        if (!validateForm()) {
-          if (window.__DEBUG__) console.log('Form validation failed');
-          return;
-        }
-        
-        // Show loading state
-        submitBtn.disabled = true;
-        btnText.style.display = 'none';
-        btnLoading.style.display = 'flex';
-        
-        // Prepare and send form data to Formspree
-        const formData = new FormData(contactForm);
-        fetch(contactForm.action, {
-          method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: formData
-        })
-          .then(async (response) => {
-            const data = await response.json().catch(() => ({}));
-            if (response.ok) {
-            successModal.style.display = 'flex';
-              // Accessible toast announcement
-              let toast = document.getElementById('sr-toast');
-              if (!toast) {
-                toast = document.createElement('div');
-                toast.id = 'sr-toast';
-                toast.setAttribute('role', 'status');
-                toast.setAttribute('aria-live', 'polite');
-                toast.className = 'sr-toast';
-                document.body.appendChild(toast);
-              }
-              toast.textContent = "Message sent successfully. We'll get back to you soon.";
-
-            contactForm.reset();
-              if (charCount) {
-            charCount.textContent = '0/1000';
-            charCount.classList.remove('warning', 'danger');
-              }
-            document.querySelectorAll('.error-message').forEach(el => {
-              el.textContent = '';
-              el.classList.remove('show');
-            });
-          } else {
-              const errorMsg = (data.errors && data.errors.length && data.errors[0].message) || 'Sorry, there was an error sending your message. Please try again.';
-              if (window.__DEBUG__) console.error('Formspree error:', errorMsg);
-            alert(errorMsg);
-            }
-          })
-          .catch((err) => {
-            if (window.__DEBUG__) console.error('Fetch error:', err);
-          alert('Sorry, there was an error sending your message. Please try again or contact us directly at digitalsconnect@gmail.com');
-        })
-        .finally(() => {
-          submitBtn.disabled = false;
-            if (btnText) btnText.style.display = 'inline';
-            if (btnLoading) btnLoading.style.display = 'none';
-        });
-      });
-      
-      // Character count event listener
-      messageField.addEventListener('input', updateCharCount);
-      
-      // Initialize character count
-      updateCharCount();
-      
-      // Close success modal when clicking outside content
-      if (successModal) {
-        successModal.addEventListener('click', function(e) {
-          if (e.target === this) {
-            closeSuccessModal();
-          }
-        });
-      }
-
-      if (window.__DEBUG__) console.log('Form setup complete!');
-    }
-    
-
-
-    // Close success modal
-    function closeSuccessModal() {
-      if (!successModal) {
-        successModal = document.getElementById('successModal');
-      }
-      if (successModal) {
-      successModal.style.display = 'none';
-      }
-      // Restore focus to a sensible control
-      const submit = document.getElementById('submitBtn');
-      if (submit) submit.focus();
-    }
-    
-
-
-    // Listener moved into DOMContentLoaded after modal exists
-
-    // Enhanced Scroll-triggered animations with IntersectionObserver
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          // Optional: unobserve after animation to improve performance
-          // observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    // Observe all animation elements
-    function initObservers() {
-      const animationElements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .fade-in-scale, .about-fade-in, .portfolio-fade-in, .testimonial-fade-in, .contact-fade-in, .services-fade-in');
-      animationElements.forEach(el => {
-        // Ensure elements start invisible
-        el.classList.add('opacity-0');
-        observer.observe(el);
-      });
-    }
-
-    // Add animation classes to elements
-    function initAnimationClasses() {
-      // Portfolio cards
-      const portfolioCards = document.querySelectorAll('.portfolio-card');
-      portfolioCards.forEach(card => {
-        card.classList.add('fade-in');
-      });
-
-      // About section elements
-      const aboutElements = document.querySelectorAll('.about-heading, .about-subheading, .about-text, .about-list, .about-image, .about-quote, .about-tagline, .about-story');
-      aboutElements.forEach(el => {
-        el.classList.add('fade-in');
-      });
-
-      // Contact section elements
-      const contactElements = document.querySelectorAll('.contact-form, .contact-info');
-      contactElements.forEach(el => {
-        el.classList.add('fade-in');
-      });
-
-      // Section headings
-      const headings = document.querySelectorAll('h2');
-      headings.forEach(heading => {
-        heading.classList.add('fade-in');
-      });
-
-      // Services grid
-      const servicesGrid = document.querySelector('.portfolio-grid-3x3');
-      if (servicesGrid) {
-        servicesGrid.classList.add('fade-in');
-      }
-    }
-
-
-  // Analytics tracking for form interactions
-    function initFormAnalytics() {
-    const contactForm = document.getElementById('contactForm');
-      if (!contactForm) return;
-    
-      // Focus tracking
-      contactForm.addEventListener('focusin', function(e) {
-        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
-          trackEvent('form_interaction', {
-            action: 'field_focus',
-            field_name: e.target.name,
-            page_section: 'contact'
-          });
-        }
-      });
-      
-      // Debounced input tracking
-      let inputDebounceTimer = null;
-      contactForm.addEventListener('input', function(e) {
-        if (!(e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
-        if (inputDebounceTimer) clearTimeout(inputDebounceTimer);
-        inputDebounceTimer = setTimeout(() => {
-          trackEvent('form_interaction', {
-            action: 'field_input',
-            field_name: e.target.name,
-            page_section: 'contact'
-          });
-        }, 1000);
-      });
-
-      // Blur tracking
-      contactForm.addEventListener('blur', function(e) {
-        if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) {
-          trackEvent('form_interaction', {
-            action: 'field_blur',
-            field_name: e.target.name,
-            page_section: 'contact'
-          });
-        }
-      }, true);
-
-      // Validation error tracking
-      contactForm.addEventListener('invalid', function(e) {
-        trackEvent('form_interaction', {
-          action: 'validation_error',
-          field_name: e.target.name,
-          page_section: 'contact'
-        });
-      });
-    }
-    
-    // Enhanced Analytics Tracking with consent check
-    function hasAnalyticsConsent() {
-      // Simple consent check placeholder: looks for data attribute or a global flag
-      const html = document.documentElement;
-      return html.getAttribute('data-ga') === 'granted' || window.__ANALYTICS_CONSENT__ === true;
-    }
-
-    function loadGAScript(measurementId) {
-      return new Promise((resolve, reject) => {
-        if (window.gtag) return resolve();
-        const s = document.createElement('script');
-        s.async = true;
-        s.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
-        s.onload = resolve;
-        s.onerror = reject;
-        document.head.appendChild(s);
-      });
-    }
-
-    async function ensureGAInitialized() {
-      if (!hasAnalyticsConsent()) return false;
-      const MEASUREMENT_ID = window.__GA_MEASUREMENT_ID__ || '';
-      if (!MEASUREMENT_ID) return false; // do nothing until a real ID is provided
-      await loadGAScript(MEASUREMENT_ID);
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){ dataLayer.push(arguments); }
-      window.gtag = window.gtag || gtag;
-      gtag('js', new Date());
-      // Minimal config with privacy defaults; no ad personalization/signals unless explicitly allowed
-      gtag('config', MEASUREMENT_ID, {
-        page_title: document.title,
-        page_location: window.location.href,
-        send_page_view: true,
-        anonymize_ip: true
-      });
-      return true;
-    }
-
-    function trackEvent(eventName, parameters = {}) {
-      if (typeof gtag === 'function' && hasAnalyticsConsent()) {
-        gtag('event', eventName, parameters);
-      }
-    }
-    
-    // Track page views for different sections
-    function trackSectionView(sectionName) {
-      trackEvent('section_view', {
-        page_section: sectionName,
-        user_intent: 'content_consumption'
-      });
-    }
-    
-    // Track button clicks
-    function trackButtonClick(buttonName, location) {
-      trackEvent('button_click', {
-        button_name: buttonName,
-        page_section: location,
-        user_intent: 'engagement'
-      });
-    }
-    
-    // Track form interactions
-    function trackFormInteraction(action, formType) {
-      trackEvent('form_interaction', {
-        action: action,
-        form_type: formType,
-        user_intent: 'conversion'
-      });
-    }
-    
-    // Track portfolio item views
-    function trackPortfolioView(itemName) {
-      trackEvent('portfolio_view', {
-        item_name: itemName,
-        service_type: 'portfolio',
-        user_intent: 'service_exploration'
-      });
-    }
-    
-    // Track scroll depth
-    let maxScrollDepth = 0;
-    function trackScrollDepth() {
-      const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
-      if (scrollPercent > maxScrollDepth) {
-        maxScrollDepth = scrollPercent;
-        if (maxScrollDepth % 25 === 0) { // Track at 25%, 50%, 75%, 100%
-          trackEvent('scroll_depth', {
-            depth_percentage: maxScrollDepth,
-            user_intent: 'content_engagement'
-          });
-        }
-      }
-    }
-    
-    // Track time on page
-    let startTime = Date.now();
-    function trackTimeOnPage() {
-      const timeSpent = Math.round((Date.now() - startTime) / 1000);
-      if (timeSpent % 30 === 0 && timeSpent > 0) { // Track every 30 seconds
-        trackEvent('time_on_page', {
-          time_spent_seconds: timeSpent,
-          user_intent: 'content_engagement'
-        });
-      }
-    }
-    
-    // Initialize analytics tracking
-    async function initAnalytics() {
-      const initialized = await ensureGAInitialized();
-      if (!initialized) {
-        console.debug('Analytics not initialized (no consent or no ID)');
-        return;
-      }
-      // Track initial page load
-      trackEvent('page_view', {
-        page_title: document.title,
-        page_location: window.location.href,
-        user_intent: 'initial_visit'
-      });
-      
-      // Track section views using Intersection Observer
-      const sections = document.querySelectorAll('section[id]');
-      const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            trackSectionView(entry.target.id);
-          }
-        });
-      }, { threshold: 0.5 });
-      
-      sections.forEach(section => {
-        sectionObserver.observe(section);
-      });
-      
-      // Track button clicks
-      document.addEventListener('click', function(e) {
-        if (e.target.tagName === 'A' && e.target.classList.contains('hero-btn')) {
-          trackButtonClick('contact_us', 'hero');
-        } else if (e.target.tagName === 'A' && e.target.href && e.target.href.includes('#')) {
-          const section = e.target.href.split('#')[1];
-          trackButtonClick('navigation', section);
-        }
-      });
-      
-      // Track form interactions
-      if (contactForm) {
-        contactForm.addEventListener('focusin', function(e) {
-          if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
-            trackFormInteraction('field_focus', 'contact');
-          }
-        });
-        
-        // Form submission tracking moved to main submit handler
-        
-        // Track validation events
-        contactForm.addEventListener('input', function(e) {
-          if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
-            trackFormInteraction('field_input', 'contact');
-          }
-        });
-        
-        // Track validation errors
-        contactForm.addEventListener('invalid', function(e) {
-          trackFormInteraction('validation_error', 'contact');
-        });
-      }
-      
-      // Track portfolio modal opens
-      const portfolioCards = document.querySelectorAll('.portfolio-card');
-      portfolioCards.forEach(card => {
-        card.addEventListener('click', function() {
-          const title = this.querySelector('h3')?.textContent || 'Unknown';
-          trackPortfolioView(title);
-        });
-      });
-      
-      // Track scroll depth
-      window.addEventListener('scroll', trackScrollDepth);
-      
-      // Track time on page
-      setInterval(trackTimeOnPage, 30000); // Check every 30 seconds
-      
-      // Mobile menu analytics tracking is now handled in the main toggle function
-      
-      // Track testimonial navigation
-      const testimonialNavBtns = document.querySelectorAll('.testimonial-nav-btn');
-      testimonialNavBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-          trackEvent('testimonial_navigation', {
-            direction: this.classList.contains('prev-btn') ? 'previous' : 'next',
-            user_intent: 'content_exploration'
-          });
-        });
-      });
-      
-      // Track scroll to top button
-      const scrollToTopBtn = document.getElementById('scrollToTop');
-      if (scrollToTopBtn) {
-        scrollToTopBtn.addEventListener('click', function() {
-          trackEvent('scroll_to_top', {
-            user_intent: 'navigation'
-          });
-        });
-      }
-      
-      // Track mobile scroll to home button
-      const mobileScrollHomeBtn = document.getElementById('mobileScrollHome');
-      if (mobileScrollHomeBtn) {
-        mobileScrollHomeBtn.addEventListener('click', function() {
-          trackEvent('mobile_scroll_to_home', {
-            user_intent: 'navigation',
-            page_section: 'mobile_navigation'
-          });
-        });
-      }
-    }
-    
-    // Track page visibility changes
-    document.addEventListener('visibilitychange', function() {
-      if (document.hidden) {
-        trackEvent('page_hide', {
-          time_spent_seconds: Math.round((Date.now() - startTime) / 1000),
-          user_intent: 'session_end'
-        });
-      } else {
-        trackEvent('page_show', {
-          user_intent: 'session_resume'
-        });
-        startTime = Date.now(); // Reset timer
-      }
-    });
-    
-    // Track before unload
-    window.addEventListener('beforeunload', function() {
-      const timeSpent = Math.round((Date.now() - startTime) / 1000);
-      trackEvent('page_exit', {
-        time_spent_seconds: timeSpent,
-        user_intent: 'session_end'
-      });
-  });
-</script>
-   <div id="successModal" class="success-modal" role="dialog" aria-modal="true" tabindex="-1" aria-labelledby="success-title" aria-describedby="success-desc">
+  <!-- Success Message Modal -->
+  <div id="successModal" class="success-modal" role="dialog" aria-modal="true" tabindex="-1" aria-labelledby="success-title" aria-describedby="success-desc">
     <div class="success-content">
-      <div class="success-icon">✓</div>
+      <div class="success-icon" aria-hidden="true">✓</div>
       <h3 id="success-title">Message Sent Successfully!</h3>
-      <p id="success-desc">Thank you for reaching out. We'll get back to you soon.</p>
-      <button type="button" class="success-close">Close</button>
+      <p id="success-desc">Thank you for reaching out. We'll get back to you soon. You can close this message or send another.</p>
+      <button type="button" class="success-close">Close & Reset Form</button>
     </div>
-    <!-- Scroll to Top Button -->
-    <button type="button" id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 4L4 12H9V20H15V12H20L12 4Z" fill="currentColor"/>
-      </svg>
-    </button>
-    
-    <!-- Mobile Scroll to Home Button -->
-    <button type="button" id="mobileScrollHome" class="mobile-scroll-home" aria-label="Scroll to home">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 2L2 12H6V20H10V14H14V20H18V12H22L12 2Z" fill="currentColor"/>
-      </svg>
-    </button>
-    
-    <!-- Mobile Navigation Test Button (remove in production) -->
-    
   </div>
 
-  <!-- JavaScript moved to bottom to ensure DOM elements exist -->
-  <script>
-    // Scroll to Top functionality
-    function initScrollToTop() {
-      const scrollToTopBtn = document.getElementById('scrollToTop');
-      
-      if (scrollToTopBtn) {
-        // Show/hide scroll to top button based on scroll position
-        window.addEventListener('scroll', () => {
-          if (window.pageYOffset > 300) {
-            scrollToTopBtn.classList.add('show');
-          } else {
-            scrollToTopBtn.classList.remove('show');
-          }
-        });
-        
-        // Smooth scroll to top when button is clicked
-        scrollToTopBtn.addEventListener('click', () => {
-          window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-          });
-        });
-      }
-    }
+  <!-- Modal for Services/Portfolio -->
+  <div id="modal" class="modal" role="dialog" aria-modal="true" tabindex="-1" aria-labelledby="modal-title" aria-describedby="modal-desc">
+    <div class="modal-content">
+      <button type="button" class="modal-close" aria-label="Close modal">×</button>
+      <h2 id="modal-title"></h2>
+      <p id="modal-desc"></p>
+    </div>
+  </div>
 
-    // Mobile Scroll to Home functionality
-    function initMobileScrollHome() {
-      const mobileScrollHomeBtn = document.getElementById('mobileScrollHome');
-      
-      if (mobileScrollHomeBtn) {
-        // Show/hide mobile scroll to home button based on scroll position and device
-        function checkMobileScrollHome() {
-          const isMobile = window.innerWidth <= 768;
-          const isNotAtHome = window.pageYOffset > 200; // Show when scrolled past hero section
-          
-          if (window.__DEBUG__) console.log('Mobile check:', { isMobile, isNotAtHome, scrollY: window.pageYOffset });
-          
-          if (isMobile && isNotAtHome) {
-            mobileScrollHomeBtn.classList.add('show');
-            if (window.__DEBUG__) console.log('Mobile scroll home button shown');
-          } else {
-            mobileScrollHomeBtn.classList.remove('show');
-            if (window.__DEBUG__) console.log('Mobile scroll home button hidden');
-          }
-        }
-        
-        // Check on scroll and resize
-        window.addEventListener('scroll', checkMobileScrollHome);
-        window.addEventListener('resize', checkMobileScrollHome);
-        
-        // Initialize on page load
-        checkMobileScrollHome();
-        
-        // Smooth scroll to home when mobile button is clicked
-        mobileScrollHomeBtn.addEventListener('click', () => {
-          const homeSection = document.getElementById('home');
-          if (homeSection) {
-            homeSection.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
-            });
-          } else {
-            // Fallback to top of page
-            window.scrollTo({
-              top: 0,
-              behavior: 'smooth'
-            });
-          }
-        });
-      }
-    }
+  <!-- Scroll to Top Button -->
+  <button type="button" id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 4L4 12H9V20H15V12H20L12 4Z" fill="currentColor"/>
+    </svg>
+  </button>
+  
+  <!-- Mobile Scroll to Home Button -->
 
-    // Unified initialization entrypoint
-    function init() {
-      // Ensure elements are ready
-      try { initTestimonials(); } catch (e) { console.debug('initTestimonials skipped', e); }
-      try { onScroll(); } catch (e) { console.debug('onScroll skipped', e); }
-      try { initForm(); } catch (e) { console.debug('initForm skipped', e); }
-      try { initObservers(); } catch (e) { console.debug('initObservers skipped', e); }
-      try { initAnimationClasses(); } catch (e) { console.debug('initAnimationClasses skipped', e); }
-      try { initFormAnalytics(); } catch (e) { console.debug('initFormAnalytics skipped', e); }
-      try { initAnalytics(); } catch (e) { console.debug('initAnalytics skipped', e); }
-      try { initScrollToTop(); } catch (e) { console.debug('initScrollToTop skipped', e); }
-      try { initMobileScrollHome(); } catch (e) { console.debug('initMobileScrollHome skipped', e); }
-    }
 
-    document.addEventListener('DOMContentLoaded', init);
-  </script>
+  <!-- External JavaScript files -->
+  <script src="modal.js"></script>
+  <script src="testimonials.js"></script>
+  <script src="navigation.js"></script>
+  <script src="form.js"></script>
+  <script src="analytics.js"></script>
+  <script src="animations.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect Digitals - Social Media Preview</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #000F33 0%, #222222 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .preview-container {
+            width: 1200px;
+            height: 630px;
+            background: linear-gradient(135deg, 
+                rgba(0, 15, 51, 0.95) 0%, 
+                rgba(26, 26, 46, 0.9) 50%,
+                rgba(184, 134, 11, 0.1) 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        .preview-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(184, 134, 11, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(236, 28, 36, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .logo {
+            width: 200px;
+            height: auto;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+        }
+        
+        .title {
+            font-size: 4.5rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin: 0 0 1rem 0;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            letter-spacing: -1px;
+            line-height: 1.1;
+        }
+        
+        .subtitle {
+            font-size: 1.8rem;
+            color: #B8860B;
+            font-weight: 600;
+            margin: 0 0 2rem 0;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .tagline {
+            font-size: 2.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .accent-line {
+            width: 120px;
+            height: 6px;
+            background: linear-gradient(90deg, #B8860B, #D4AF37);
+            border-radius: 3px;
+            margin: 2rem 0;
+            box-shadow: 0 2px 8px rgba(184, 134, 11, 0.3);
+        }
+        
+        .services {
+            font-size: 1.4rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+            margin: 0;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        @media print {
+            body {
+                background: none;
+            }
+            .preview-container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-container">
+        <img src="Logo.svg" alt="Connect Digitals Logo" class="logo">
+        <h1 class="title">Connect Digitals</h1>
+        <div class="accent-line"></div>
+        <p class="tagline">Connect · Create · Captivate</p>
+        <p class="subtitle">Branding & Digital Marketing</p>
+        <p class="services">Logos • Social Media • Growth Marketing</p>
+    </div>
+</body>
+</html>
