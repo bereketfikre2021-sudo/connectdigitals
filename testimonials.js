@@ -8,6 +8,12 @@ function initTestimonials() {
   const seeMoreBtn = document.getElementById('see-more-reviews');
   const slider = document.getElementById('testimonial-slider');
   
+  // Check if testimonials section exists
+  if (!slider || pages.length === 0) {
+    console.warn('Testimonials section not found or no testimonial pages');
+    return;
+  }
+  
   console.log('Found testimonial pages:', pages.length);
   pages.forEach((page, index) => {
     console.log(`Page ${index}:`, {

@@ -10,11 +10,17 @@ function initNavigation() {
     }
   });
 
-  // Mobile Navigation Toggle
-  const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-  const mobileNav = document.querySelector('.mobile-nav');
-  const mobileNavClose = document.querySelector('.mobile-nav-close');
-  const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+  // Modern Mobile Navigation Toggle
+  const mobileNavToggle = document.querySelector('.modern-nav-toggle');
+  const mobileNav = document.querySelector('.modern-mobile-nav');
+  const mobileNavClose = document.querySelector('.nav-close-btn');
+  const mobileNavLinks = document.querySelectorAll('.nav-link');
+
+  // Check if required elements exist
+  if (!mobileNavToggle || !mobileNav) {
+    console.warn('Mobile navigation elements not found');
+    return;
+  }
 
   // Debug logging
   if (window.__DEBUG__) {
@@ -35,7 +41,6 @@ function initNavigation() {
     
     if (!isExpanded) {
       if (window.__DEBUG__) console.log('Opening mobile nav');
-      mobileNav.style.display = 'flex';
       mobileNav.classList.add('active');
       document.body.classList.add('mobile-nav-open');
       document.body.style.overflow = 'hidden'; // Prevent background scrolling
@@ -44,12 +49,6 @@ function initNavigation() {
       mobileNav.classList.remove('active');
       document.body.classList.remove('mobile-nav-open');
       document.body.style.overflow = ''; // Restore scrolling
-      // Hide nav after animation completes
-      setTimeout(() => {
-        if (!mobileNav.classList.contains('active')) {
-          mobileNav.style.display = 'none';
-        }
-      }, 300);
     }
     
     if (window.__DEBUG__) console.log('Mobile nav classes after toggle:', mobileNav.className);
@@ -60,12 +59,6 @@ function initNavigation() {
     mobileNav.classList.remove('active');
     document.body.classList.remove('mobile-nav-open');
     document.body.style.overflow = '';
-    // Hide nav after animation completes
-    setTimeout(() => {
-      if (!mobileNav.classList.contains('active')) {
-        mobileNav.style.display = 'none';
-      }
-    }, 300);
   }
 
   // Event listeners for mobile navigation
@@ -110,6 +103,33 @@ function initNavigation() {
       closeMobileNav();
     }
   });
+
+  // Scroll to top functionality
+  function initScrollToTop() {
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+    
+    if (scrollToTopBtn) {
+      // Show/hide button based on scroll position
+      window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+          scrollToTopBtn.classList.add('show');
+        } else {
+          scrollToTopBtn.classList.remove('show');
+        }
+      });
+
+      // Smooth scroll to top when clicked
+      scrollToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    }
+  }
+
+  // Initialize scroll to top
+  initScrollToTop();
 
   // Close mobile nav on escape key
   document.addEventListener('keydown', (e) => {

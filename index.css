@@ -9400,6 +9400,8 @@ nav a:focus, nav a:focus-visible {
 .service-card:nth-child(2) .service-content h3 { color: #D4AF37 !important; }
 .service-card:nth-child(3) .service-content h3 { color: #EC1C24 !important; }
 .service-card:nth-child(4) .service-content h3 { color: #222222 !important; }
+.service-card:nth-child(5) .service-content h3 { color: #B8860B !important; }
+.service-card:nth-child(6) .service-content h3 { color: #EC1C24 !important; }
 
 /* Global font consistency - ensure all elements use brand fonts */
 * {
@@ -9597,7 +9599,7 @@ nav a:focus, nav a:focus-visible {
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   margin-top: 2rem;
 }
@@ -9620,6 +9622,8 @@ nav a:focus, nav a:focus-visible {
 .service-card:nth-child(2) { animation-delay: 0.2s; }
 .service-card:nth-child(3) { animation-delay: 0.3s; }
 .service-card:nth-child(4) { animation-delay: 0.4s; }
+.service-card:nth-child(5) { animation-delay: 0.5s; }
+.service-card:nth-child(6) { animation-delay: 0.6s; }
 
 /* Remove floating animation for simplicity */
 
@@ -9874,4 +9878,192 @@ nav a:focus, nav a:focus-visible {
     font-size: 0.9rem;
     padding: 0.7rem 1.2rem;
   }
+}
+
+/* Toast Notifications */
+.sr-toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #4CAF50;
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 10000;
+  max-width: 300px;
+  font-size: 0.9rem;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  animation: slideIn 0.3s ease forwards;
+}
+
+@keyframes slideIn {
+  to {
+    transform: translateX(0);
+  }
+}
+
+.error-toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #EC1C24;
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 10000;
+  max-width: 300px;
+  font-size: 0.9rem;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  animation: slideIn 0.3s ease forwards;
+}
+
+/* Invisible CAPTCHA Styles */
+.invisible-captcha {
+  position: absolute !important;
+  left: -9999px !important;
+  top: -9999px !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+  z-index: -9999 !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+.invisible-captcha input,
+.invisible-captcha input:focus,
+.invisible-captcha input:active {
+  position: absolute !important;
+  left: -9999px !important;
+  top: -9999px !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+  z-index: -9999 !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: transparent !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+}
+
+/* Ensure CAPTCHA fields are completely hidden from screen readers */
+.invisible-captcha input[aria-hidden="true"] {
+  display: none !important;
+}
+
+/* Enhanced Contact Section Social Icons - Modern Fancy Hover Effects */
+.contact-info .social-icons {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+  justify-content: center;
+}
+
+.contact-info .social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.contact-info .social-icons a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.contact-info .social-icons a:hover::before {
+  left: 100%;
+}
+
+.contact-info .social-icons a:hover {
+  transform: translateY(-4px) scale(1.1) rotate(-45deg);
+  box-shadow: 
+    0 8px 25px rgba(184, 134, 11, 0.3),
+    0 0 0 1px rgba(184, 134, 11, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  background: linear-gradient(135deg, #B8860B 0%, #DAA520 50%, #B8860B 100%);
+  border-color: rgba(184, 134, 11, 0.4);
+}
+
+.contact-info .social-icons a:active {
+  transform: translateY(-2px) scale(1.05);
+  transition: all 0.1s ease;
+}
+
+.contact-info .social-icons img {
+  width: 22px;
+  height: 22px;
+  filter: brightness(0) invert(1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 2;
+}
+
+.contact-info .social-icons a:hover img {
+  filter: brightness(0) invert(1);
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Platform-specific hover effects for contact section - All using brand golden yellow */
+.contact-info .social-icons a[href*="facebook"]:hover {
+  background: linear-gradient(135deg, #B8860B 0%, #DAA520 50%, #B8860B 100%);
+  box-shadow: 
+    0 8px 25px rgba(184, 134, 11, 0.4),
+    0 0 0 1px rgba(184, 134, 11, 0.3);
+  border-color: rgba(184, 134, 11, 0.4);
+}
+
+.contact-info .social-icons a[href*="instagram"]:hover {
+  background: linear-gradient(135deg, #B8860B 0%, #DAA520 50%, #B8860B 100%);
+  box-shadow: 
+    0 8px 25px rgba(184, 134, 11, 0.4),
+    0 0 0 1px rgba(184, 134, 11, 0.3);
+  border-color: rgba(184, 134, 11, 0.4);
+}
+
+.contact-info .social-icons a[href*="tiktok"]:hover {
+  background: linear-gradient(135deg, #B8860B 0%, #DAA520 50%, #B8860B 100%);
+  box-shadow: 
+    0 8px 25px rgba(184, 134, 11, 0.4),
+    0 0 0 1px rgba(184, 134, 11, 0.3);
+  border-color: rgba(184, 134, 11, 0.4);
+}
+
+.contact-info .social-icons a[href*="telegram"]:hover {
+  background: linear-gradient(135deg, #B8860B 0%, #DAA520 50%, #B8860B 100%);
+  box-shadow: 
+    0 8px 25px rgba(184, 134, 11, 0.4),
+    0 0 0 1px rgba(184, 134, 11, 0.3);
+  border-color: rgba(184, 134, 11, 0.4);
 }

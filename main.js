@@ -18,6 +18,55 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   
+  // Hero slideshow functionality
+  function initHeroSlideshow() {
+    const heroSection = document.querySelector('#home');
+    if (!heroSection) return;
+    
+    // Add background rotation animation
+    heroSection.style.backgroundImage = `
+      linear-gradient(135deg, rgba(0, 15, 51, 0.8) 0%, rgba(26, 31, 58, 0.8) 50%, rgba(0, 15, 51, 0.8) 100%),
+      url('BG.webp')
+    `;
+    
+    // Optional: Add background image rotation
+    const backgrounds = ['BG.webp', 'BG-2.webp', 'BG-3.webp', 'BG-4.webp'];
+    let currentBg = 0;
+    
+    setInterval(() => {
+      currentBg = (currentBg + 1) % backgrounds.length;
+      heroSection.style.backgroundImage = `
+        linear-gradient(135deg, rgba(0, 15, 51, 0.8) 0%, rgba(26, 31, 58, 0.8) 50%, rgba(0, 15, 51, 0.8) 100%),
+        url('${backgrounds[currentBg]}')
+      `;
+    }, 5000); // Change every 5 seconds
+  }
+
+  // Modal listeners initialization
+  function initModalListeners() {
+    // Service and portfolio card click handlers
+    document.addEventListener('click', function(e) {
+      const target = e.target.closest('.service-card, .portfolio-card');
+      if (target) {
+        const title = target.getAttribute('data-modal-title');
+        const content = target.getAttribute('data-modal-content');
+        
+        if (title && content) {
+          openModal(title, content);
+          
+          // Track analytics
+          if (typeof trackEvent === 'function') {
+            trackEvent('modal_open', {
+              modal_type: target.classList.contains('service-card') ? 'service' : 'portfolio',
+              modal_title: title,
+              user_intent: 'content_exploration'
+            });
+          }
+        }
+      }
+    });
+  }
+
   // Unified initialization entrypoint
   function init() {
     console.log('Initializing all modules...');

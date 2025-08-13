@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth" data-ga="">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XN04SK4GT5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-XN04SK4GT5');
+  </script>
+  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Connect Digitals | Branding & Digital Marketing</title>
@@ -57,6 +67,14 @@
     }
     
     .logo { font-size: 1.5rem; font-weight: bold; }
+    .logo a { 
+      display: inline-block;
+      text-decoration: none;
+      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+    .logo a:hover {
+      transform: scale(1.05);
+    }
     .logo img { height: 40px; width: auto; }
     
     nav a {
@@ -76,6 +94,9 @@
       background: rgba(255, 255, 255, 0.2);
       transform: translateY(-2px);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-decoration-color: #B8860B;
     }
     
     /* Critical CSS - Hero Section */
@@ -177,67 +198,254 @@
       background: linear-gradient(135deg, #B8860B 0%, #EC1C24 100%);
     }
     
-    /* Critical CSS - Mobile Navigation */
-    .mobile-nav-toggle {
+    /* Modern Mobile Navigation */
+    .modern-nav-toggle {
       display: none;
       background: none;
       border: none;
       cursor: pointer;
-      padding: 0.5rem;
+      padding: 0.75rem;
+      border-radius: 12px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       z-index: 101;
     }
-    
-    .hamburger-line {
-      width: 25px;
-      height: 3px;
-      background: #000F33;
-      margin: 5px 0;
-      transition: 0.3s;
-      border-radius: 2px;
+
+    .modern-nav-toggle:hover {
+      background: rgba(0, 15, 51, 0.1);
+      transform: scale(1.05);
     }
-    
-    .mobile-nav {
-      display: none;
+
+    .modern-nav-icon {
+      position: relative;
+      width: 24px;
+      height: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .nav-line {
+      width: 100%;
+      height: 2px;
+      background: #000F33;
+      border-radius: 2px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-origin: center;
+    }
+
+    .modern-nav-toggle[aria-expanded="true"] .nav-line:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+      background: #B8860B;
+    }
+
+    .modern-nav-toggle[aria-expanded="true"] .nav-line:nth-child(2) {
+      opacity: 0;
+      transform: scale(0);
+    }
+
+    .modern-nav-toggle[aria-expanded="true"] .nav-line:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+      background: #B8860B;
+    }
+
+    .modern-mobile-nav {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100vh;
-      background: rgba(0, 15, 51, 0.95);
-      backdrop-filter: blur(20px);
       z-index: 1000;
-      padding: 2rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    
-    .mobile-nav.active {
+
+    .modern-mobile-nav.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .nav-backdrop {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #000F33 0%, #1a1f3a 50%, #000F33 100%);
+      backdrop-filter: blur(20px);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .modern-mobile-nav.active .nav-backdrop {
+      opacity: 1;
+    }
+
+    .nav-container {
+      position: relative;
+      z-index: 2;
+      height: 100%;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      padding: 2rem;
+      transform: translateY(20px);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    
-    .mobile-nav a {
+
+    .modern-mobile-nav.active .nav-container {
+      transform: translateY(0);
+    }
+
+    .nav-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 2rem;
+    }
+
+    .nav-logo img {
+      filter: brightness(0) invert(1);
+      transition: transform 0.3s ease;
+    }
+
+    .nav-logo:hover img {
+      transform: scale(1.05);
+    }
+
+    .nav-close-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 0.75rem;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-close-btn:hover {
+      background: #B8860B;
+      color: #000F33;
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(184, 134, 11, 0.3);
+    }
+
+    .nav-links {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.25rem 1.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
       color: #fff;
       text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .nav-link:hover::before {
+      left: 100%;
+    }
+
+    .nav-link:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: #B8860B;
+      transform: translateX(8px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-icon {
       font-size: 1.5rem;
+      width: 2rem;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-link:hover .nav-icon {
+      transform: scale(1.2);
+    }
+
+    .nav-text {
+      flex: 1;
       font-weight: 600;
-      margin: 1rem 0;
-      padding: 1rem 2rem;
-      border-radius: 10px;
+    }
+
+    .nav-arrow {
+      font-size: 1.2rem;
+      opacity: 0.7;
       transition: all 0.3s ease;
     }
-    
-    .mobile-nav a:hover {
-      color: #B8860B;  /* brand yellow */
+
+    .nav-link:hover .nav-arrow {
+      opacity: 1;
+      transform: translateX(4px);
+      color: #B8860B;
+    }
+
+    .nav-footer {
+      margin-top: auto;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-contact {
+      text-align: center;
+    }
+
+    .nav-contact p {
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .nav-cta {
+      display: inline-block;
+      background: linear-gradient(135deg, #EC1C24 0%, #B8860B 100%);
+      color: #fff;
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 8px 25px rgba(236, 28, 36, 0.3);
+    }
+
+    .nav-cta:hover {
       transform: translateY(-2px);
-      background: rgba(255,255,255,0.12);
-      box-shadow: 0 12px 38px rgba(0,0,0,0.30);
+      box-shadow: 0 12px 35px rgba(236, 28, 36, 0.4);
     }
     
     /* Critical CSS - Responsive */
     @media (max-width: 768px) {
       .desktop-nav { display: none; }
-      .mobile-nav-toggle { display: block; }
+      .modern-nav-toggle { display: block; }
       header { padding: 1rem; }
       .hero-title { font-size: 2.5rem; line-height: 1.15; }
       .hero-content { max-width: 92%; }
@@ -251,110 +459,800 @@
       .logo img { height: 32px; }
     }
 
-    /* Force burger icon to brand navy and ensure contrast over transparent header */
-    header .mobile-nav-toggle .hamburger-line {
-      background-color: #000F33 !important; /* brand navy */
-      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.45); /* optional: remove if you don't want the outline */
+
+
+    /* Blog Section Styles */
+    .blog-section {
+      padding: 5rem 2rem;
+      background: linear-gradient(135deg, #F8F4EF 0%, #fff 100%);
     }
 
-    /* Burger: force brand navy and animate to X */
-    header .mobile-nav-toggle .hamburger-line {
-      display: block;
-      width: 26px;
-      height: 3px;
-      background-color: #000F33 !important; /* brand navy */
-      margin: 5px 0;
-      border-radius: 2px;
-      transition: transform .3s ease, opacity .25s ease, background-color .2s ease;
+    .blog-container {
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    .mobile-nav-toggle[aria-expanded="true"] .hamburger-line:nth-child(1) {
-      transform: translateY(8px) rotate(45deg);
-    }
-    .mobile-nav-toggle[aria-expanded="true"] .hamburger-line:nth-child(2) {
-      opacity: 0;
-    }
-    .mobile-nav-toggle[aria-expanded="true"] .hamburger-line:nth-child(3) {
-      transform: translateY(-8px) rotate(-45deg);
-    }
-
-    /* Fancy mobile dropdown: glassy, animated, brand accents */
-    .mobile-nav {
-      background:
-        radial-gradient(1200px 600px at 20% -10%, rgba(184,134,11,.25) 0%, transparent 60%),
-        radial-gradient(800px 400px at 110% 10%, rgba(212,175,55,.22) 0%, transparent 60%),
-        rgba(0, 15, 51, 0.82) !important;
-      backdrop-filter: blur(22px) saturate(140%);
-      -webkit-backdrop-filter: blur(22px) saturate(140%);
-      opacity: 0;
-      transform: translateY(-12px) scale(.98);
-      pointer-events: none;
-      transition: opacity .35s ease, transform .35s cubic-bezier(.22,.61,.36,1);
-    }
-
-    .mobile-nav.active {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-      pointer-events: auto;
-    }
-
-    .mobile-nav a {
-      width: min(90vw, 420px);
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.22);
-      border-radius: 14px;
-      padding: 0.9rem 1.25rem;
-      margin: 0.4rem 0;
-      color: #fff;
+    .blog-heading {
       text-align: center;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.25);
-      transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #000F33;
+      margin-bottom: 1rem;
+      position: relative;
+      padding-bottom: 1rem;
     }
 
-    .mobile-nav a:hover {
-      color: #B8860B;  /* brand yellow */
+    .blog-heading::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(135deg, #EC1C24 0%, #B8860B 100%);
+      border-radius: 2px;
+    }
+
+    .blog-subtitle {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #666;
+      margin-bottom: 3rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .blog-card {
+      background: #fff;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .blog-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    }
+
+    .blog-image {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #F8F4EF 0%, #fff 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .blog-icon {
+      font-size: 4rem;
+      opacity: 0.8;
+      transition: all 0.3s ease;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+    }
+
+    .blog-card:hover .blog-icon {
+      transform: scale(1.1);
+      opacity: 1;
+      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.2));
+    }
+
+    .blog-category {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: linear-gradient(135deg, #EC1C24 0%, #B8860B 100%);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .blog-content {
+      padding: 1.5rem;
+    }
+
+    .blog-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .blog-date {
+      color: #B8860B;
+      font-weight: 600;
+    }
+
+    .blog-read-time {
+      background: rgba(184, 134, 11, 0.1);
+      padding: 0.25rem 0.75rem;
+      border-radius: 1rem;
+      color: #B8860B;
+      font-weight: 500;
+    }
+
+    .blog-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #000F33;
+      margin-bottom: 1rem;
+      line-height: 1.4;
+    }
+
+    .blog-excerpt {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .blog-read-more {
+      color: #EC1C24;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      font-family: inherit;
+    }
+
+    .blog-read-more:hover {
+      color: #B8860B;
+      transform: translateX(5px);
+    }
+
+    .blog-navigation {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .blog-nav-btn {
+      background: transparent;
+      border: 2px solid #B8860B;
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .blog-nav-btn:hover {
+      background: #B8860B;
+      color: #fff;
       transform: translateY(-2px);
-      background: rgba(255,255,255,0.12);
-      box-shadow: 0 12px 38px rgba(0,0,0,0.30);
+      box-shadow: 0 8px 25px rgba(184, 134, 11, 0.3);
+      text-shadow: none;
     }
 
-    /* Staggered link reveal */
-    .mobile-nav.active a { animation: navFade .45s ease forwards; opacity: 0; }
-    .mobile-nav.active a:nth-child(2) { animation-delay: .05s; } /* first link (after close) */
-    .mobile-nav.active a:nth-child(3) { animation-delay: .10s; }
-    .mobile-nav.active a:nth-child(4) { animation-delay: .15s; }
-    .mobile-nav.active a:nth-child(5) { animation-delay: .20s; }
-    .mobile-nav.active a:nth-child(6) { animation-delay: .25s; }
-
-    @keyframes navFade {
-      from { opacity: 0; transform: translateY(8px); }
-      to   { opacity: 1; transform: translateY(0); }
+    .blog-pagination {
+      display: flex;
+      gap: 0.5rem;
     }
 
-    .mobile-nav-close { background: #B8860B; color: #000F33; }
-
-    /* Mobile nav: hover/focus/active -> brand yellow */
-    .mobile-nav a:hover,
-    .mobile-nav a:focus,
-    .mobile-nav a:active {
-      color: #B8860B !important;
-      background: rgba(255,255,255,0.14);
-      box-shadow: 0 12px 38px rgba(0,0,0,0.30);
+    .page-number {
+      width: 2.5rem;
+      height: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: #fff;
+      color: #666;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
     }
 
-    /* Mobile nav: active state also yellow (not red) */
-    .mobile-nav a.active {
-      color: #B8860B !important;
+    .page-number:hover,
+    .page-number.active {
+      background: #B8860B;
+      color: #fff;
+      border-color: #B8860B;
     }
 
-    /* Mobile nav close button: brand yellow (default + hover) */
-    .mobile-nav-close {
-      background: #B8860B !important;
-      color: #000F33 !important;
+    /* Blog Responsive */
+    @media (max-width: 768px) {
+      .blog-section {
+        padding: 3rem 1rem;
+      }
+      
+      .blog-heading {
+        font-size: 2rem;
+      }
+      
+      .blog-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      .blog-navigation {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .blog-nav-btn {
+        width: 100%;
+        justify-content: center;
+      }
     }
-    .mobile-nav-close:hover,
-    .mobile-nav-close:active {
-      background: #B8860B !important;
+
+    /* Blog Modal Styling */
+    #blogModal {
+      background: 
+        radial-gradient(1200px 600px at 20% -10%, rgba(184,134,11,.15) 0%, transparent 60%),
+        radial-gradient(800px 400px at 110% 10%, rgba(212,175,55,.12) 0%, transparent 60%),
+        rgba(0, 15, 51, 0.4);
+      backdrop-filter: blur(25px) saturate(140%);
+      -webkit-backdrop-filter: blur(25px) saturate(140%);
+    }
+
+    #blogModal .modal-content {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px) saturate(140%);
+      -webkit-backdrop-filter: blur(20px) saturate(140%);
+      border-radius: 1.5rem;
+      padding: 2.5rem;
+      max-width: 600px;
+      width: 90%;
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+      transform: scale(0.9);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    #blogModal[style*="display: flex"] .modal-content {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    #blogModal .modal-close {
+      position: absolute;
+      top: -0.5rem;
+      right: -0.5rem;
+      background: linear-gradient(135deg, #EC1C24 0%, #B8860B 100%);
+      color: #fff;
+      border: 2px solid rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      width: 2.2rem;
+      height: 2.2rem;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      z-index: 10;
+    }
+
+    #blogModal .modal-close:hover {
+      transform: scale(1.15) rotate(90deg);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      background: linear-gradient(135deg, #B8860B 0%, #EC1C24 100%);
+    }
+
+    #blogModal #blog-modal-title {
+      color: #000F33;
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+      text-align: center;
+      position: relative;
+      padding-bottom: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    #blogModal #blog-modal-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(135deg, #EC1C24 0%, #B8860B 100%);
+      border-radius: 2px;
+    }
+
+    #blogModal #blog-modal-desc {
+      color: #444;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      text-align: justify;
+      margin-top: 1.5rem;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 1rem;
+      border-left: 4px solid #B8860B;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Blog Modal Animation */
+    @keyframes blogModalFadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8) translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    #blogModal[style*="display: flex"] {
+      animation: blogModalFadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Blog Modal Responsive */
+    @media (max-width: 768px) {
+      #blogModal .modal-content {
+        padding: 2rem;
+        margin: 1rem;
+        width: calc(100% - 2rem);
+      }
+
+      #blogModal #blog-modal-title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      #blogModal #blog-modal-desc {
+        font-size: 1rem;
+        padding: 1rem;
+      }
+
+      #blogModal .modal-close {
+        top: 0.5rem;
+        right: 1rem;
+        width: 2rem;
+        height: 2rem;
+        font-size: 1rem;
+      }
+    }
+
+    /* Main Modal Styling (Services & Portfolio) */
+    #modal {
+      background: 
+        radial-gradient(1200px 600px at 20% -10%, rgba(184,134,11,.08) 0%, transparent 60%),
+        radial-gradient(800px 400px at 110% 10%, rgba(212,175,55,.06) 0%, transparent 60%),
+        rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(30px) saturate(150%);
+      -webkit-backdrop-filter: blur(30px) saturate(150%);
+    }
+
+    #modal .modal-content {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px) saturate(140%);
+      -webkit-backdrop-filter: blur(20px) saturate(140%);
+      border-radius: 1.5rem;
+      padding: 2.5rem;
+      max-width: 600px;
+      width: 90%;
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+      transform: scale(0.9);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    #modal[style*="display: flex"] .modal-content {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    #modal .modal-close {
+      position: absolute;
+      top: -0.5rem;
+      right: -0.5rem;
+      background: linear-gradient(135deg, #EC1C24 0%, #B8860B 100%);
+      color: #fff;
+      border: 2px solid rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      width: 2.2rem;
+      height: 2.2rem;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      z-index: 10;
+    }
+
+    #modal .modal-close:hover {
+      transform: scale(1.15) rotate(90deg);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      background: linear-gradient(135deg, #B8860B 0%, #EC1C24 100%);
+    }
+
+    #modal #modal-title {
+      color: #000F33;
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+      text-align: center;
+      position: relative;
+      padding-bottom: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    #modal #modal-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(135deg, #EC1C24 0%, #B8860B 100%);
+      border-radius: 2px;
+    }
+
+    #modal #modal-desc {
+      color: #444;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      text-align: justify;
+      margin-top: 1.5rem;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 1rem;
+      border-left: 4px solid #B8860B;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Main Modal Animation */
+    @keyframes mainModalFadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8) translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    #modal[style*="display: flex"] {
+      animation: mainModalFadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Main Modal Responsive */
+    @media (max-width: 768px) {
+      #modal .modal-content {
+        padding: 2rem;
+        margin: 1rem;
+        width: calc(100% - 2rem);
+      }
+
+      #modal #modal-title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      #modal #modal-desc {
+        font-size: 1rem;
+        padding: 1rem;
+      }
+
+      #modal .modal-close {
+        top: 0.5rem;
+        right: 1rem;
+        width: 2rem;
+        height: 2rem;
+        font-size: 1rem;
+      }
+    }
+
+    /* Modern Footer Styling */
+    .modern-footer {
+      position: relative;
+      background: linear-gradient(135deg, #000F33 0%, #1a1f3a 50%, #000F33 100%);
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .footer-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(1200px 600px at 20% -10%, rgba(184,134,11,.2) 0%, transparent 60%),
+        radial-gradient(800px 400px at 110% 10%, rgba(236,28,36,.1) 0%, transparent 60%),
+        radial-gradient(600px 400px at 50% 80%, rgba(248,244,239,.05) 0%, transparent 60%);
+      opacity: 0.4;
+    }
+
+    .footer-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem 2rem;
+    }
+
+    .footer-main {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-section {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer-logo img {
+      height: 48px;
+      width: auto;
+      margin-bottom: 1rem;
+      filter: brightness(0) invert(1);
+    }
+
+    .footer-tagline {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #B8860B;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+    }
+
+    .footer-description {
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+    }
+
+    .footer-contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.9rem;
+    }
+
+    .contact-item svg {
+      color: #B8860B;
+      flex-shrink: 0;
+    }
+
+    .footer-heading {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .footer-heading::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(135deg, #EC1C24 0%, #B8860B 100%);
+      border-radius: 1px;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+      position: relative;
+      padding-left: 0;
+    }
+
+    .footer-links a:hover {
+      color: #B8860B;
+      padding-left: 8px;
+    }
+
+    .social-description {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.85rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+
+    .social-links-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 0.75rem;
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .social-link:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: #B8860B;
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(184, 134, 11, 0.3);
+    }
+
+    .social-link.facebook:hover {
+      background: linear-gradient(135deg, #1877f2, #0d6efd);
+    }
+
+    .social-link.instagram:hover {
+      background: linear-gradient(135deg, #e4405f, #c13584);
+    }
+
+    .social-link.telegram:hover {
+      background: linear-gradient(135deg, #0088cc, #0077b3);
+    }
+
+    .social-link.tiktok:hover {
+      background: linear-gradient(135deg, #000000, #25f4ee);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 2rem;
+    }
+
+    .footer-bottom-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .copyright {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+    }
+
+    .copyright-icon {
+      font-size: 1.1rem;
+      color: #B8860B;
+    }
+
+    .footer-legal {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .legal-link {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.3s ease;
+    }
+
+    .legal-link:hover {
+      color: #B8860B;
+    }
+
+    .separator {
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 0.8rem;
+    }
+
+    /* Footer Responsive */
+    @media (max-width: 1024px) {
+      .footer-main {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+      
+      .company-info {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .footer-content {
+        padding: 3rem 1.5rem 1.5rem;
+      }
+      
+      .footer-main {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .social-links-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-bottom-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+      }
+      
+      .footer-legal {
+        justify-content: center;
+      }
     }
   </style>
   
@@ -428,37 +1326,77 @@
 
   <header>
     <div class="logo">
-      <img src="./Logo.svg" alt="Connect Digitals Logo" width="150" height="40">
+      <a href="#home">
+        <img src="./Logo.svg" alt="Connect Digitals Logo" width="150" height="40">
+      </a>
     </div>
     <nav class="desktop-nav" aria-label="Desktop navigation">
-      <a href="#home">Home</a>
-      <a href="#about"> About</a>
-      <a href="#services">Services</a>
-      <a href="#portfolio">Portfolio</a>
-      <a href="#testimonials">Testimonials</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    
-    <!-- Mobile Navigation Toggle (JS injected) -->
-    <button type="button" class="mobile-nav-toggle" aria-label="Toggle mobile navigation" aria-controls="mobileNav" aria-expanded="false">
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-    </button>
-    
-    <!-- Mobile Navigation Menu (JS injected) -->
-    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" style="display: none;">
-      <button type="button" class="mobile-nav-close" aria-label="Close mobile navigation">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M18 6L6 18M6 6L18 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
-      <a href="#home">Home</a>
       <a href="#about">About</a>
       <a href="#services">Services</a>
       <a href="#portfolio">Portfolio</a>
-      <a href="#testimonials">Testimonials</a>
+      <a href="#blog">Blog</a>
       <a href="#contact">Contact</a>
+    </nav>
+    
+    <!-- Modern Mobile Navigation Toggle -->
+    <button type="button" class="modern-nav-toggle" aria-label="Toggle mobile navigation" aria-controls="mobileNav" aria-expanded="false">
+      <div class="modern-nav-icon">
+        <span class="nav-line"></span>
+        <span class="nav-line"></span>
+        <span class="nav-line"></span>
+      </div>
+    </button>
+    
+    <!-- Modern Mobile Navigation Menu -->
+    <nav class="modern-mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+      <div class="nav-backdrop"></div>
+      <div class="nav-container">
+        <div class="nav-header">
+          <div class="nav-logo">
+            <img src="./Logo.svg" alt="Connect Digitals Logo" width="120" height="32">
+          </div>
+          <button type="button" class="nav-close-btn" aria-label="Close mobile navigation">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        
+        <div class="nav-links">
+          <a href="#about" class="nav-link">
+            <span class="nav-icon">👥</span>
+            <span class="nav-text">About</span>
+            <span class="nav-arrow">→</span>
+          </a>
+          <a href="#services" class="nav-link">
+            <span class="nav-icon">⚡</span>
+            <span class="nav-text">Services</span>
+            <span class="nav-arrow">→</span>
+          </a>
+          <a href="#portfolio" class="nav-link">
+            <span class="nav-icon">🎨</span>
+            <span class="nav-text">Portfolio</span>
+            <span class="nav-arrow">→</span>
+          </a>
+          <a href="#blog" class="nav-link">
+            <span class="nav-icon">📝</span>
+            <span class="nav-text">Blog</span>
+            <span class="nav-arrow">→</span>
+          </a>
+          <a href="#contact" class="nav-link">
+            <span class="nav-icon">💬</span>
+            <span class="nav-text">Contact</span>
+            <span class="nav-arrow">→</span>
+          </a>
+        </div>
+        
+        <div class="nav-footer">
+          <div class="nav-contact">
+            <p>Ready to connect?</p>
+            <a href="#contact" class="nav-cta">Start Your Project</a>
+          </div>
+        </div>
+      </div>
     </nav>
   </header>
 
@@ -598,6 +1536,48 @@
                 <span class="feature-tag">Content</span>
                 <span class="feature-tag">Engagement</span>
                 <span class="feature-tag">Growth</span>
+              </div>
+            </div>
+            <div class="service-overlay">
+              <span class="learn-more">Learn More →</span>
+            </div>
+          </div>
+        </button>
+
+                  <button type="button" class="service-card" role="listitem" data-modal-title="Web Design" data-modal-content="Modern, responsive websites that convert visitors into customers." aria-label="Learn more about Web Design services">
+          <div class="service-card-inner">
+            <div class="service-icon-wrapper">
+              <div class="service-icon">💻</div>
+              <div class="icon-glow"></div>
+            </div>
+            <div class="service-content">
+              <h3>Web Design</h3>
+              <p>Modern, responsive websites that convert visitors into customers.</p>
+              <div class="service-features">
+                <span class="feature-tag">Responsive</span>
+                <span class="feature-tag">SEO Optimized</span>
+                <span class="feature-tag">Fast Loading</span>
+              </div>
+            </div>
+            <div class="service-overlay">
+              <span class="learn-more">Learn More →</span>
+            </div>
+          </div>
+        </button>
+
+                  <button type="button" class="service-card" role="listitem" data-modal-title="UI/UX Design" data-modal-content="User-centered design that creates intuitive and engaging experiences." aria-label="Learn more about UI/UX Design services">
+          <div class="service-card-inner">
+            <div class="service-icon-wrapper">
+              <div class="service-icon">🎯</div>
+              <div class="icon-glow"></div>
+            </div>
+            <div class="service-content">
+              <h3>UI/UX Design</h3>
+              <p>User-centered design that creates intuitive and engaging experiences.</p>
+              <div class="service-features">
+                <span class="feature-tag">User Research</span>
+                <span class="feature-tag">Wireframes</span>
+                <span class="feature-tag">Prototyping</span>
               </div>
             </div>
             <div class="service-overlay">
@@ -909,6 +1889,150 @@
     </div>
   </section>
 
+  <section id="blog" class="blog-section">
+    <div class="blog-container">
+      <h2 class="blog-heading">Our Blog</h2>
+      <p class="blog-subtitle">Insights, tips, and stories from the world of branding and digital marketing</p>
+      
+      <div class="blog-grid">
+        <!-- Blog Post 1: Balance -->
+        <article class="blog-card">
+          <div class="blog-image">
+            <div class="blog-icon">⚖️</div>
+            <div class="blog-category">Design Principles</div>
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span class="blog-date">January 15, 2025</span>
+              <span class="blog-read-time">6 min read</span>
+            </div>
+            <h3 class="blog-title">The Principle of Balance: Creating Visual Harmony in Design</h3>
+            <p class="blog-excerpt">
+              Discover how balance creates visual stability and harmony in your designs. Learn the difference between symmetrical, asymmetrical, and radial balance, and how to use them effectively in logos, layouts, and branding materials.
+            </p>
+            <button type="button" class="blog-read-more" data-blog-title="The Principle of Balance: Creating Visual Harmony in Design" data-blog-content="Balance is one of the fundamental principles of graphic design that creates visual stability and harmony. In this comprehensive guide, we'll explore the three main types of balance: symmetrical, asymmetrical, and radial balance. Learn how to use each type effectively in your logos, layouts, and branding materials to create designs that feel complete and professional.">Read More →</button>
+          </div>
+        </article>
+
+        <!-- Blog Post 2: Contrast -->
+        <article class="blog-card">
+          <div class="blog-image">
+            <div class="blog-icon">🎭</div>
+            <div class="blog-category">Design Principles</div>
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span class="blog-date">January 10, 2025</span>
+              <span class="blog-read-time">5 min read</span>
+            </div>
+            <h3 class="blog-title">Contrast: The Key to Making Your Designs Stand Out</h3>
+            <p class="blog-excerpt">
+              Master the art of contrast to create designs that command attention. Explore color contrast, size contrast, and typographic contrast techniques that will make your graphics more readable and visually compelling.
+            </p>
+            <button type="button" class="blog-read-more" data-blog-title="Contrast: The Key to Making Your Designs Stand Out" data-blog-content="Contrast is the visual difference between elements that makes your designs stand out and command attention. In this detailed exploration, we'll cover color contrast, size contrast, and typographic contrast techniques. Learn how to use contrast effectively to improve readability, create focal points, and make your graphics more visually compelling and memorable.">Read More →</button>
+          </div>
+        </article>
+
+        <!-- Blog Post 3: Hierarchy -->
+        <article class="blog-card">
+          <div class="blog-image">
+            <div class="blog-icon">📊</div>
+            <div class="blog-category">Design Principles</div>
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span class="blog-date">January 5, 2025</span>
+              <span class="blog-read-time">7 min read</span>
+            </div>
+            <h3 class="blog-title">Visual Hierarchy: Guiding Your Audience's Eye</h3>
+            <p class="blog-excerpt">
+              Learn how to create clear visual hierarchies that guide viewers through your designs in the intended order. Discover techniques for establishing focal points and organizing information effectively in layouts and branding.
+            </p>
+            <button type="button" class="blog-read-more" data-blog-title="Visual Hierarchy: Guiding Your Audience's Eye" data-blog-content="Visual hierarchy is the arrangement of elements in order of importance, guiding your audience's eye through your design in the intended sequence. This comprehensive guide covers techniques for establishing focal points, organizing information effectively, and creating clear visual paths that enhance user experience and communication in layouts and branding.">Read More →</button>
+          </div>
+        </article>
+
+        <!-- Blog Post 4: Repetition -->
+        <article class="blog-card">
+          <div class="blog-image">
+            <div class="blog-icon">🔄</div>
+            <div class="blog-category">Design Principles</div>
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span class="blog-date">December 28, 2024</span>
+              <span class="blog-read-time">5 min read</span>
+            </div>
+            <h3 class="blog-title">Repetition: Building Consistency and Recognition</h3>
+            <p class="blog-excerpt">
+              Understand how repetition creates consistency and strengthens brand recognition. Explore how to use repeated elements, patterns, and motifs to create cohesive design systems that build trust and familiarity.
+            </p>
+            <button type="button" class="blog-read-more" data-blog-title="Repetition: Building Consistency and Recognition" data-blog-content="Repetition is the strategic use of repeated elements to create consistency and strengthen brand recognition. This in-depth guide explores how to use repeated elements, patterns, and motifs effectively to create cohesive design systems that build trust, familiarity, and professional credibility across all your brand materials.">Read More →</button>
+          </div>
+        </article>
+
+        <!-- Blog Post 5: Proximity -->
+        <article class="blog-card">
+          <div class="blog-image">
+            <div class="blog-icon">🎯</div>
+            <div class="blog-category">Design Principles</div>
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span class="blog-date">December 20, 2024</span>
+              <span class="blog-read-time">4 min read</span>
+            </div>
+            <h3 class="blog-title">Proximity: Grouping Elements for Better Communication</h3>
+            <p class="blog-excerpt">
+              Master the principle of proximity to create clear relationships between design elements. Learn how strategic spacing and grouping can improve readability, organize information, and create more intuitive user experiences.
+            </p>
+            <button type="button" class="blog-read-more" data-blog-title="Proximity: Grouping Elements for Better Communication" data-blog-content="Proximity is the principle of grouping related elements together to create clear relationships and improve communication. This comprehensive guide teaches you how strategic spacing and grouping can enhance readability, organize information logically, and create more intuitive user experiences that guide your audience effectively.">Read More →</button>
+          </div>
+        </article>
+
+        <!-- Blog Post 6: Alignment -->
+        <article class="blog-card">
+          <div class="blog-image">
+            <div class="blog-icon">📐</div>
+            <div class="blog-category">Design Principles</div>
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span class="blog-date">December 15, 2024</span>
+              <span class="blog-read-time">6 min read</span>
+            </div>
+            <h3 class="blog-title">Alignment: The Foundation of Professional Design</h3>
+            <p class="blog-excerpt">
+              Discover how proper alignment creates order, professionalism, and visual flow in your designs. Learn the different types of alignment and how to use them to create clean, organized layouts that enhance readability and aesthetics.
+            </p>
+            <button type="button" class="blog-read-more" data-blog-title="Alignment: The Foundation of Professional Design" data-blog-content="Alignment is the foundation of professional design, creating order, structure, and visual flow. This detailed guide covers the different types of alignment - left, right, center, and justified - and shows you how to use them effectively to create clean, organized layouts that enhance readability, aesthetics, and professional credibility.">Read More →</button>
+          </div>
+        </article>
+      </div>
+
+      <!-- Blog Navigation -->
+      <div class="blog-navigation">
+        <button class="blog-nav-btn prev-btn" aria-label="Previous blog posts">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Previous
+        </button>
+        <div class="blog-pagination">
+          <span class="page-number active">1</span>
+          <span class="page-number">2</span>
+          <span class="page-number">3</span>
+        </div>
+        <button class="blog-nav-btn next-btn" aria-label="Next blog posts">
+          Next
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
   <section id="contact" class="contact-section">
     <h2 id="contact-heading">Contact Us</h2>
     <div class="contact-container">
@@ -949,7 +2073,11 @@
           <span id="char-count" class="char-count">0/1000</span>
         </div>
 
-        <input type="text" name="company" class="hidden" style="display:none !important;" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <!-- Invisible CAPTCHA Protection -->
+        <div class="invisible-captcha" style="position: absolute; left: -9999px; top: -9999px; opacity: 0; pointer-events: none;">
+          <input type="text" name="bot_trap" id="bot_trap" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <input type="checkbox" name="human_verification" id="human_verification" style="display: none;">
+        </div>
 
         <button id="submitBtn" type="submit" class="btn-shimmer">
           <span class="btn-text">Send</span>
@@ -979,11 +2107,11 @@
             <a href="https://www.instagram.com/connectdigitals.ig" target="_blank" rel="noopener noreferrer" aria-label="Connect Digitals on Instagram">
               <img src="instagram-svgrepo-com.svg" alt="" aria-hidden="true" loading="lazy" width="24" height="24">
             </a>
-            <a href="https://www.tiktok.com/@connect.digitals" target="_blank" rel="noopener noreferrer" aria-label="Connect Digitals on TikTok">
-              <img src="tiktok-svgrepo-com.svg" alt="" aria-hidden="true" loading="lazy" width="24" height="24">
-            </a>
             <a href="https://t.me/connectdigitals" target="_blank" rel="noopener noreferrer" aria-label="Connect Digitals on Telegram">
               <img src="telegram-alt-svgrepo-com.svg" alt="" aria-hidden="true" loading="lazy" width="24" height="24">
+            </a>
+            <a href="https://www.tiktok.com/@connect.digitals" target="_blank" rel="noopener noreferrer" aria-label="Connect Digitals on TikTok">
+              <img src="tiktok-svgrepo-com.svg" alt="" aria-hidden="true" loading="lazy" width="24" height="24">
             </a>
           </div>
         </div>
@@ -992,21 +2120,113 @@
   </section>
   </main>
   
-  <footer>
-    <p class="footer-container"><span style="font-size:1.1em; vertical-align:middle; margin-right:0.3em;">&#169;</span>2025 Connect Digitals. All rights reserved.</p>
-    <div class="footer-social">
-      <a href="https://web.facebook.com/connectdigitals.fb" target="_blank" rel="noopener noreferrer" aria-label="Connect Digitals on Facebook">
-          <img src="facebook-176-svgrepo-com.svg" alt="" aria-hidden="true" loading="lazy" width="28" height="28">
-      </a>
-      <a href="https://www.instagram.com/connectdigitals.ig" target="_blank" rel="noopener noreferrer" aria-label="Connect Digitals on Instagram">
-          <img src="instagram-svgrepo-com.svg" alt="" aria-hidden="true" loading="lazy" width="28" height="28">
-      </a>
-      <a href="https://t.me/connectdigitals" target="_blank" rel="noopener noreferrer" aria-label="Connect Digitals on Telegram">
-          <img src="telegram-alt-svgrepo-com.svg" alt="" aria-hidden="true" loading="lazy" width="28" height="28">
-      </a>
-      <a href="https://www.tiktok.com/@connect.digitals" target="_blank" rel="noopener noreferrer" aria-label="Connect Digitals on TikTok">
-          <img src="tiktok-svgrepo-com.svg" alt="" aria-hidden="true" loading="lazy" width="28" height="28">
-      </a>
+  <footer class="modern-footer">
+    <div class="footer-background">
+      <div class="footer-gradient"></div>
+    </div>
+    
+    <div class="footer-content">
+      <div class="footer-main">
+        <!-- Company Info -->
+        <div class="footer-section company-info">
+          <div class="footer-logo">
+            <img src="./Logo.svg" alt="Connect Digitals Logo" width="180" height="48">
+          </div>
+          <p class="footer-tagline">Connect · Create · Captivate</p>
+          <p class="footer-description">
+            Transforming ideas into powerful visual experiences. We craft memorable brands and drive digital growth through strategic design and marketing solutions.
+          </p>
+          <div class="footer-contact-info">
+            <div class="contact-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span>+251 923 988 838</span>
+            </div>
+            <div class="contact-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span>digitalsconnect@gmail.com</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-section quick-links">
+          <h3 class="footer-heading">Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#services">Our Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Services -->
+        <div class="footer-section services">
+          <h3 class="footer-heading">Our Services</h3>
+          <ul class="footer-links">
+            <li><a href="#services">Logo & Branding</a></li>
+            <li><a href="#services">Digital Marketing</a></li>
+            <li><a href="#services">Graphic Design</a></li>
+            <li><a href="#services">Social Media Management</a></li>
+            <li><a href="#services">Web Design</a></li>
+            <li><a href="#services">UI/UX Design</a></li>
+          </ul>
+        </div>
+
+        <!-- Social Media -->
+        <div class="footer-section social-media">
+          <h3 class="footer-heading">Connect With Us</h3>
+          <p class="social-description">Follow us for design inspiration, tips, and updates</p>
+          <div class="social-links-grid">
+            <a href="https://web.facebook.com/connectdigitals.fb" target="_blank" rel="noopener noreferrer" class="social-link facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+              <span>Facebook</span>
+            </a>
+            <a href="https://www.instagram.com/connectdigitals.ig" target="_blank" rel="noopener noreferrer" class="social-link instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+              <span>Instagram</span>
+            </a>
+            <a href="https://t.me/connectdigitals" target="_blank" rel="noopener noreferrer" class="social-link telegram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+              </svg>
+              <span>Telegram</span>
+            </a>
+            <a href="https://www.tiktok.com/@connect.digitals" target="_blank" rel="noopener noreferrer" class="social-link tiktok">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+              </svg>
+              <span>TikTok</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <div class="footer-bottom-content">
+          <div class="copyright">
+            <span class="copyright-icon">©</span>
+            <span>2025 Connect Digitals. All rights reserved.</span>
+          </div>
+          <div class="footer-legal">
+            <a href="privacy-policy.html" class="legal-link">Privacy Policy</a>
+            <span class="separator">•</span>
+            <a href="terms-of-service.html" class="legal-link">Terms of Service</a>
+            <span class="separator">•</span>
+            <a href="cookie-policy.html" class="legal-link">Cookie Policy</a>
+          </div>
+        </div>
+      </div>
     </div>
   </footer>
 
@@ -1023,9 +2243,18 @@
   <!-- Modal for Services/Portfolio -->
   <div id="modal" class="modal" role="dialog" aria-modal="true" tabindex="-1" aria-labelledby="modal-title" aria-describedby="modal-desc">
     <div class="modal-content">
-      <button type="button" class="modal-close" aria-label="Close modal">×</button>
+      <button type="button" class="modal-close" aria-label="Close modal" onclick="closeMainModal()" style="cursor: pointer; z-index: 9999; position: relative;">×</button>
       <h2 id="modal-title"></h2>
       <p id="modal-desc"></p>
+    </div>
+  </div>
+
+  <!-- Blog Modal (Separate from main modal) -->
+  <div id="blogModal" class="modal" role="dialog" aria-modal="true" tabindex="-1" aria-labelledby="blog-modal-title" aria-describedby="blog-modal-desc">
+    <div class="modal-content">
+      <button type="button" id="blogModalClose" class="modal-close" aria-label="Close blog modal" onclick="closeBlogModalNow()" style="cursor: pointer; z-index: 9999; position: relative;">×</button>
+      <h2 id="blog-modal-title"></h2>
+      <p id="blog-modal-desc"></p>
     </div>
   </div>
 
@@ -1047,5 +2276,201 @@
   <script src="analytics.js"></script>
   <script src="animations.js"></script>
   <script src="main.js"></script>
+  
+  <!-- Modal Functionality -->
+  <script>
+    // Global close functions for inline onclick
+    function closeBlogModalNow() {
+      console.log('Global close function called');
+      const blogModal = document.getElementById('blogModal');
+      if (blogModal) {
+        blogModal.style.display = 'none';
+        blogModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        console.log('Blog modal closed via global function');
+      }
+    }
+
+    function closeMainModal() {
+      console.log('Main modal close function called');
+      const modal = document.getElementById('modal');
+      if (modal) {
+        modal.style.display = 'none';
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        console.log('Main modal closed via global function');
+      }
+    }
+
+    // Blog read more functionality
+    function initBlogModals() {
+      const blogButtons = document.querySelectorAll('.blog-read-more');
+      const blogModal = document.getElementById('blogModal');
+      const blogModalTitle = document.getElementById('blog-modal-title');
+      const blogModalDesc = document.getElementById('blog-modal-desc');
+      const blogModalClose = document.getElementById('blogModalClose');
+
+      console.log('Blog modal elements found:', {
+        blogButtons: blogButtons.length,
+        blogModal: !!blogModal,
+        blogModalTitle: !!blogModalTitle,
+        blogModalDesc: !!blogModalDesc,
+        blogModalClose: !!blogModalClose
+      });
+
+      // Blog button click handlers
+      blogButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          const title = this.getAttribute('data-blog-title');
+          const content = this.getAttribute('data-blog-content');
+          
+          console.log('Opening blog modal:', title);
+          
+          // Set modal content
+          blogModalTitle.textContent = title;
+          blogModalDesc.textContent = content;
+          
+          // Show modal
+          blogModal.style.display = 'flex';
+          blogModal.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+
+      // Multiple close button approaches
+      if (blogModalClose) {
+        console.log('Adding multiple close button listeners');
+        
+        // Approach 1: Event listener
+        blogModalClose.addEventListener('click', function(e) {
+          console.log('Close button clicked (event listener)');
+          e.preventDefault();
+          e.stopPropagation();
+          closeBlogModalNow();
+        });
+
+        // Approach 2: Direct onclick assignment
+        blogModalClose.onclick = function(e) {
+          console.log('Close button clicked (onclick)');
+          e.preventDefault();
+          e.stopPropagation();
+          closeBlogModalNow();
+        };
+
+        // Approach 3: Mouse events
+        blogModalClose.addEventListener('mousedown', function(e) {
+          console.log('Close button mousedown');
+          closeBlogModalNow();
+        });
+
+        // Approach 4: Touch events for mobile
+        blogModalClose.addEventListener('touchend', function(e) {
+          console.log('Close button touchend');
+          closeBlogModalNow();
+        });
+      }
+
+      // Close blog modal when clicking outside
+      blogModal.addEventListener('click', function(e) {
+        if (e.target === blogModal) {
+          console.log('Closing blog modal - clicked outside');
+          closeBlogModalNow();
+        }
+      });
+
+      // Close blog modal with ESC key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && blogModal.style.display === 'flex') {
+          console.log('Closing blog modal - ESC key');
+          closeBlogModalNow();
+        }
+      });
+    }
+
+    // Main modal functionality (Services & Portfolio)
+    function initMainModals() {
+      const modal = document.getElementById('modal');
+      const modalClose = document.querySelector('#modal .modal-close');
+
+      console.log('Main modal elements found:', {
+        modal: !!modal,
+        modalClose: !!modalClose
+      });
+
+      // Multiple close button approaches for main modal
+      if (modalClose) {
+        console.log('Adding main modal close button listeners');
+        
+        // Approach 1: Event listener
+        modalClose.addEventListener('click', function(e) {
+          console.log('Main modal close button clicked (event listener)');
+          e.preventDefault();
+          e.stopPropagation();
+          closeMainModal();
+        });
+
+        // Approach 2: Direct onclick assignment
+        modalClose.onclick = function(e) {
+          console.log('Main modal close button clicked (onclick)');
+          e.preventDefault();
+          e.stopPropagation();
+          closeMainModal();
+        };
+
+        // Approach 3: Mouse events
+        modalClose.addEventListener('mousedown', function(e) {
+          console.log('Main modal close button mousedown');
+          closeMainModal();
+        });
+
+        // Approach 4: Touch events for mobile
+        modalClose.addEventListener('touchend', function(e) {
+          console.log('Main modal close button touchend');
+          closeMainModal();
+        });
+      }
+
+      // Close main modal when clicking outside
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          console.log('Closing main modal - clicked outside');
+          closeMainModal();
+        }
+      });
+
+      // Close main modal with ESC key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.style.display === 'flex') {
+          console.log('Closing main modal - ESC key');
+          closeMainModal();
+        }
+      });
+    }
+
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function() {
+        initBlogModals();
+        initMainModals();
+      });
+    } else {
+      initBlogModals();
+      initMainModals();
+    }
+
+    // Initialize once when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function() {
+        initBlogModals();
+        initMainModals();
+      });
+    } else {
+      initBlogModals();
+      initMainModals();
+    }
+  </script>
 </body>
 </html>
