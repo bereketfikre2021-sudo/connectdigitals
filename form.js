@@ -94,6 +94,25 @@ function initForm() {
     return isValid;
   }
   
+  // Invisible CAPTCHA validation
+  function validateInvisibleCaptcha() {
+    const botTrap = document.getElementById('bot_trap');
+    const humanVerification = document.getElementById('human_verification');
+    
+    // If bot trap field is filled, it's likely a bot
+    if (botTrap && botTrap.value.trim() !== '') {
+      if (window.__DEBUG__) console.log('Bot detected: bot_trap field filled');
+      return false;
+    }
+    
+    // Mark as human when form is submitted (real users won't see this field)
+    if (humanVerification) {
+      humanVerification.checked = true;
+    }
+    
+    return true;
+  }
+
   // Form submission - Single event listener to avoid conflicts
   contactForm.addEventListener('submit', function(e) {
     e.preventDefault();
@@ -118,6 +137,13 @@ function initForm() {
       return;
     }
     
+    // Check invisible CAPTCHA
+    if (!validateInvisibleCaptcha()) {
+      if (window.__DEBUG__) console.log('CAPTCHA validation failed - possible bot');
+      // Silently fail for bots - don't show error message
+      return;
+    }
+    
     // Show loading state
     submitBtn.disabled = true;
     btnText.style.display = 'none';
@@ -134,18 +160,6 @@ function initForm() {
         const data = await response.json().catch(() => ({}));
         if (response.ok) {
           successModal.style.display = 'flex';
-          // Accessible toast announcement
-          let toast = document.getElementById('sr-toast');
-          if (!toast) {
-            toast = document.createElement('div');
-            toast.id = 'sr-toast';
-            toast.setAttribute('role', 'status');
-            toast.setAttribute('aria-live', 'polite');
-            toast.className = 'sr-toast';
-            document.body.appendChild(toast);
-          }
-          toast.textContent = "Message sent successfully. We'll get back to you soon.";
-
           contactForm.reset();
           if (charCount) {
             charCount.textContent = '0/1000';
@@ -163,7 +177,43 @@ function initForm() {
       })
       .catch((err) => {
         if (window.__DEBUG__) console.error('Fetch error:', err);
-        alert('Sorry, there was an error sending your message. Please try again or contact us directly at digitalsconnect@gmail.com');
+        
+        // Show user-friendly error message
+        const errorMessage = 'Sorry, there was an error sending your message. Please try again or contact us directly at digitalsconnect@gmail.com';
+        
+        // Create error toast
+        let errorToast = document.getElementById('error-toast');
+        if (!errorToast) {
+          errorToast = document.createElement('div');
+          errorToast.id = 'error-toast';
+          errorToast.setAttribute('role', 'alert');
+          errorToast.setAttribute('aria-live', 'assertive');
+          errorToast.className = 'error-toast';
+          errorToast.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #EC1C24;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 10000;
+            max-width: 300px;
+            font-size: 0.9rem;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+          `;
+          document.body.appendChild(errorToast);
+        }
+        
+        errorToast.textContent = errorMessage;
+        errorToast.style.transform = 'translateX(0)';
+        
+        // Auto-hide after 5 seconds
+        setTimeout(() => {
+          errorToast.style.transform = 'translateX(100%)';
+        }, 5000);
       })
       .finally(() => {
         submitBtn.disabled = false;

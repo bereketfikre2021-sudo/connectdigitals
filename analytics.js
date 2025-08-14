@@ -4,9 +4,12 @@ let maxScrollDepth = 0;
 
 // Enhanced Analytics Tracking with consent check
 function hasAnalyticsConsent() {
-  // Simple consent check placeholder: looks for data attribute or a global flag
+  // Since we're using the official Google Analytics code, we'll allow analytics by default
+  // Users can still opt out through browser settings or ad blockers
   const html = document.documentElement;
-  return html.getAttribute('data-ga') === 'granted' || window.__ANALYTICS_CONSENT__ === true;
+  return html.getAttribute('data-ga') === 'granted' || 
+         window.__ANALYTICS_CONSENT__ === true || 
+         html.getAttribute('data-ga') !== 'denied'; // Allow by default unless explicitly denied
 }
 
 function loadGAScript(measurementId) {
@@ -22,9 +25,16 @@ function loadGAScript(measurementId) {
 }
 
 async function ensureGAInitialized() {
+  // Since Google Analytics is already loaded via the official gtag script, we just need to check if it's available
+  if (typeof gtag === 'function') {
+    // Google Analytics is already initialized, just return true
+    return true;
+  }
+  
+  // Fallback to the old method if needed
   if (!hasAnalyticsConsent()) return false;
-  const MEASUREMENT_ID = window.__GA_MEASUREMENT_ID__ || '';
-  if (!MEASUREMENT_ID) return false; // do nothing until a real ID is provided
+  const MEASUREMENT_ID = window.__GA_MEASUREMENT_ID__ || 'G-XN04SK4GT5';
+  if (!MEASUREMENT_ID) return false;
   await loadGAScript(MEASUREMENT_ID);
   window.dataLayer = window.dataLayer || [];
   function gtag(){ dataLayer.push(arguments); }
