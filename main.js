@@ -132,6 +132,12 @@ document.addEventListener('DOMContentLoaded', function() {
       console.log('Scroll to top initialized successfully');
     } catch (e) { console.debug('initScrollToTop skipped', e); }
     
+    try { 
+      console.log('Initializing blog pagination...');
+      initBlogPagination(); 
+      console.log('Blog pagination initialized successfully');
+    } catch (e) { console.debug('initBlogPagination skipped', e); }
+    
 
     
     console.log('All modules initialized!');
