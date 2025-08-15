@@ -1,389 +1,133 @@
-# Connect Digitals Blog Backend
+# Connect Digitals - Frontend
 
-A comprehensive, modern blog backend API built with Node.js, Express, and MongoDB. Features include user authentication, blog post management, image uploads, and admin functionality.
+A modern, responsive website for Connect Digitals built with vanilla HTML, CSS, and JavaScript.
 
 ## 🚀 Features
 
-### Core Features
-- **User Authentication & Authorization** - JWT-based auth with role-based access
-- **Blog Post Management** - CRUD operations with rich content support
-- **Image Upload** - Cloudinary integration with image optimization
-- **Comment System** - User comments with moderation capabilities
-- **Admin Dashboard** - Comprehensive admin panel with analytics
-- **SEO Optimization** - Built-in SEO fields and metadata support
+- **Responsive Design** - Mobile-first approach with modern UI/UX
+- **Glassmorphism Effects** - Beautiful visual design with glass-like elements
+- **Smooth Animations** - CSS animations and JavaScript interactions
+- **SEO Optimized** - Proper meta tags, structured data, and semantic HTML
+- **Blog Pagination** - Dynamic blog section with pagination (3 posts per page)
+- **Contact Forms** - Multiple contact form options with validation
+- **Testimonials** - Dynamic testimonials carousel
+- **Analytics Integration** - Google Analytics and other tracking tools
+- **Accessibility** - ARIA labels, semantic HTML, and keyboard navigation
 
-### Technical Features
-- **RESTful API** - Clean, well-documented API endpoints
-- **Database Indexing** - Optimized MongoDB queries with proper indexing
-- **Security** - Helmet, rate limiting, CORS, input validation
-- **Error Handling** - Comprehensive error handling and logging
-- **File Upload** - Multer with Sharp image processing
-- **Pagination** - Efficient pagination for large datasets
+## 📁 File Structure
 
-## 📋 Prerequisites
+```
+Frontend/
+├── index.html              # Main HTML file
+├── index.css               # Main stylesheet
+├── main.js                 # Main JavaScript file
+├── navigation.js           # Navigation functionality
+├── modal.js                # Modal/popup functionality
+├── form.js                 # Form handling and validation
+├── testimonials.js         # Testimonials carousel
+├── animations.js           # CSS animations and effects
+├── analytics.js            # Analytics integration
+├── blog-pagination.js      # Blog pagination functionality
+├── testimonial-responsive-fix.css  # Mobile responsive fixes
+├── contact.php             # PHP contact form handler
+├── contact-simple.php      # Simple PHP contact form
+├── test-form.html          # Form testing page
+├── form-test.html          # Alternative form testing
+├── social-preview.html     # Social media preview page
+├── privacy-policy.html     # Privacy policy page
+├── terms-of-service.html   # Terms of service page
+├── cookie-policy.html      # Cookie policy page
+├── analytics-setup.md      # Analytics setup guide
+├── Logo.svg                # Company logo
+├── favicon.ico             # Website favicon
+├── site.webmanifest        # PWA manifest
+├── *.webp                  # Image assets
+├── *.png                   # Additional images
+└── *.svg                   # Social media icons
+```
 
-- Node.js (v16 or higher)
-- MongoDB (local or Atlas)
-- Cloudinary account (for image uploads)
-- npm or yarn
+## 🛠️ Technologies Used
 
-## 🛠️ Installation
+- **HTML5** - Semantic markup
+- **CSS3** - Modern styling with Flexbox and Grid
+- **JavaScript (ES6+)** - Vanilla JS with modern features
+- **PHP** - Contact form processing
+- **Responsive Design** - Mobile-first approach
+- **CSS Animations** - Smooth transitions and effects
 
-1. **Clone the repository**
+## 🚀 Getting Started
+
+### Prerequisites
+- A modern web browser
+- Local web server (optional, for development)
+
+### Installation
+1. Clone or download the frontend files
+2. Open `index.html` in your web browser
+3. For development, use a local server:
    ```bash
-   git clone <repository-url>
-   cd connect-digitals-blog-backend
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Environment Setup**
-   ```bash
-   cp env.example .env
-   ```
+   # Using Python
+   python -m http.server 8000
    
-   Edit `.env` with your configuration:
-   ```env
-   # Server Configuration
-   PORT=5000
-   NODE_ENV=development
-
-   # MongoDB Configuration
-   MONGODB_URI=mongodb://localhost:27017/connect-digitals-blog
-   MONGODB_URI_PROD=mongodb+srv://username:password@cluster.mongodb.net/connect-digitals-blog
-
-   # JWT Configuration
-   JWT_SECRET=your-super-secret-jwt-key-here
-   JWT_EXPIRE=7d
-
-   # Admin Configuration
-   ADMIN_EMAIL=admin@connectdigitals.com
-   ADMIN_PASSWORD=admin123456
-
-   # Cloudinary Configuration
-   CLOUDINARY_CLOUD_NAME=your-cloud-name
-   CLOUDINARY_API_KEY=your-api-key
-   CLOUDINARY_API_SECRET=your-api-secret
-
-   # Email Configuration
-   EMAIL_HOST=smtp.gmail.com
-   EMAIL_PORT=587
-   EMAIL_USER=your-email@gmail.com
-   EMAIL_PASS=your-app-password
-
-   # Rate Limiting
-   RATE_LIMIT_WINDOW_MS=900000
-   RATE_LIMIT_MAX_REQUESTS=100
-
-   # File Upload
-   MAX_FILE_SIZE=5242880
-   UPLOAD_PATH=./uploads
-
-   # CORS
-   CORS_ORIGIN=http://localhost:3000,https://yourdomain.com
+   # Using Node.js
+   npx serve .
+   
+   # Using PHP
+   php -S localhost:8000
    ```
 
-4. **Start the server**
-   ```bash
-   # Development
-   npm run dev
+## 📱 Responsive Breakpoints
 
-   # Production
-   npm start
-   ```
+- **Mobile**: < 768px
+- **Tablet**: 768px - 1024px
+- **Desktop**: > 1024px
 
-5. **Seed the database** (optional)
-   ```bash
-   # The database will be automatically seeded on first run
-   # Or you can run seeding manually in the code
-   ```
+## 🎨 Design Features
 
-## 📚 API Documentation
+- **Glassmorphism**: Frosted glass effects with backdrop blur
+- **Gradient Backgrounds**: Beautiful color gradients
+- **Smooth Transitions**: CSS transitions for all interactive elements
+- **Modern Typography**: Clean, readable fonts
+- **Icon Integration**: SVG icons for social media and UI elements
 
-### Authentication Endpoints
+## 📊 Analytics
 
-#### Register User
-```http
-POST /api/auth/register
-Content-Type: application/json
-
-{
-  "name": "John Doe",
-  "email": "john@example.com",
-  "password": "password123"
-}
-```
-
-#### Login User
-```http
-POST /api/auth/login
-Content-Type: application/json
-
-{
-  "email": "john@example.com",
-  "password": "password123"
-}
-```
-
-#### Get Current User
-```http
-GET /api/auth/me
-Authorization: Bearer <token>
-```
-
-### Blog Endpoints
-
-#### Get All Published Posts
-```http
-GET /api/blog?page=1&limit=6&category=Graphic Design&search=design
-```
-
-#### Get Featured Posts
-```http
-GET /api/blog/featured
-```
-
-#### Get Post by Slug
-```http
-GET /api/blog/the-power-of-visual-balance
-```
-
-#### Create New Post (Protected)
-```http
-POST /api/blog
-Authorization: Bearer <token>
-Content-Type: application/json
-
-{
-  "title": "New Blog Post",
-  "excerpt": "Brief description...",
-  "content": "Full blog content...",
-  "category": "Graphic Design",
-  "tags": ["design", "principles"],
-  "featuredImage": {
-    "url": "https://example.com/image.jpg",
-    "alt": "Image description"
-  },
-  "status": "draft"
-}
-```
-
-#### Add Comment
-```http
-POST /api/blog/:id/comments
-Content-Type: application/json
-
-{
-  "name": "John Doe",
-  "email": "john@example.com",
-  "comment": "Great article!"
-}
-```
-
-### Upload Endpoints
-
-#### Upload Single Image
-```http
-POST /api/upload/image
-Authorization: Bearer <token>
-Content-Type: multipart/form-data
-
-Form Data:
-- image: [file]
-```
-
-#### Upload Avatar
-```http
-POST /api/upload/avatar
-Authorization: Bearer <token>
-Content-Type: multipart/form-data
-
-Form Data:
-- avatar: [file]
-```
-
-### Admin Endpoints
-
-#### Get Dashboard Stats
-```http
-GET /api/admin/dashboard
-Authorization: Bearer <admin-token>
-```
-
-#### Get All Posts (Admin View)
-```http
-GET /api/admin/posts?status=draft&page=1&limit=10
-Authorization: Bearer <admin-token>
-```
-
-#### Update Post Status
-```http
-PUT /api/admin/posts/:id/status
-Authorization: Bearer <admin-token>
-Content-Type: application/json
-
-{
-  "status": "published"
-}
-```
-
-#### Get Comments for Moderation
-```http
-GET /api/admin/comments?isApproved=false&page=1
-Authorization: Bearer <admin-token>
-```
-
-## 🗄️ Database Schema
-
-### User Model
-```javascript
-{
-  name: String,
-  email: String (unique),
-  password: String (hashed),
-  role: String (admin|editor|author),
-  avatar: { url: String, publicId: String },
-  bio: String,
-  socialLinks: { website, twitter, linkedin, instagram },
-  isActive: Boolean,
-  lastLogin: Date,
-  // ... other fields
-}
-```
-
-### Blog Model
-```javascript
-{
-  title: String,
-  slug: String (auto-generated),
-  excerpt: String,
-  content: String,
-  author: ObjectId (ref: User),
-  authorName: String,
-  featuredImage: { url: String, alt: String, publicId: String },
-  category: String,
-  tags: [String],
-  readTime: Number,
-  status: String (draft|published|archived),
-  isFeatured: Boolean,
-  views: Number,
-  likes: Number,
-  comments: [CommentSchema],
-  seo: { metaTitle, metaDescription, keywords },
-  publishedAt: Date,
-  // ... timestamps
-}
-```
-
-## 🔐 Authentication & Authorization
-
-### User Roles
-- **Admin**: Full access to all features
-- **Editor**: Can create, edit, and manage posts
-- **Author**: Can create and edit their own posts
-
-### JWT Token
-Include the JWT token in the Authorization header:
-```http
-Authorization: Bearer <your-jwt-token>
-```
-
-## 🖼️ Image Upload
-
-The system uses Cloudinary for image storage and processing:
-
-- **Automatic Optimization**: Images are automatically resized and optimized
-- **Multiple Formats**: Support for various image formats
-- **Secure URLs**: All images are served via HTTPS
-- **Organized Storage**: Images are organized in folders by type
-
-## 🚀 Deployment
-
-### Environment Variables for Production
-```env
-NODE_ENV=production
-MONGODB_URI_PROD=your-production-mongodb-uri
-JWT_SECRET=your-production-jwt-secret
-CLOUDINARY_CLOUD_NAME=your-cloudinary-name
-CLOUDINARY_API_KEY=your-cloudinary-key
-CLOUDINARY_API_SECRET=your-cloudinary-secret
-CORS_ORIGIN=https://yourdomain.com
-```
-
-### Deployment Platforms
-- **Heroku**: Easy deployment with MongoDB Atlas
-- **Vercel**: Serverless deployment option
-- **DigitalOcean**: VPS deployment
-- **AWS**: EC2 or Lambda deployment
-
-## 🧪 Testing
-
-```bash
-# Run tests
-npm test
-
-# Run tests with coverage
-npm run test:coverage
-```
-
-## 📊 Monitoring & Analytics
-
-The API includes built-in monitoring:
-- Request logging with Morgan
-- Error tracking and logging
-- Performance monitoring
-- Rate limiting analytics
+The site includes Google Analytics integration. See `analytics-setup.md` for detailed setup instructions.
 
 ## 🔧 Customization
 
-### Adding New Categories
-Edit the Blog model in `models/Blog.js`:
-```javascript
-category: {
-  type: String,
-  enum: {
-    values: [
-      'Graphic Design',
-      'Branding',
-      // Add your new categories here
-      'Your New Category'
-    ]
-  }
-}
-```
+### Colors
+Main colors are defined in CSS custom properties:
+- Primary: `#B8860B` (Golden)
+- Secondary: `#1a1a1a` (Dark)
+- Accent: `#ff6b35` (Orange)
 
-### Customizing Image Processing
-Modify the upload routes in `routes/upload.js` to adjust:
-- Image dimensions
-- Quality settings
-- File size limits
-- Supported formats
+### Fonts
+- Primary: Inter, system fonts
+- Headings: Modern sans-serif stack
 
-## 🤝 Contributing
+## 📄 Pages
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
+- **Home** (`index.html`) - Main landing page
+- **Privacy Policy** (`privacy-policy.html`)
+- **Terms of Service** (`terms-of-service.html`)
+- **Cookie Policy** (`cookie-policy.html`)
+- **Contact Forms** (`contact.php`, `contact-simple.php`)
 
-## 📄 License
+## 🔗 Backend Integration
 
-This project is licensed under the MIT License.
+This frontend is designed to work with the separate backend API. The backend is located in the `Backend/` folder and provides:
 
-## 🆘 Support
+- Blog post management
+- User authentication
+- File uploads
+- Admin panel
+- Database operations
 
-For support and questions:
-- Create an issue in the repository
-- Contact: admin@connectdigitals.com
+## 📝 License
 
-## 🔄 Updates
+This project is proprietary to Connect Digitals.
 
-Stay updated with the latest features and security patches by regularly pulling from the main branch.
+## 🤝 Support
 
----
-
-**Built with ❤️ by Connect Digitals** 
+For support or questions, please contact the development team.
